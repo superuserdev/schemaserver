@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer;
+namespace shgysk8zer0\SchemaServer\Traits;
 
 trait Address
 {
@@ -25,7 +25,7 @@ trait Address
 	 * [setAddress description]
 	 * @param PostalAddress $address [description]
 	 */
-	final public function setAddress(PostalAddress $address)
+	final public function setAddress(\shgysk8zer0\SchemaServer\PostalAddress $address)
 	{
 		$this->_set('address', $address);
 	}
