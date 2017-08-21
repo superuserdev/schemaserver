@@ -23,7 +23,7 @@ namespace shgysk8zer0\SchemaServer;
  */
 class PostalAddress extends ContactPoint
 {
-	final public function setAddressCountry($country)
+	final public function setAddressCountry(Country $country)
 	{
 		$this->_set('addressCountry', $country);
 	}

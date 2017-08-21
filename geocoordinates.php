@@ -36,7 +36,7 @@ class GeoCoordinates extends StructuredValue
 	 * [setAddressCountry description]
 	 * @param [type] $country [description]
 	 */
-	final public function setAddressCountry($country)
+	final public function setAddressCountry(Country $country)
 	{
 		$this->_set('addressCountry', $country);
 	}
