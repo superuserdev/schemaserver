@@ -18,43 +18,38 @@
  * License along with this library.
  */
 namespace shgysk8zer0\SchemaServer;
-
 /**
- * @see https://schema.org/Person
+ * @see https://schema.org/PostalAddress
  */
-class Person extends Thing
+class PostalAddress extends ContactPoint
 {
-	use Traits\ContactInfo;
-
-	/**
-	 * [setAdditionalName description]
-	 * @param String $name [description]
-	 */
-	final public function setAdditionalName(String $name)
+	final public function setAddressCountry($country)
 	{
-		$this->_set('additionalName', $name);
+		$this->_set('addressCountry', $country);
 	}
 
-	final public function setAddress(PostalAddress $address)
+	final public function setAddressLocality(String $locality)
 	{
-		$this->_set('address', $address);
+		$this->_set('addressLocality', $locality);
 	}
 
-	/**
-	 * [setFamilyName description]
-	 * @param String $name [description]
-	 */
-	final public function setFamilyName(String $name)
+	final public function setAddressRegion(String $region)
 	{
-		$this->_set('familyName', $name);
+		$this->_set('addressRegion', $region);
 	}
 
-	/**
-	 * [setGivenName description]
-	 * @param String $name [description]
-	 */
-	final public function setGivenName(String $name)
+	final public function setPOstOfficeBoxNumber(String $po_box)
 	{
-		$this->_set('givenName', $name);
+		$this->_set('postaOfficeBoxNumber', $po_box);
+	}
+
+	final public function setPostalCode(Int $postal_code)
+	{
+		$this->_set('postalCode', $postal_code);
+	}
+
+	final public function setStreetAddress(String $address)
+	{
+		$this->_set('streetAddress', $address);
 	}
 }

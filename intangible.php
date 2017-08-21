@@ -18,43 +18,8 @@
  * License along with this library.
  */
 namespace shgysk8zer0\SchemaServer;
-
 /**
- * @see https://schema.org/Person
+ * @see https://schema.org/Intangible
  */
-class Person extends Thing
-{
-	use Traits\ContactInfo;
-
-	/**
-	 * [setAdditionalName description]
-	 * @param String $name [description]
-	 */
-	final public function setAdditionalName(String $name)
-	{
-		$this->_set('additionalName', $name);
-	}
-
-	final public function setAddress(PostalAddress $address)
-	{
-		$this->_set('address', $address);
-	}
-
-	/**
-	 * [setFamilyName description]
-	 * @param String $name [description]
-	 */
-	final public function setFamilyName(String $name)
-	{
-		$this->_set('familyName', $name);
-	}
-
-	/**
-	 * [setGivenName description]
-	 * @param String $name [description]
-	 */
-	final public function setGivenName(String $name)
-	{
-		$this->_set('givenName', $name);
-	}
-}
+class Intangible extends Thing
+{}

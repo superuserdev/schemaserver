@@ -17,44 +17,30 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer;
+namespace shgysk8zer0\SchemaServer\Traits;
 
-/**
- * @see https://schema.org/Person
- */
-class Person extends Thing
+trait ContactInfo
 {
-	use Traits\ContactInfo;
-
 	/**
-	 * [setAdditionalName description]
-	 * @param String $name [description]
+	 * [setEmail description]
+	 * @param String $email [description]
 	 */
-	final public function setAdditionalName(String $name)
+	final public function setEmail(String $email)
 	{
-		$this->_set('additionalName', $name);
+		if (static::_isEmail($email)) {
+			$this->_set('email', $email);
+		} else {
+			throw new \InvalidArgumentException("'{$email}' is not a valid email");
+		}
 	}
 
-	final public function setAddress(PostalAddress $address)
+	final public function setTelephone(String $tel)
 	{
-		$this->_set('address', $address);
+		$this->_set('telephone', $tel);
 	}
 
-	/**
-	 * [setFamilyName description]
-	 * @param String $name [description]
-	 */
-	final public function setFamilyName(String $name)
+	final public function setFaxNumber(String $fax)
 	{
-		$this->_set('familyName', $name);
-	}
-
-	/**
-	 * [setGivenName description]
-	 * @param String $name [description]
-	 */
-	final public function setGivenName(String $name)
-	{
-		$this->_set('givenName', $name);
+		$this->_set('faxNumbert', $fax);
 	}
 }

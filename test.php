@@ -30,8 +30,16 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		md5($me->email),
 		$me->image->width
 	);
+	$me->address = new PostalAddress([
+		'@type'           => 'PostalAddress',
+		'addressLocality' => 'Mount Vernon',
+		'addressRegion'   => 'WA',
+		'postalCode'      => 98274,
+	]);
 	$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
 	$me->image->caption = "{$me->name} (Gravatar)";
 
 	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
+
+	echo print_r(get_included_files()) . PHP_EOL;
 }
