@@ -36,10 +36,18 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		'addressRegion'   => 'WA',
 		'postalCode'      => 98274,
 	]);
+	$me->jobTitle = 'Full Stack Web Developer (LAMP)';
+	$me->worksFor = new Organization([
+		'@type' => 'Organization',
+		'name'  => 'Super User Dev',
+		'url'   => 'https://github.com/SuperUserDev',
+		'logo'  => [
+			'@type' => 'ImageObject',
+			'url'   => 'https://chriszuber.com/favicon.svg',
+		]
+	]);
 	$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
 	$me->image->caption = "{$me->name} (Gravatar)";
 
 	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
-
-	echo print_r(get_included_files()) . PHP_EOL;
 }

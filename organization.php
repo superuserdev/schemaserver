@@ -25,4 +25,13 @@ class Organization extends Thing
 {
 	use Traits\ContactInfo;
 	use Traits\Address;
+
+	/**
+	 * [setLogo description]
+	 * @param ImageObject $logo [description]
+	 */
+	final public function setLogo(ImageObject $logo)
+	{
+		$this->_set('logo', $logo);
+	}
 }
