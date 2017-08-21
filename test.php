@@ -2,7 +2,11 @@
 
 namespace shgysk8zer0\SchemaServer;
 
-if (PHP_SAPI === 'cli') {
+if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
+	header('Content-Type: application/json');
+	set_include_path(dirname(__DIR__, 2));
+	spl_autoload_register('spl_autoload');
+
 	set_exception_handler(function(\Throwable $e)
 	{
 		echo json_encode([
@@ -11,8 +15,6 @@ if (PHP_SAPI === 'cli') {
 			'file'    => $e->getFile(),
 		], JSON_PRETTY_PRINT);
 	});
-	set_include_path(dirname(__DIR__, 2));
-	spl_autoload_register('spl_autoload');
 
 	$me = new Person();
 	$me->givenName ='Christopher';
@@ -28,13 +30,8 @@ if (PHP_SAPI === 'cli') {
 		md5($me->email),
 		$me->image->width
 	);
-	$me->image->caption = "{$me->givenName} {$me->familyName} (Gravatar)";
 	$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
-
-	print_r(Person::parseFromJSON($me));
-	exit;
+	$me->image->caption = "{$me->name} (Gravatar)";
 
 	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
-
-	// echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
 }
