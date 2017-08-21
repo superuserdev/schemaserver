@@ -18,25 +18,15 @@
  * License along with this library.
  */
 namespace shgysk8zer0\SchemaServer;
-/**
- * @see https://schema.org/Place
- */
-class Place extends Thing
-{
-	use Traits\ContactInfo;
-	use Traits\Address;
 
+trait Address
+{
 	/**
-	 * [setGeo description]
-	 * @param Thing $geo [description]
-	 * @todo Add support for GeoShape
+	 * [setAddress description]
+	 * @param PostalAddress $address [description]
 	 */
-	final public function setGeo(Thing $geo)
+	final public function setAddress(PostalAddress $address)
 	{
-		if ($geo instanceof GeoCoordinates) {
-			$this->_set('geo', $geo);
-		} else {
-			throw new \InvalidArgumentException(sprintf('Geo must be an instance of GeoCoordinates or GeoShape. Instance of %s given', $geo::getType()));
-		}
+		$this->_set('address', $address);
 	}
 }

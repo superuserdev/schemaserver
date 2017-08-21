@@ -25,6 +25,7 @@ namespace shgysk8zer0\SchemaServer;
 class Person extends Thing
 {
 	use Traits\ContactInfo;
+	use Traits\Address;
 
 	/**
 	 * [setAdditionalName description]
@@ -33,11 +34,6 @@ class Person extends Thing
 	final public function setAdditionalName(String $name)
 	{
 		$this->_set('additionalName', $name);
-	}
-
-	final public function setAddress(PostalAddress $address)
-	{
-		$this->_set('address', $address);
 	}
 
 	/**
@@ -72,6 +68,33 @@ class Person extends Thing
 	}
 
 	/**
+	 * [setHonorificPrefix description]
+	 * @param String $prefix [description]
+	 */
+	final public function setHonorificPrefix(String $prefix)
+	{
+		$this->_set('honorificPrefix', $prefix);
+	}
+
+	/**
+	 * [setHonorificSuffix description]
+	 * @param String $suffix [description]
+	 */
+	final public function setHonorificSuffix(String $suffix)
+	{
+		$this->_set('honorificPrefix', $suffix);
+	}
+
+	/**
+	 * [setJobTitle description]
+	 * @param String $job_title [description]
+	 */
+	final public function setJobTitle(String $job_title)
+	{
+		$this->_set('jobTitle', $job_title);
+	}
+
+	/**
 	 * [setHomeLocation description]
 	 * @param Thing $loc [description]
 	 */
@@ -82,5 +105,14 @@ class Person extends Thing
 		} else {
 			throw new \InvalidArgumentException(sprintf('Location must be an instance of ContactPoint or Place. Instance of %s given', $loc::getType()));
 		}
+	}
+
+	/**
+	 * [setWorksFor description]
+	 * @param Organization $org [description]
+	 */
+	final public function setWorksFor(Organization $org)
+	{
+		$this->_set('worksFor', $org);
 	}
 }

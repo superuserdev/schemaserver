@@ -19,24 +19,10 @@
  */
 namespace shgysk8zer0\SchemaServer;
 /**
- * @see https://schema.org/Place
+ * @see https://schema.org/GeoCoordinates
  */
-class Place extends Thing
+class Organization extends Thing
 {
 	use Traits\ContactInfo;
 	use Traits\Address;
-
-	/**
-	 * [setGeo description]
-	 * @param Thing $geo [description]
-	 * @todo Add support for GeoShape
-	 */
-	final public function setGeo(Thing $geo)
-	{
-		if ($geo instanceof GeoCoordinates) {
-			$this->_set('geo', $geo);
-		} else {
-			throw new \InvalidArgumentException(sprintf('Geo must be an instance of GeoCoordinates or GeoShape. Instance of %s given', $geo::getType()));
-		}
-	}
 }

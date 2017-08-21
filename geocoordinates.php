@@ -23,14 +23,7 @@ namespace shgysk8zer0\SchemaServer;
  */
 class GeoCoordinates extends StructuredValue
 {
-	/**
-	 * [setAddress description]
-	 * @param PostalAddress $address [description]
-	 */
-	final public function setAddress(PostalAddress $address)
-	{
-		$this->_set('address', $address);
-	}
+	use Traits\Address;
 
 	/**
 	 * [setAddressCountry description]
