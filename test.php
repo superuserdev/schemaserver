@@ -1,4 +1,5 @@
 <?php
+
 namespace shgysk8zer0\SchemaServer;
 
 if (PHP_SAPI === 'cli') {
@@ -28,8 +29,9 @@ if (PHP_SAPI === 'cli') {
 		$me->image->width
 	);
 	$me->image->caption = "{$me->givenName} {$me->familyName} (Gravatar)";
+	$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
 
-	print_r(new Person(json_decode(json_encode($me))));
+	print_r(Person::parseFromJSON($me));
 	exit;
 
 	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;

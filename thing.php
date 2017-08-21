@@ -16,27 +16,43 @@ class Thing implements \JsonSerializable, \Serializable, \Iterator
 
 	protected $_data = [];
 
-	final public function __construct(\stdClass $data = null)
+	final public function __construct(Array $data = [])
 	{
-		if (isset($data)) {
-			if ($data->{"@type"} !== static::getType()) {
-				throw new \Exception("Invalid type: '{$data->{"@type"}}'");
+		if (array_key_exists('@type', $data)) {
+			if ($data['@type'] !== static::getType() and false) {
+				throw new \Exception("Invalid type: '{$data['@type']}'");
 			}
-			unset($data->{"@type"}, $data->{"@context"});
+			unset($data['@type'], $data['@context']);
 
-			foreach (get_object_vars($data) as $key => $value) {
-				if (is_object($value)) {
-					if (isset($value->{"@type"})) {
-						$type = __NAMESPACE__ . '\\' . $value->{"@type"};
-						$this->{$key} = new $type($value);
+			foreach ($data as $key => $value) {
+				if (is_array($value)) {
+					if (array_key_exists('@type', $value)) {
+						$this->{$key} = static::parseFromArray($value);
 					} else {
-						throw new \Error("Unable to create object of unknown @type");
+						throw new \Error('Unable to create object of unknown @type');
 					}
 				} else {
 					$this->{$key} = $value;
 				}
 			}
 		}
+	}
+
+	final public static function parseFromArray(Array $data): Thing
+	{
+		$type = __NAMESPACE__ . '\\' . $data['@type'];
+		return new $type($data);
+	}
+
+	final public static function parseFromJSON(String $json): Thing
+	{
+		$data = json_decode($json, true);
+		return static::parseFromArray($data);
+	}
+
+	final public function parseFromPost(String $key = null): Thing
+	{
+		return static::parseFromArray(isset($key) ? $_POST[$key] : $_POST);
 	}
 
 	final public function setAdditionalType(String $url)
