@@ -57,4 +57,30 @@ class Person extends Thing
 	{
 		$this->_set('givenName', $name);
 	}
+
+	/**
+	 * [setHomeLocation description]
+	 * @param Thing $loc [description]
+	 */
+	final public function setHomeLocation(Thing $loc)
+	{
+		if ($loc instanceof ContactPoint or $loc instanceof Place) {
+			$this->_set('homeLocation', $loc);
+		} else {
+			throw new \InvalidArgumentException(sprintf('Location must be an instance of ContactPoint or Place. Instance of %s given', $loc::getType()));
+		}
+	}
+
+	/**
+	 * [setHomeLocation description]
+	 * @param Thing $loc [description]
+	 */
+	final public function setWorkLocation(Thing $loc)
+	{
+		if ($loc instanceof ContactPoint or $loc instanceof Place) {
+			$this->_set('workLocation', $loc);
+		} else {
+			throw new \InvalidArgumentException(sprintf('Location must be an instance of ContactPoint or Place. Instance of %s given', $loc::getType()));
+		}
+	}
 }
