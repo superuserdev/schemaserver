@@ -20,14 +20,19 @@ if (PHP_SAPI === 'cli') {
 	$me->image = new ImageObject();
 	$me->image->width = 128;
 	$me->image->height = 128;
+	$me->email = 'chris@chriszuber.com';
+	$me->url = 'https://chriszuber.com';
 	$me->image->url = sprintf(
 		'https://gravatar.com/avatar/%s?s=%d',
-		md5('chris@chriszuber.com'),
+		md5($me->email),
 		$me->image->width
 	);
 	$me->image->caption = "{$me->givenName} {$me->familyName} (Gravatar)";
 
-	echo $me . PHP_EOL;
+	print_r(new Person(json_decode(json_encode($me))));
+	exit;
+
+	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
 
 	// echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
 }

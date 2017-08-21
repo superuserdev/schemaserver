@@ -18,4 +18,13 @@ class Person extends Thing
 	{
 		$this->_set('givenName', $name);
 	}
+
+	final public function setEmail(String $email)
+	{
+		if (static::_isEmail($email)) {
+			$this->_set('email', $email);
+		} else {
+			throw new \InvalidArgumentException("'{$email}' is not a valid email");
+		}
+	}
 }
