@@ -2,11 +2,18 @@
 
 namespace shgysk8zer0\SchemaServer;
 
-class Thing implements \JsonSerializable
+use \shgysk8zer0\SchemaServer\Traits\{Iterator, Magic, Serial, Data};
+
+class Thing implements \JsonSerializable, \Serializable, \Iterator
 {
-	use Traits\Data;
+	use Data;
+	Use Magic;
+	use Serial;
+	use Iterator;
 
 	const CONTEXT = 'http://schema.org';
+
+	protected $_data = [];
 
 	final public function setAdditionalType(String $url)
 	{
