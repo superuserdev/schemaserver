@@ -16,7 +16,7 @@ A microdata-based API server written in PHP using PostgreSQL
 - [Issues](https://github.com/shgysk8zer0/schemaserver/issues)
 - [Contributing](./docs/CONTRIBUTING.md)
 
-A PHP implementation of [shgysk8zer0/api-spec](https://github.com/shgysk8zer0/api-spec)
+A PHP implementation of [shgysk8zer0/api-specs](https://github.com/shgysk8zer0/api-specs)
 using [PostgreSQL](https://www.postgresql.org/download).
 
 ## Installation
