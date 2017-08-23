@@ -17,39 +17,39 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer\Traits;
-
+namespace shgysk8zer0\SchemaServer;
 /**
- * @see http://php.net/manual/en/class.serializable.php
- * @see http://php.net/manual/en/class.jsonserializable.php
+ * @see https://schema.org/PostalAddress
  */
-trait Serial
+class PostalAddress extends ContactPoint
 {
-	/**
-	 * [serialize description]
-	 * @return String [description]
-	 */
-	final public function serialize(): String
+	final public function setAddressCountry(Country $country)
 	{
-		return serialize($this->_data);
+		$this->_set('addressCountry', $country);
 	}
 
-	/**
-	 * [unserialize description]
-	 * @param  String $data [description]
-	 * @return Void         [description]
-	 */
-	final public function unserialize($data): Void
+	final public function setAddressLocality(String $locality)
 	{
-		$this->_data = unserialize($data);
+		$this->_set('addressLocality', $locality);
 	}
 
-	/**
-	 * [jsonSerialize description]
-	 * @return Array [description]
-	 */
-	final public function jsonSerialize(): Array
+	final public function setAddressRegion(String $region)
 	{
-		return array_merge(static::getInfo(), $this->_data);
+		$this->_set('addressRegion', $region);
+	}
+
+	final public function setPOstOfficeBoxNumber(String $po_box)
+	{
+		$this->_set('postaOfficeBoxNumber', $po_box);
+	}
+
+	final public function setPostalCode(Int $postal_code)
+	{
+		$this->_set('postalCode', $postal_code);
+	}
+
+	final public function setStreetAddress(String $address)
+	{
+		$this->_set('streetAddress', $address);
 	}
 }

@@ -19,37 +19,14 @@
  */
 namespace shgysk8zer0\SchemaServer\Traits;
 
-/**
- * @see http://php.net/manual/en/class.serializable.php
- * @see http://php.net/manual/en/class.jsonserializable.php
- */
-trait Serial
+trait Address
 {
 	/**
-	 * [serialize description]
-	 * @return String [description]
+	 * [setAddress description]
+	 * @param PostalAddress $address [description]
 	 */
-	final public function serialize(): String
+	final public function setAddress(\shgysk8zer0\SchemaServer\PostalAddress $address)
 	{
-		return serialize($this->_data);
-	}
-
-	/**
-	 * [unserialize description]
-	 * @param  String $data [description]
-	 * @return Void         [description]
-	 */
-	final public function unserialize($data): Void
-	{
-		$this->_data = unserialize($data);
-	}
-
-	/**
-	 * [jsonSerialize description]
-	 * @return Array [description]
-	 */
-	final public function jsonSerialize(): Array
-	{
-		return array_merge(static::getInfo(), $this->_data);
+		$this->_set('address', $address);
 	}
 }

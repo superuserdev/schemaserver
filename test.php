@@ -1,7 +1,12 @@
 <?php
+
 namespace shgysk8zer0\SchemaServer;
 
-if (PHP_SAPI === 'cli') {
+if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
+	header('Content-Type: application/json');
+	set_include_path(dirname(__DIR__, 2));
+	spl_autoload_register('spl_autoload');
+
 	set_exception_handler(function(\Throwable $e)
 	{
 		echo json_encode([
@@ -10,8 +15,6 @@ if (PHP_SAPI === 'cli') {
 			'file'    => $e->getFile(),
 		], JSON_PRETTY_PRINT);
 	});
-	set_include_path(dirname(__DIR__, 2));
-	spl_autoload_register('spl_autoload');
 
 	$me = new Person();
 	$me->givenName ='Christopher';
@@ -27,12 +30,24 @@ if (PHP_SAPI === 'cli') {
 		md5($me->email),
 		$me->image->width
 	);
-	$me->image->caption = "{$me->givenName} {$me->familyName} (Gravatar)";
-
-	print_r(new Person(json_decode(json_encode($me))));
-	exit;
+	$me->address = new PostalAddress([
+		'@type'           => 'PostalAddress',
+		'addressLocality' => 'Mount Vernon',
+		'addressRegion'   => 'WA',
+		'postalCode'      => 98274,
+	]);
+	$me->jobTitle = 'Full Stack Web Developer (LAMP)';
+	$me->worksFor = new Organization([
+		'@type' => 'Organization',
+		'name'  => 'Super User Dev',
+		'url'   => 'https://github.com/SuperUserDev',
+		'logo'  => [
+			'@type' => 'ImageObject',
+			'url'   => 'https://chriszuber.com/favicon.svg',
+		]
+	]);
+	$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
+	$me->image->caption = "{$me->name} (Gravatar)";
 
 	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
-
-	// echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
 }

@@ -17,39 +17,26 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer\Traits;
-
+namespace shgysk8zer0\SchemaServer;
 /**
- * @see http://php.net/manual/en/class.serializable.php
- * @see http://php.net/manual/en/class.jsonserializable.php
+ * @see https://schema.org/Place
  */
-trait Serial
+class Place extends Thing
 {
-	/**
-	 * [serialize description]
-	 * @return String [description]
-	 */
-	final public function serialize(): String
-	{
-		return serialize($this->_data);
-	}
+	use Traits\ContactInfo;
+	use Traits\Address;
 
 	/**
-	 * [unserialize description]
-	 * @param  String $data [description]
-	 * @return Void         [description]
+	 * [setGeo description]
+	 * @param Thing $geo [description]
+	 * @todo Add support for GeoShape
 	 */
-	final public function unserialize($data): Void
+	final public function setGeo(Thing $geo)
 	{
-		$this->_data = unserialize($data);
-	}
-
-	/**
-	 * [jsonSerialize description]
-	 * @return Array [description]
-	 */
-	final public function jsonSerialize(): Array
-	{
-		return array_merge(static::getInfo(), $this->_data);
+		if ($geo instanceof GeoCoordinates) {
+			$this->_set('geo', $geo);
+		} else {
+			throw new \InvalidArgumentException(sprintf('Geo must be an instance of GeoCoordinates or GeoShape. Instance of %s given', $geo::getType()));
+		}
 	}
 }

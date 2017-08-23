@@ -17,39 +17,16 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer\Traits;
-
+namespace shgysk8zer0\SchemaServer;
 /**
- * @see http://php.net/manual/en/class.serializable.php
- * @see http://php.net/manual/en/class.jsonserializable.php
+ * @see https://schema.org/ContactPoint
  */
-trait Serial
+class ContactPoint extends StructuredValue
 {
-	/**
-	 * [serialize description]
-	 * @return String [description]
-	 */
-	final public function serialize(): String
-	{
-		return serialize($this->_data);
-	}
+	use Traits\ContactInfo;
 
-	/**
-	 * [unserialize description]
-	 * @param  String $data [description]
-	 * @return Void         [description]
-	 */
-	final public function unserialize($data): Void
+	final public function setContactType(String $type)
 	{
-		$this->_data = unserialize($data);
-	}
-
-	/**
-	 * [jsonSerialize description]
-	 * @return Array [description]
-	 */
-	final public function jsonSerialize(): Array
-	{
-		return array_merge(static::getInfo(), $this->_data);
+		$this->_set('contactType', $type);
 	}
 }

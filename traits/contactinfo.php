@@ -19,37 +19,28 @@
  */
 namespace shgysk8zer0\SchemaServer\Traits;
 
-/**
- * @see http://php.net/manual/en/class.serializable.php
- * @see http://php.net/manual/en/class.jsonserializable.php
- */
-trait Serial
+trait ContactInfo
 {
 	/**
-	 * [serialize description]
-	 * @return String [description]
+	 * [setEmail description]
+	 * @param String $email [description]
 	 */
-	final public function serialize(): String
+	final public function setEmail(String $email)
 	{
-		return serialize($this->_data);
+		if (static::_isEmail($email)) {
+			$this->_set('email', $email);
+		} else {
+			throw new \InvalidArgumentException("'{$email}' is not a valid email");
+		}
 	}
 
-	/**
-	 * [unserialize description]
-	 * @param  String $data [description]
-	 * @return Void         [description]
-	 */
-	final public function unserialize($data): Void
+	final public function setTelephone(String $tel)
 	{
-		$this->_data = unserialize($data);
+		$this->_set('telephone', $tel);
 	}
 
-	/**
-	 * [jsonSerialize description]
-	 * @return Array [description]
-	 */
-	final public function jsonSerialize(): Array
+	final public function setFaxNumber(String $fax)
 	{
-		return array_merge(static::getInfo(), $this->_data);
+		$this->_set('faxNumbert', $fax);
 	}
 }
