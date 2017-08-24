@@ -30,7 +30,6 @@ class Thing implements \JsonSerializable, \Serializable, \Iterator, Interfaces\B
 	use Traits\Serial;
 	use Traits\Iterator;
 	use Traits\Filters;
-	use Traits\File;
 
 	const CONTEXT = 'http://schema.org';
 	const CONTENT_TYPE = 'application/json';
