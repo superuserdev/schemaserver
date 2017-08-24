@@ -19,20 +19,21 @@
  */
 namespace shgysk8zer0\SchemaServer;
 
-use \shgysk8zer0\SchemaServer\Traits\{Iterator, Magic, Serial, Data, Filters};
-
 /**
  * @see https://schema.org/Thing
  */
-class Thing implements \JsonSerializable, \Serializable, \Iterator
+class Thing implements \JsonSerializable, \Serializable, \Iterator, Interfaces\Base, Interfaces\Database
 {
-	use Data;
-	Use Magic;
-	use Serial;
-	use Iterator;
-	use Filters;
+	use Traits\Data;
+	use Traits\Database;
+	Use Traits\Magic;
+	use Traits\Serial;
+	use Traits\Iterator;
+	use Traits\Filters;
+	use Traits\File;
 
 	const CONTEXT = 'http://schema.org';
+	const CONTENT_TYPE = 'application/json';
 
 	/**
 	 * [protected description]

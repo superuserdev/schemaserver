@@ -47,7 +47,7 @@ trait Data
 	final public static function getInfo(): Array
 	{
 		return [
-			'@type' => static::getType(),
+			'@type'    => static::getType(),
 			'@context' => static::CONTEXT,
 		];
 	}

@@ -1,20 +1,50 @@
 <?php
-
+/**
+ * @author Chris Zuber <chris@chriszuber.com>
+ * @package shgysk8zer0/schemaserver
+ * @copyright 2017
+ * @license https://opensource.org/licenses/LGPL-3.0 GNU Lesser General Public License version 3
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library.
+ */
 namespace shgysk8zer0\SchemaServer;
 
 if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
-	header('Content-Type: application/json');
-	set_include_path(dirname(__DIR__, 2));
-	spl_autoload_register('spl_autoload');
+	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
+	spl_autoload_register();
+	spl_autoload_extensions('.php');
+	header('Content-Type: ' . Thing::CONTENT_TYPE);
 
-	set_exception_handler(function(\Throwable $e)
+	function exception_handler(\Throwable $e): Bool
 	{
 		echo json_encode([
 			'message' => $e->getMessage(),
 			'line'    => $e->getLine(),
 			'file'    => $e->getFile(),
 		], JSON_PRETTY_PRINT);
-	});
+		return true;
+	}
+
+	function gravatar(String $email, Int $size = 80): String
+	{
+		return sprintf(
+			'https://gravatar.com/avatar/%s?s=%d',
+			md5($email),
+			$size
+		);
+	}
+
+	set_exception_handler(__NAMESPACE__ . '\exception_handler');
 
 	$me = new Person();
 	$me->givenName ='Christopher';
@@ -25,11 +55,8 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	$me->image->height = 128;
 	$me->email = 'chris@chriszuber.com';
 	$me->url = 'https://chriszuber.com';
-	$me->image->url = sprintf(
-		'https://gravatar.com/avatar/%s?s=%d',
-		md5($me->email),
-		$me->image->width
-	);
+	$me->sameAs = 'https://twitter.com/shgysk8zer0';
+	$me->image->url = gravatar($me->email, $me->image->width);
 	$me->address = new PostalAddress([
 		'@type'           => 'PostalAddress',
 		'addressLocality' => 'Mount Vernon',
