@@ -19,15 +19,16 @@
  */
 namespace shgysk8zer0\SchemaServer;
 
-use \shgysk8zer0\SchemaServer\Traits\{Iterator, Magic, Serial, Data, Filters};
+use \shgysk8zer0\SchemaServer\Traits\{Iterator, Magic, Serial, Data, Filters, Database};
 
 /**
  * @see https://schema.org/Thing
  */
-class Thing implements \JsonSerializable, \Serializable, \Iterator
+class Thing implements \JsonSerializable, \Serializable, \Iterator, Interfaces\Database
 {
 	use Data;
-	Use Magic;
+	use Magic;
+	use Database;
 	use Serial;
 	use Iterator;
 	use Filters;
