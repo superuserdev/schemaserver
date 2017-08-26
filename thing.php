@@ -22,7 +22,8 @@ namespace shgysk8zer0\SchemaServer;
 /**
  * @see https://schema.org/Thing
  */
-class Thing implements \JsonSerializable, \Serializable, \Iterator, Interfaces\Base, Interfaces\Database
+class Thing implements \JsonSerializable, \Serializable, \Iterator,
+Interfaces\Base, Interfaces\Database
 {
 	use Traits\Data;
 	use Traits\Database;
