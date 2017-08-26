@@ -1,3 +1,4 @@
+#!/bin/env php
 <?php
 /**
  * @author Chris Zuber <chris@chriszuber.com>
@@ -31,6 +32,7 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 			'message' => $e->getMessage(),
 			'line'    => $e->getLine(),
 			'file'    => $e->getFile(),
+			'trace'   => $e->getTrace(),
 		], JSON_PRETTY_PRINT);
 		return true;
 	}
