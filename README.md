@@ -24,6 +24,11 @@ using [PostgreSQL](https://www.postgresql.org/download).
 git submodule add git://github.com/shgysk8zer0/schemaserver.git path/to/classes/shgysk8zer0/schemaserver
 ```
 
+If you or on Fedora, install PostgreSQL using:
+```sh
+sudo dnf install php-pgsql
+```
+
 ## Usage
 ```php
 <?php
