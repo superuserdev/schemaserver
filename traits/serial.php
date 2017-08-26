@@ -55,7 +55,11 @@ trait Serial
 	 */
 	final public function jsonSerialize(): Array
 	{
-		return array_merge(static::getInfo(), $this->_data);
+		$data = static::getInfo();
+		if (isset($this->identifier)) {
+			$data['@id'] = "/{$data['@type']}/{$this->identifier}";
+		}
+		return array_merge($data, $this->_data);
 	}
 
 	final public function getMinified(): Array
