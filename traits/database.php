@@ -104,24 +104,10 @@ trait Database
 	 */
 	final public static function delete(String $identifer, PDO $pdo): Bool
 	{
-		return true;
-	}
-
-	final public function mapResults(\stdClass &$row)
-	{
-		foreach(get_object_vars($row) as $prop => $value) {
-			$row->{$prop} = $this->_convertArray($value);
-		}
-	}
-
-	final private function _convertArray($data)
-	{
-		if (is_string($data) and preg_match('/^\{.+\}$/', $data)) {
-			$data = substr($data, 1, -1);
-			$data = explode(',', $data);
-			$data = array_map([$this, __FUNCTION__], $data);
-		}
-		return $data;
+		$sql = sprintf('DELETE FROM %s WHERE identifier = :id', static::getType());
+		$stm = $pdo->prepare($sql);
+		$stm->execute(['id' => $identifer]);
+		return $stm->rowCount() > 0;
 	}
 
 	abstract public function keys(): Array;
