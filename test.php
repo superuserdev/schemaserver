@@ -19,11 +19,18 @@
  */
 namespace shgysk8zer0\SchemaServer;
 
+const CREDS           = './creds.json';
+const MIN_PHP_VERSION = '7.1';
+
 if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
 	spl_autoload_register();
 	spl_autoload_extensions('.php');
 	header('Content-Type: ' . Thing::CONTENT_TYPE);
+
+	if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
+		throw new \Exception(sprintf('PHP version %s or greater is required', MIN_PHP_VERSION));
+	}
 
 	function exception_handler(\Throwable $e): Bool
 	{
@@ -47,35 +54,44 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 
 	set_exception_handler(__NAMESPACE__ . '\exception_handler');
 
-	$me = new Person();
-	$me->givenName ='Christopher';
-	$me->additionalName = 'Wayne';
-	$me->familyName = 'Zuber';
-	$me->image = new ImageObject();
-	$me->image->width = 128;
-	$me->image->height = 128;
-	$me->email = 'chris@chriszuber.com';
-	$me->url = 'https://chriszuber.com';
-	$me->sameAs = 'https://twitter.com/shgysk8zer0';
-	$me->image->url = gravatar($me->email, $me->image->width);
-	$me->address = new PostalAddress([
-		'@type'           => 'PostalAddress',
-		'addressLocality' => 'Mount Vernon',
-		'addressRegion'   => 'WA',
-		'postalCode'      => 98274,
-	]);
-	$me->jobTitle = 'Full Stack Web Developer (LAMP)';
-	$me->worksFor = new Organization([
-		'@type' => 'Organization',
-		'name'  => 'Super User Dev',
-		'url'   => 'https://github.com/SuperUserDev',
-		'logo'  => [
-			'@type' => 'ImageObject',
-			'url'   => 'https://chriszuber.com/favicon.svg',
-		]
-	]);
-	$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
-	$me->image->caption = "{$me->name} (Gravatar)";
+	if (empty($_POST)) {
+		$me                 = new Person();
+		$me->givenName      ='Christopher';
+		$me->additionalName = 'Wayne';
+		$me->familyName     = 'Zuber';
+		$me->image          = new ImageObject();
+		$me->image->width   = 128;
+		$me->image->height  = 128;
+		$me->email          = 'chris@chriszuber.com';
+		$me->url            = 'https://chriszuber.com';
+		$me->sameAs         = 'https://twitter.com/shgysk8zer0';
+		$me->image->url     = gravatar($me->email, $me->image->width);
+		$me->address        = new PostalAddress([
+			'@type'           => 'PostalAddress',
+			'addressLocality' => 'Mount Vernon',
+			'addressRegion'   => 'WA',
+			'postalCode'      => 98274,
+		]);
+		$me->jobTitle = 'Full Stack Web Developer (LAMP)';
+		$me->worksFor = new Organization([
+			'@type' => 'Organization',
+			'name'  => 'Super User Dev',
+			'url'   => 'https://github.com/SuperUserDev',
+			'logo'  => [
+				'@type' => 'ImageObject',
+				'url'   => 'https://chriszuber.com/favicon.svg',
+			]
+		]);
+		$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
+		$me->image->caption = "{$me->name} (Gravatar)";
 
-	echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
+		if (file_exists(CREDS)) {
+			$creds = json_decode(file_get_contents(CREDS));
+			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+			$me->save($me::connect('shgysk8zer0', '', 'schema'));
+		} else {
+			echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
+		}
+	}
+
 }
