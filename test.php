@@ -1,4 +1,3 @@
-#!/bin/env php
 <?php
 /**
  * @author Chris Zuber <chris@chriszuber.com>
