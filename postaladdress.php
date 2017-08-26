@@ -38,7 +38,7 @@ class PostalAddress extends ContactPoint
 		$this->_set('addressRegion', $region);
 	}
 
-	final public function setPOstOfficeBoxNumber(String $po_box)
+	final public function setPostOfficeBoxNumber(String $po_box)
 	{
 		$this->_set('postaOfficeBoxNumber', $po_box);
 	}
