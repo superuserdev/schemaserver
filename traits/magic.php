@@ -63,8 +63,6 @@ trait Magic
 	{
 		if (isset($this->$prop)) {
 			return $this->_data[$prop];
-		} else {
-			throw new Error("Invalid property, {$prop}.");
 		}
 	}
 
