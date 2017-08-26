@@ -37,10 +37,18 @@ trait Database
 	final public static function connect(
 		String $username,
 		String $password,
+		String $dbname    = null,
 		String $host      = 'localhost',
 		Int    $port      = 5432,
-		String $dbname    = null,
-		Array  $options   = []
+		Array  $options   = [
+			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+			PDO::ATTR_CASE               => PDO::CASE_NATURAL,
+			PDO::ATTR_ORACLE_NULLS       => PDO::NULL_NATURAL,
+			PDO::ATTR_EMULATE_PREPARES   => false,
+			PDO::ATTR_STRINGIFY_FETCHES  => false,
+			// PDO::ATTR_STATEMENT_CLASS => [],
+			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+		]
 	): PDO
 	{
 		$dsn = sprintf('pgsql:dbname=%s;', $dbname ?? $username);
@@ -50,7 +58,8 @@ trait Database
 				$dsn .= "port={$port};";
 			}
 		}
-		return new PDO($dsn, $username, $password, $options);
+		$pdo = new PDO($dsn, $username, $password, $options);
+		return $pdo;
 	}
 
 	/**
@@ -97,4 +106,23 @@ trait Database
 	{
 		return true;
 	}
+
+	final public function mapResults(\stdClass &$row)
+	{
+		foreach(get_object_vars($row) as $prop => $value) {
+			$row->{$prop} = $this->_convertArray($value);
+		}
+	}
+
+	final private function _convertArray($data)
+	{
+		if (is_string($data) and preg_match('/^\{.+\}$/', $data)) {
+			$data = substr($data, 1, -1);
+			$data = explode(',', $data);
+			$data = array_map([$this, __FUNCTION__], $data);
+		}
+		return $data;
+	}
+
+	abstract public function keys(): Array;
 }

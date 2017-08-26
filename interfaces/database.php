@@ -37,9 +37,9 @@ interface Database
 	public static function connect(
 		String $username,
 		String $password,
+		String $dbname    = null,
 		String $host      = 'localhost',
 		Int    $port      = 5432,
-		String $dbname    = null,
 		Array  $options   = []
 	): PDO;
 
