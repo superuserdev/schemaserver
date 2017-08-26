@@ -31,7 +31,7 @@ trait Serial
 	 */
 	final public function serialize(): String
 	{
-		return serialize($this->_data);
+		return serialize($this->getMinified());
 	}
 
 	/**
@@ -41,7 +41,12 @@ trait Serial
 	 */
 	final public function unserialize($data): Void
 	{
-		$this->_data = unserialize($data);
+		$parsed = unserialize($data);
+		if (array_key_exists('@id', $parsed)) {
+			$this->_set('identifier', $parsed['@id']);
+		} else {
+			$this->_data = $parsed;
+		}
 	}
 
 	/**
@@ -51,5 +56,12 @@ trait Serial
 	final public function jsonSerialize(): Array
 	{
 		return array_merge(static::getInfo(), $this->_data);
+	}
+
+	final public function getMinified(): Array
+	{
+		$data = static::getInfo();
+		$data['@id'] = md5(spl_object_hash($this));
+		return $data;
 	}
 }
