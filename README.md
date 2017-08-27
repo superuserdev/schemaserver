@@ -1,10 +1,11 @@
 # schemaserver
 
-[![Join the chat at https://gitter.im/schemaserver/Lobby](https://badges.gitter.im/schemaserver/Lobby.svg)](https://gitter.im/schemaserver/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/shgysk8zer0/schemaserver/master/LICENSE)
 [![GitHub version](https://img.shields.io/github/release/shgysk8zer0/schemaserver.svg)](https://github.com/shgysk8zer0/schemaserver/releases)
 [![Build Status](https://travis-ci.org/shgysk8zer0/schemaserver.svg?branch=master)](https://travis-ci.org/shgysk8zer0/schemaserver)
 [![GitHub issues](https://img.shields.io/github/issues/shgysk8zer0/schemaserver.svg)](https://github.com/shgysk8zer0/schemaserver/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/shgysk8zer0/schemaserver.svg)](https://github.com/shgysk8zer0/schemaserver/pulls)
+[![Join the chat at https://gitter.im/schemaserver/Lobby](https://badges.gitter.im/schemaserver/Lobby.svg)](https://gitter.im/schemaserver/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![GitHub forks](https://img.shields.io/github/forks/shgysk8zer0/schemaserver.svg?style=social&label=Fork)](https://github.com/shgysk8zer0/schemaserver#fork-destination-box)
 [![GitHub stars](https://img.shields.io/github/stars/shgysk8zer0/schemaserver.svg?style=social&label=Star)](https://github.com/shgysk8zer0/schemaserver/stargazers)
