@@ -17,39 +17,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer;
-/**
- * @see https://schema.org/PostalAddress
- */
-class PostalAddress extends ContactPoint
+namespace shgysk8zer0\SchemaServer\Interfaces;
+
+Interface ContactInfo
 {
-	final public function setAddressCountry(Country $country)
-	{
-		$this->_set('addressCountry', $country);
-	}
+	/**
+	 * [setEmail description]
+	 * @param String $email [description]
+	 */
+	public function setEmail(String $email);
 
-	final public function setAddressLocality(String $locality)
-	{
-		$this->_set('addressLocality', $locality);
-	}
+	public function setTelephone(String $tel);
 
-	final public function setAddressRegion(String $region)
-	{
-		$this->_set('addressRegion', $region);
-	}
-
-	final public function setPostOfficeBoxNumber(String $po_box)
-	{
-		$this->_set('postaOfficeBoxNumber', $po_box);
-	}
-
-	final public function setPostalCode(Int $postal_code)
-	{
-		$this->_set('postalCode', $postal_code);
-	}
-
-	final public function setStreetAddress(String $address)
-	{
-		$this->_set('streetAddress', $address);
-	}
+	public function setFaxNumber(String $fax);
 }

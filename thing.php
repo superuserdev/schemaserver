@@ -19,20 +19,22 @@
  */
 namespace shgysk8zer0\SchemaServer;
 
-use \shgysk8zer0\SchemaServer\Traits\{Iterator, Magic, Serial, Data, Filters};
-
 /**
  * @see https://schema.org/Thing
  */
-class Thing implements \JsonSerializable, \Serializable, \Iterator
+class Thing implements \JsonSerializable, \Serializable, \Iterator,
+Interfaces\Base, Interfaces\Database
 {
-	use Data;
-	Use Magic;
-	use Serial;
-	use Iterator;
-	use Filters;
+	use Traits\Data;
+	use Traits\Database;
+	Use Traits\Magic;
+	use Traits\Serial;
+	use Traits\Iterator;
+	use Traits\Filters;
 
 	const CONTEXT = 'http://schema.org';
+	const CONTENT_TYPE = 'application/json';
+	const JSON = '/^\s*\{.*\}\s*$/';
 
 	/**
 	 * [protected description]
@@ -51,16 +53,26 @@ class Thing implements \JsonSerializable, \Serializable, \Iterator
 				throw new \Exception("Invalid type: '{$data['@type']}'");
 			}
 			unset($data['@type'], $data['@context']);
+			if (array_key_exists('@id', $data)) {
+				$this->_set('identifier', $data['@id']);
+			}
 
 			foreach ($data as $key => $value) {
-				if (is_array($value)) {
-					if (array_key_exists('@type', $value)) {
-						$this->{$key} = static::parseFromArray($value);
+				try {
+					if (is_array($value)) {
+						if (array_key_exists('@type', $value)) {
+							$this->{$key} = static::parseFromArray($value);
+						} else {
+							throw new \Error('Unable to create object of unknown @type');
+						}
 					} else {
-						throw new \Error('Unable to create object of unknown @type');
+						if (is_string($value) and preg_match(self::JSON, $value)) {
+							$this->{$key} = static::parseFromJSON($value);
+						}
+						$this->{$key} =  $value;
 					}
-				} else {
-					$this->{$key} = $value;
+				} catch (\Throwable $e) {
+					echo $e->getMessage() . PHP_EOL;
 				}
 			}
 		}
@@ -73,8 +85,12 @@ class Thing implements \JsonSerializable, \Serializable, \Iterator
 	 */
 	final public static function parseFromArray(Array $data): Thing
 	{
-		$type = __NAMESPACE__ . '\\' . $data['@type'];
-		return new $type($data);
+		if (array_key_exists('@type', $data)) {
+			$type = __NAMESPACE__ . '\\' . $data['@type'];
+			return new $type($data);
+		} else {
+			throw new \RuntimeException('Missing @type attribute');
+		}
 	}
 
 	/**
@@ -169,5 +185,11 @@ class Thing implements \JsonSerializable, \Serializable, \Iterator
 		} else {
 			throw new \InvalidArgumentException("'{$url}' is not a valid url");
 		}
+	}
+
+	final public function setIdentifier(String $id)
+	{
+		$this->_set('identifier', $id);
+		$this->_set('@id', $id);
 	}
 }

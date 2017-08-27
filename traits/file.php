@@ -17,39 +17,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer;
-/**
- * @see https://schema.org/PostalAddress
- */
-class PostalAddress extends ContactPoint
+namespace shgysk8zer0\SchemaServer\Traits;
+use \shgysk8zer0\SchemaServer\{Thing};
+trait File
 {
-	final public function setAddressCountry(Country $country)
+	final public function saveAs(String $filename): Bool
 	{
-		$this->_set('addressCountry', $country);
+		return file_put_contents($filename, json_encode($this, JSON_PRETTY_PRINT));
 	}
 
-	final public function setAddressLocality(String $locality)
+	final public static function loadFrom(String $filename): Thing
 	{
-		$this->_set('addressLocality', $locality);
-	}
-
-	final public function setAddressRegion(String $region)
-	{
-		$this->_set('addressRegion', $region);
-	}
-
-	final public function setPostOfficeBoxNumber(String $po_box)
-	{
-		$this->_set('postaOfficeBoxNumber', $po_box);
-	}
-
-	final public function setPostalCode(Int $postal_code)
-	{
-		$this->_set('postalCode', $postal_code);
-	}
-
-	final public function setStreetAddress(String $address)
-	{
-		$this->_set('streetAddress', $address);
+		return static::parseFromJSON(file_get_contents($filename));
 	}
 }

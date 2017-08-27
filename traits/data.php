@@ -22,6 +22,15 @@ namespace shgysk8zer0\SchemaServer\Traits;
 trait Data
 {
 	/**
+	 * [keys description]
+	 * @return Array [description]
+	 */
+	final public function keys(): Array
+	{
+		return array_keys($this->_data);
+	}
+
+	/**
 	 * [_set description]
 	 * @param String $prop  [description]
 	 * @param [type] $value [description]
@@ -47,7 +56,7 @@ trait Data
 	final public static function getInfo(): Array
 	{
 		return [
-			'@type' => static::getType(),
+			'@type'    => static::getType(),
 			'@context' => static::CONTEXT,
 		];
 	}
