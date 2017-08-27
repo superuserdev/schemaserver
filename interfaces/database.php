@@ -53,26 +53,32 @@ interface Database
 
 	/**
 	 * [update description]
-	 * @param  String $identifer [description]
+	 * @param  String $identifier [description]
 	 * @param  PDO    $pdo       [description]
 	 * @return Thing             [description]
 	 */
-	public function update(String $identifer, PDO $pdo): Thing;
+	public function update(String $identifier, PDO $pdo): Thing;
 
 	/**
 	 * [get description]
-	 * @param  String $identifier [description]
-	 * @param  PDO    $pdo        [description]
-	 * @param  Array  $params     [description]
-	 * @return Thing              [description]
+	 * @param  String  $identifier [description]
+	 * @param  PDO     $pdo        [description]
+	 * @param  array   $params     [description]
+	 * @param  boolean $populate   [description]
+	 * @return Thing               [description]
 	 */
-	public static function get(String $identifier, PDO $pdo, Array $params = []): Thing;
+	public static function get(
+		String $identifier,
+		PDO    $pdo,
+		Array $params      = [],
+		Bool  $populate    = false
+	): Thing;
 
 	/**
 	 * [delete description]
-	 * @param  String $identifer [description]
+	 * @param  String $identifier [description]
 	 * @param  PDO    $pdo       [description]
 	 * @return Bool              [description]
 	 */
-	public static function delete(String $identifer, PDO $pdo): Bool;
+	public static function delete(String $identifier, PDO $pdo): Bool;
 }

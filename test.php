@@ -55,6 +55,14 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	set_exception_handler(__NAMESPACE__ . '\exception_handler');
 
 	if (empty($_POST)) {
+		if (file_exists(CREDS)) {
+			$creds = json_decode(file_get_contents(CREDS));
+			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+			$me = Person::get('f95da10bed36cfbd692e67eb20c8d6c2', $pdo, [], true);
+
+			echo json_encode($me, JSON_PRETTY_PRINT);
+			exit;
+		}
 		$me                 = new Person();
 		$me->givenName      ='Christopher';
 		$me->additionalName = 'Wayne';

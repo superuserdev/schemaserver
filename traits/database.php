@@ -24,6 +24,10 @@ use \shgysk8zer0\SchemaServer\{Thing};
 
 trait Database
 {
+	/**
+	 * Used to keep track of whether or not to begin/commit transaction
+	 * @var [type]
+	 */
 	private static $_in_transaction = false;
 	/**
 	 * [connect description]
@@ -77,15 +81,20 @@ trait Database
 		if (! isset($this->identifier)) {
 			$this->_set('identifier', $this->{'@id'} ?? md5($this));
 		}
+
 		$params = new \stdClass();
 		$params->keys = [];
 		$params->bindings = [];
-		$params = array_reduce($this->keys(), function(\stdClass $carry, String $item): \stdClass
-		{
-			array_push($carry->keys, sprintf('"%s"', strtolower($item)));
-			array_push($carry->bindings, ":{$item}");
-			return $carry;
-		}, $params);
+		$params = array_reduce(
+			$this->keys(),
+			function(\stdClass $carry, String $item): \stdClass
+			{
+				array_push($carry->keys, sprintf('"%s"', strtolower($item)));
+				array_push($carry->bindings, ":{$item}");
+				return $carry;
+			},
+			$params
+		);
 
 		$sql = sprintf(
 			'INSERT INTO %s (%s) VALUES (%s);',
@@ -95,30 +104,25 @@ trait Database
 		);
 
 		$stm = $pdo->prepare($sql);
-		// $stm->bindValue(':identifier', $id);
 
 		forEach($this->_data as $key => $value) {
 			if ($value instanceof Thing) {
 				$saved = json_encode([
 					'@type' => $value::getType(),
-					'@id' => md5($value->save($pdo, $allow_update))
+					'@id' => $value->save($pdo, $allow_update)->identifier
 				]);
 				$stm->bindValue(":{$key}", $saved);
-				echo "$key: $saved\n";
 			} else {
-				echo "$key: $value\n";
 				$stm->bindValue(":{$key}", $value);
 			}
 		}
 
-		echo $sql . PHP_EOL;
 		try {
 			$stm->execute();
 			if (! $in_transaction) {
 				$pdo->commit();
 			}
 		} catch (\Throwable $e) {
-			echo $e->getMessage() . PHP_EOL;
 			$pdo->rollBack();
 			throw $e;
 		}
@@ -127,11 +131,11 @@ trait Database
 
 	/**
 	 * [update description]
-	 * @param  String $identifer [description]
+	 * @param  String $identifier [description]
 	 * @param  PDO    $pdo       [description]
 	 * @return Thing             [description]
 	 */
-	final public function update(String $identifer, PDO $pdo): Thing
+	final public function update(String $identifier, PDO $pdo): Thing
 	{
 		return $this;
 	}
@@ -146,11 +150,11 @@ trait Database
 	final public static function get(
 		String $identifier,
 		PDO    $pdo,
-		Array  $params     = []
+		Array $params      = [],
+		Bool  $populate    = false
 	): Thing
 	{
 		$sql = sprintf('SELECT * FROM %s WHERE identifier = :id LIMIT 1;', static::getType());
-		echo $sql . PHP_EOL;
 		$stm = $pdo->prepare($sql);
 		$stm->execute(['id' => $identifier]);
 		$obj = $stm->fetch();
@@ -164,12 +168,16 @@ trait Database
 		}
 
 		$thing = static::parseFromArray(array_filter($obj));
-		return $thing;
+		if (! empty($populate)) {
+			return $thing->populate($pdo, $populate);
+		} else {
+			return $thing;
+		}
 	}
 
 	/**
 	 * [delete description]
-	 * @param  String $identifer [description]
+	 * @param  String $identifier [description]
 	 * @param  PDO    $pdo       [description]
 	 * @return Bool              [description]
 	 */
@@ -181,12 +189,23 @@ trait Database
 		return $stm->rowCount() > 0;
 	}
 
-	final protected function _fetch(PDO $pdo): Thing
+	/**
+	 * [populate description]
+	 * @param  PDO   $pdo [description]
+	 * @return Thing      [description]
+	 */
+	final public function populate(PDO $pdo): Thing
 	{
-		if (!isset($this->{'@type'}, $this->{'@id'})) {
-			throw new \Exception(sprintf('Missing @id or @type attribute: [%s]', $this));
+		if (!isset($this->identifier)) {
+			throw new \Exception(sprintf('Missing @id attribute: [%s]', $this));
 		} else {
-			return ('\\shgysk8zer0\\SchemaServer\\' . $this->{'@type'})::get($this->{'@id'}, $pdo);
+			$obj = $this::get($this->identifier, $pdo);
+			foreach ($obj as $key => $value) {
+				if ($value instanceof Thing) {
+					$obj->{$key} = call_user_func([$value, __FUNCTION__], $pdo, $props);
+				}
+			}
+			return $obj;
 		}
 	}
 
