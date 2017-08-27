@@ -1,4 +1,6 @@
 # schemaserver
+
+[![Join the chat at https://gitter.im/schemaserver/Lobby](https://badges.gitter.im/schemaserver/Lobby.svg)](https://gitter.im/schemaserver/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/shgysk8zer0/schemaserver/master/LICENSE)
 [![GitHub version](https://img.shields.io/github/release/shgysk8zer0/schemaserver.svg)](https://github.com/shgysk8zer0/schemaserver/releases)
 [![Build Status](https://travis-ci.org/shgysk8zer0/schemaserver.svg?branch=master)](https://travis-ci.org/shgysk8zer0/schemaserver)
