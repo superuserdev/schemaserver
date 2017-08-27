@@ -32,7 +32,7 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		throw new \Exception(sprintf('PHP version %s or greater is required', MIN_PHP_VERSION));
 	}
 
-	function exception_handler(\Throwable $e): Bool
+	function exception_handler(\Throwable $e): Void
 	{
 		echo json_encode([
 			'message' => $e->getMessage(),
@@ -40,7 +40,6 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 			'file'    => $e->getFile(),
 			'trace'   => $e->getTrace(),
 		], JSON_PRETTY_PRINT);
-		return true;
 	}
 
 	function gravatar(String $email, Int $size = 80): String
@@ -63,6 +62,7 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 			echo json_encode($me, JSON_PRETTY_PRINT);
 			exit;
 		}
+
 		$me                 = new Person();
 		$me->givenName      ='Christopher';
 		$me->additionalName = 'Wayne';
