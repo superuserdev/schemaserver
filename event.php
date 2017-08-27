@@ -54,14 +54,14 @@ class Event extends Thing implements Interfaces\DateTime
 		}
 	}
 
-	final public function setOrganizer(Thing $ogranizer)
+	final public function setOrganizer(Thing $organizer)
 	{
 		if ($organizer instanceof Person or $organizer instanceof Organization) {
 			$this->_set('organizer', $organizer);
 		} else {
 			throw new InvalidArgumentException(sprintf(
 				'Location must be an instance of Person or Organization. Instance of %s given.',
-				$$organizer::getType()
+				$organizer::getType()
 			));
 		}
 	}
