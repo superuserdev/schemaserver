@@ -202,7 +202,7 @@ trait Database
 			$obj = $this::get($this->identifier, $pdo);
 			foreach ($obj as $key => $value) {
 				if ($value instanceof Thing) {
-					$obj->{$key} = call_user_func([$value, __FUNCTION__], $pdo, $props);
+					$obj->{$key} = call_user_func([$value, __FUNCTION__], $pdo);
 				}
 			}
 			return $obj;
