@@ -21,12 +21,14 @@ namespace shgysk8zer0\SchemaServer;
 
 const CREDS           = './creds.json';
 const MIN_PHP_VERSION = '7.1';
+const DB_TEST         = false;
 
 if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
 	spl_autoload_register();
 	spl_autoload_extensions('.php');
 	header('Content-Type: ' . Thing::CONTENT_TYPE);
+	date_default_timezone_set('America/Los_Angeles');
 
 	if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
 		throw new \Exception(sprintf('PHP version %s or greater is required', MIN_PHP_VERSION));
@@ -34,6 +36,7 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 
 	function exception_handler(\Throwable $e): Void
 	{
+		http_response_code(500);
 		echo json_encode([
 			'message' => $e->getMessage(),
 			'line'    => $e->getLine(),
@@ -54,13 +57,10 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	set_exception_handler(__NAMESPACE__ . '\exception_handler');
 
 	if (empty($_POST)) {
-		if (file_exists(CREDS)) {
+		if (array_key_exists('id', $_GET) and file_exists(CREDS)) {
 			$creds = json_decode(file_get_contents(CREDS));
 			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
-			$me = Person::get('f95da10bed36cfbd692e67eb20c8d6c2', $pdo, [], true);
-
-			echo json_encode($me, JSON_PRETTY_PRINT);
-			exit;
+			exit(Event::get($_GET['id'], $pdo, [], true));
 		}
 
 		$me                 = new Person();
@@ -80,6 +80,7 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 			'addressRegion'   => 'WA',
 			'postalCode'      => 98274,
 		]);
+		$me->birthDate = 'March 26, 1985';
 		$me->jobTitle = 'Full Stack Web Developer (LAMP)';
 		$me->worksFor = new Organization([
 			'@type' => 'Organization',
@@ -92,14 +93,32 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		]);
 		$me->name = "{$me->givenName} {$me->additionalName} {$me->familyName}";
 		$me->image->caption = "{$me->name} (Gravatar)";
+		$event = new Event();
+		$event->name = "Birthday party for {$me->name}";
+		$event->description = 'Punch & pie';
+		$event->about = $me;
+		$event->location = new Place();
+		$event->location->name = 'Home';
+		$event->startDate = '2018-03-26T16:00:00-07:00';
+		$event->endDate = '2018-03-26T20:00:00-07:00';
+		$event->location->address = $me->address;
+		$event->image = new ImageObject();
+		$event->image->url = 'http://i.imgur.com/doiqeSd.png';
+		$event->image->width = 1920;
+		$event->image->height = 1157;
+		$event->organizer = $me->worksFor;
+		$event->calcDuration();
 
-		if (file_exists(CREDS)) {
+		if (DB_TEST and file_exists(CREDS)) {
 			$creds = json_decode(file_get_contents(CREDS));
 			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
-			$me->save($me::connect('shgysk8zer0', '', 'schema'));
+			$event->save($pdo);
+			exit($event);
 		} else {
-			echo json_encode($me, JSON_PRETTY_PRINT) . PHP_EOL;
+			exit($event);
 		}
+	} else {
+		$thing = Thing::parseFromPost($_POST);
+		exit($thing);
 	}
-
 }
