@@ -22,7 +22,7 @@ namespace SuperUserDev\SchemaServer;
  * @see https://schema.org/GeoShape
  * @todo Add validation for each type of geometric points types (box, circle, line, & polygon)
  */
-class GeoShape extends StructuredValue
+class GeoShape extends StructuredValue //implements Interfaces\GeoShapeHelper
 {
 	/**
 	 * [setAddress description]
