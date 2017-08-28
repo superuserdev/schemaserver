@@ -19,10 +19,10 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \SuperUserDev\SchemaServer\{Thing};
+
 trait Parse
 {
-
-
 	/**
 	 * [parseFromArray description]
 	 * @param  Array $data [description]
