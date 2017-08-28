@@ -118,7 +118,7 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 			exit($event);
 		}
 	} else {
-		$thing = Thing::parseFromPost($_POST);
+		$thing = Thing::parseFromPost();
 		exit($thing);
 	}
 }
