@@ -35,12 +35,67 @@ trait Filters
 	}
 
 	/**
+	 * [_isTel description]
+	 * @param  String $text [description]
+	 * @return Bool         [description]
+	 */
+	final protected static function _isTel(String $text): Bool
+	{
+		return preg_match('/^+?(\d{1,2}?)[\d]{3}-[\d]{4}-[\d]{4}$/', $text);
+	}
+
+	/**
+	 * [_isGeo description]
+	 * @param  String $text [description]
+	 * @return Bool         [description]
+	 */
+	final protected function _isGeo(String $text): Bool
+	{
+		return preg_match('/^-?\d{1,3}\.\d+,-?\d{1,3}\.\d+/', $text);
+	}
+
+	/**
+	 * [_isBitcoinAddress description]
+	 * @param  String $text [description]
+	 * @return Bool         [description]
+	 */
+	final protected static function _isBitcoinAddress(String $text): Bool
+	{
+		return preg_match('/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}/', $text);
+	}
+
+	/**
 	 * [_isURL description]
 	 * @param  String $text [description]
 	 * @return Bool         [description]
 	 */
 	final protected static function _isURL(String $text): Bool
 	{
-		return filter_var($text, FILTER_VALIDATE_URL);
+		if (filter_var($text, FILTER_VALIDATE_URL)) {
+			return true;
+		} else {
+			$parsed = parse_url($text);
+			if (! array_key_exists('scheme', $parsed)) {
+				return false;
+			} else {
+				switch ($parsed['scheme']) {
+					case 'mailto':
+						return static::_isEmail($parsed['path']);
+
+					case 'tel':
+					case 'sms':
+						return static::_isTel($parsed['path']);
+
+					case 'geo':
+						return static::_isGeo($parsed['path']);
+
+					case 'bitcoin':
+						return static::_isBitcoinAddress($parsed['path']);
+
+					default:
+						return false;
+				}
+			}
+		}
 	}
 }
