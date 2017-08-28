@@ -19,7 +19,7 @@
  */
 namespace SuperUserDev\SchemaServer;
 /**
- * @see https://schema.org/GeoCoordinates
+ * @see https://schema.org/AdministrativeArea
  */
 class AdministrativeArea extends Place
 {}
