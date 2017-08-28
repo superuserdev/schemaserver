@@ -190,6 +190,7 @@ Interfaces\Base, Interfaces\Database
 	final public function setIdentifier(String $id)
 	{
 		$this->_set('identifier', $id);
-		$this->_set('@id', $id);
+		$scheme = $_SERVER['HTTPS'] ? 'http' : 'https';
+		$this->_set('@id', "{$scheme}://{$_SERVER['HTTP_HOST']}/{$this::getType()}/{$id}");
 	}
 }
