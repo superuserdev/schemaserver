@@ -60,7 +60,7 @@ class Event extends Thing implements Interfaces\DateTime
 			$this->_set('organizer', $organizer);
 		} else {
 			throw new InvalidArgumentException(sprintf(
-				'Location must be an instance of Person or Organization. Instance of %s given.',
+				'Organizer must be an instance of Person or Organization. Instance of %s given.',
 				$organizer::getType()
 			));
 		}
