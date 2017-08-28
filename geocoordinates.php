@@ -69,4 +69,22 @@ class GeoCoordinates extends StructuredValue
 	{
 		$this->_set('postalCode', $postal_code);
 	}
+
+	/**
+	 * [setGeoUri description]
+	 * @return Void [description]
+	 */
+	final public function setGeoUri(): Void
+	{
+		if (! isset($this->latitude, $this->longitude)) {
+			throw new \RuntimeException('Need longitude and latitude to set geo: URI');
+		} else {
+			$uri = "geo:{$this->latitude},{$this->longitude}";
+			if ( isset($this->elevation)) {
+				$uri .= ",{$this->elevation}";
+			}
+
+			$this->_set('url', $uri);
+		}
+	}
 }
