@@ -20,7 +20,7 @@
 namespace SuperUserDev\SchemaServer;
 
 /**
- * @see https://schema.org/VideoObject
+ * @see https://schema.org/LocalBusiness
  */
 class LocalBusiness extends Organization
 {
