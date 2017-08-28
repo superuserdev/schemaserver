@@ -20,23 +20,7 @@
 namespace SuperUserDev\SchemaServer;
 
 /**
- * @see https://schema.org/Comment
+ * @see https://schema.org/Answer
  */
-
-class Comment extends CreativeWork
-{
-	final public function setDownvoteCount(Int $downvotes)
-	{
-		$this->_set('downvotecount', $downvotes);
-	}
-
-	final public function setParentItem(Question $question)
-	{
-		$this->_set('parentItem', $question);
-	}
-
-	final public function setUpvoteCount(Int $upvotes)
-	{
-		$this->_set('upvoteCount', $upvotes);
-	}
-}
+class Answer extends Comment
+{}
