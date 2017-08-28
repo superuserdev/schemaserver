@@ -74,7 +74,7 @@ class PriceSpecification extends StructuredValue
 	 * [setPRiceCurrency description]
 	 * @param String $currency [description]
 	 */
-	final public function setPRiceCurrency(String $currency)
+	final public function setPriceCurrency(String $currency)
 	{
 		$this->_set('priceCurrency', $currency);
 	}
