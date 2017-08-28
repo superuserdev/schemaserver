@@ -108,6 +108,11 @@ Interfaces\Base, Interfaces\Database
 		$this->_set('description', $description);
 	}
 
+	final public function setDisambiguatingDescription(String $description)
+	{
+		$this->_set('disambiguatingDescription', $description);
+	}
+
 	/**
 	 * [setImage description]
 	 * @param ImageObject $image [description]
@@ -117,6 +122,11 @@ Interfaces\Base, Interfaces\Database
 		$this->_set('image', $image);
 	}
 
+	final public function setMainEntityOfPage(CreativeWork $entity)
+	{
+		$this->_set('mainEntityOfPage', $entity);
+	}
+
 	/**
 	 * [setName description]
 	 * @param String $name [description]
@@ -124,6 +134,11 @@ Interfaces\Base, Interfaces\Database
 	final public function setName(String $name)
 	{
 		$this->_set('name', $name);
+	}
+
+	final public function setPOtentialAction(Action $action)
+	{
+		$this->_set('potentialAction', $action);
 	}
 
 	/**
