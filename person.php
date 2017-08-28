@@ -26,6 +26,7 @@ class Person extends Thing
 {
 	use Traits\ContactInfo;
 	use Traits\Address;
+	use Traits\DateTime;
 
 	/**
 	 * [setAdditionalName description]
@@ -34,6 +35,15 @@ class Person extends Thing
 	final public function setAdditionalName(String $name)
 	{
 		$this->_set('additionalName', $name);
+	}
+
+	/**
+	 * [setBirthDate description]
+	 * @param String $bday [description]
+	 */
+	final public function setBirthDate(String $bday)
+	{
+		$this->_set('birthDate', static::formatDateTime($bday, true, false));
 	}
 
 	/**
