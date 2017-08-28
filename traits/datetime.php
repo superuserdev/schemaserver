@@ -45,7 +45,8 @@ trait DateTime
 	): String
 	{
 		if ($use_date and $use_time) {
-			return $date->format($date::W3C);
+			// 'Y-m-d\TH:i:sP'
+			return $date->format(\DateTime::W3C);
 		} elseif ($use_date) {
 			return $date->format('Y-m-d');
 		} elseif ($use_time) {
@@ -69,5 +70,43 @@ trait DateTime
 	): String
 	{
 		return static::getDateStr(new \DateTime($date), $use_date, $use_time);
+	}
+
+	final public function calcDuration(): Void
+	{
+		if (! isset($this->startDate, $this->endDate)) {
+			throw new \RuntimeException('Must set start and end dates to create duration');
+		} else {
+			$start = new \DateTime($this->startDate);
+			$end = new \DateTime($this->endDate);
+			if ($start < $end) {
+				$diff = $end->diff($start);
+				$str = 'P';
+				if ($diff->y !== 0) {
+					$str .= sprintf('%dy', $diff->y);
+				}
+				if ($diff->m !== 0) {
+					$str .= sprintf('%dm', $diff->m);
+				}
+				if ($diff->d !== 0) {
+					$str .= sprintf('%dd', $diff->d);
+				}
+				if ($diff->h !==0 or $diff->i !== 0 or $diff->s !==0) {
+					$str .= 'T';
+					if ($diff->h !== 0) {
+						$str .= sprintf('%dh', $diff->h);
+					}
+					if ($diff->i !== 0) {
+						$str .= sprintf('%dm', $diff->i);
+					}
+					if ($diff->s !== 0) {
+						$str .= sprintf('%ds', $diff->s);
+					}
+				}
+				$this->_set('duration', $str);
+			} else {
+				throw new \RuntimeException('End time is before start time');
+			}
+		}
 	}
 }
