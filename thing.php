@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Chris Zuber <chris@chriszuber.com>
- * @package shgysk8zer0/schemaserver
+ * @package superuserdev/schemaserver
  * @copyright 2017
  * @license https://opensource.org/licenses/LGPL-3.0 GNU Lesser General Public License version 3
  * This library is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-namespace shgysk8zer0\SchemaServer;
+namespace SuperUserDev\SchemaServer;
 
 /**
  * @see https://schema.org/Thing

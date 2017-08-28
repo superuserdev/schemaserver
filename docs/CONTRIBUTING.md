@@ -22,10 +22,10 @@ Write access to the GitHub repository is restricted, so make a fork and clone th
 This project uses [`spl_autoload`](https://secure.php.net/manual/en/function.spl-autoload.php)
  for autoloading. This means:
 - All file and directory names **MUST** be lower case for code
-- All classes must have the namespace "shgysk8zer0\SchemaServer"
+- All classes must have the namespace "SuperUserDev\SchemaServer"
 - Class and namespaces are case-insensitive
 - Paths must be namespaced relative to project root
-(`\shgysk8zer0\SchemaServer\Thing` can be found at `thing.php`)
+(`\SuperUserDev\SchemaServer\Thing` can be found at `thing.php`)
 
 Further, all classes **MUST** correspond to a type definition found on
 [schema.org](https://schema.org/docs/schemas.html). No additional classes or properties are allowed!
