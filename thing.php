@@ -31,6 +31,7 @@ Interfaces\Base, Interfaces\Database
 	use Traits\Serial;
 	use Traits\Iterator;
 	use Traits\Filters;
+	use Traits\Parse;
 
 	const CONTEXT = 'http://schema.org';
 	const CONTENT_TYPE = 'application/json';
@@ -76,42 +77,6 @@ Interfaces\Base, Interfaces\Database
 				}
 			}
 		}
-	}
-
-	/**
-	 * [parseFromArray description]
-	 * @param  Array $data [description]
-	 * @return Thing       [description]
-	 */
-	final public static function parseFromArray(Array $data): Thing
-	{
-		if (array_key_exists('@type', $data)) {
-			$type = __NAMESPACE__ . '\\' . $data['@type'];
-			return new $type($data);
-		} else {
-			throw new \RuntimeException('Missing @type attribute');
-		}
-	}
-
-	/**
-	 * [parseFromJSON description]
-	 * @param  String $json [description]
-	 * @return Thing        [description]
-	 */
-	final public static function parseFromJSON(String $json): Thing
-	{
-		$data = json_decode($json, true);
-		return static::parseFromArray($data);
-	}
-
-	/**
-	 * [parseFromPost description]
-	 * @param  [type] $key [description]
-	 * @return Thing       [description]
-	 */
-	final public function parseFromPost(String $key = null): Thing
-	{
-		return static::parseFromArray(isset($key) ? $_POST[$key] : $_POST);
 	}
 
 	/**
