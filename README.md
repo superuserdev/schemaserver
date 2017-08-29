@@ -18,6 +18,7 @@ A microdata-based API server written in PHP using PostgreSQL
 - [Usage](#usage)
 - [Issues](https://github.com/superuserdev/schemaserver/issues)
 - [Contributing](./docs/CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
 
 A PHP implementation of [shgysk8zer0/api-specs](https://github.com/shgysk8zer0/api-specs)
 using [PostgreSQL](https://www.postgresql.org/download).
