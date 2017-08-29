@@ -42,7 +42,7 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 
 This Code of Conduct is adapted from the [Contributor Covenant](http://contributor-covenant.org), version 1.4, available at [http://contributor-covenant.org/version/1/4](http://contributor-covenant.org/version/1/4/)
 
-## Footnotes & definisions
+## Footnotes & definitions
 ### Offensive:
 Offensive does not mean something that you disagree with or that conflicts with your beliefs. Interactions will be deemed offensive if and only if it can be reasonably proved that the purpose was to harm, insult, or otherwise troll another person.
 
