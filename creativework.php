@@ -182,4 +182,63 @@ class CreativeWork extends Thing
 			));
 		}
 	}
+
+	final public function setDateCreated(String $created, Bool $use_time = true)
+	{
+		$this->_set('dateCreated', static::formatDate($created, true, $use_time));
+	}
+
+	final public function setDatModified(String $created)
+	{
+		$this->_set('dateModified', static::formatDate($created, true, false));
+	}
+
+	final public function setDatePublished(String $created, Bool $use_time = true)
+	{
+		$this->_set('datePublished', static::formatDate($created, true, $use_time));
+	}
+
+	final public function setDiscussionUrl(String $discussion_url)
+	{
+		if (static::_isURL($discussion_url)) {
+			$this->_se('discussionUrl', $discussionUrl);
+		} else {
+			throw new \InvalidArgumentException("{$discussionUrl} is not a valid URL");
+		}
+	}
+
+	final public function setEditor(Person $editor)
+	{
+		$this->_set('editor', $editor);
+	}
+
+	final public function setEducationalAlignment(AlignmentObject $alignment)
+	{
+		$this->_set('educationalAlignment', $alignment);
+	}
+
+	final public function setEducationalUse(String $use)
+	{
+		$this->_set('educationalUse', $use);
+	}
+
+	final public function setEncoding(MediaObject $media)
+	{
+		$this->_set('encoding', $media);
+	}
+
+	final public function setExampleOfWork(CreativeWork $example)
+	{
+		$this->_set('exampleOfWork', $example);
+	}
+
+	final public function setExpires(String $expires)
+	{
+		$this->_set('expires', static::formatDate($expires, true, false));
+	}
+
+	final public function setFileFormat(String $format)
+	{
+		$this->_set('fileFormat', $format);
+	}
 }
