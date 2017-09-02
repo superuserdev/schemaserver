@@ -108,7 +108,7 @@ CREATE TABLE "Enumeration" (
 
 CREATE TABLE "Property" (
     "category" "jsonb",
-    "inverseOf" "jsonb"
+    "inverseOf" "jsonb",
     "supersededBy" "jsonb"
 ) INHERITS ("Intangible");
 
@@ -121,7 +121,7 @@ CREATE TABLE "Action" (
     "agent"  "text",
     "endDate" "date",
     "error" "jsonb",
-    "location" "jsonb"
+    "location" "jsonb",
     "object" "jsonb",
     "participant" "jsonb",
     "result" "jsonb",
