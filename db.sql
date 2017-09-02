@@ -78,6 +78,44 @@ CREATE TABLE "Thing" (
     "mainEntityOfPage" "jsonb"
 );
 
+
+--
+-- Name: Intangible; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Intangible" (
+)
+INHERITS ("Thing");
+
+--
+-- Name: StructuredValue; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "StructuredValue" (
+) INHERITS ("Intangible");
+
+--
+-- Name: Enumeration; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Enumeration" (
+    "supersededBy" "jsonb"
+) INHERITS ("Intangible");
+
+--
+-- Name: Property; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Property" (
+    "category" "jsonb",
+    "inverseOf" "jsonb"
+    "supersededBy" "jsonb"
+) INHERITS ("Intangible");
+
+--
+-- Name: Action; Type: TABLE; Schema: public; Owner: -
+--
+
 CREATE TABLE "Action" (
     "actionStatus" "jsonb",
     "agent"  "text",
@@ -90,25 +128,6 @@ CREATE TABLE "Action" (
     "startDate" "date",
     "target" "jsonb"
 ) INHERITS ("Thing");
-
-
---
--- Name: Intangible; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "Intangible" (
-)
-INHERITS ("Thing");
-
-
---
--- Name: structuredvalue; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "StructuredValue" (
-)
-INHERITS ("Intangible");
-
 
 --
 -- Name: ContactPoint; Type: TABLE; Schema: public; Owner: -
