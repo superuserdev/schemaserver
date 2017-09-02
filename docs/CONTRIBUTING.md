@@ -43,6 +43,9 @@ added later.
 All database changes **MUST** include an updated database dump to `db.sql`. This
 dump **MUST NOT** contain any data, and **MUST** contain all table structure.
 
+Before beginning work on database, you **SHOULD** drop tables and update from `db.sql`
+to ensure you are working on the latest version. `psql schema -f db.sql`
+
 *See following command for example dump.*
 
 ```
