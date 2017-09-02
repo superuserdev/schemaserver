@@ -78,6 +78,19 @@ CREATE TABLE "Thing" (
     "mainEntityOfPage" "jsonb"
 );
 
+CREATE TABLE "Action" (
+    "actionStatus" "jsonb",
+    "agent"  "text",
+    "endDate" "date",
+    "error" "jsonb",
+    "location" "jsonb"
+    "object" "jsonb",
+    "participant" "jsonb",
+    "result" "jsonb",
+    "startDate" "date",
+    "target" "jsonb"
+) INHERITS ("Thing");
+
 
 --
 -- Name: Intangible; Type: TABLE; Schema: public; Owner: -
