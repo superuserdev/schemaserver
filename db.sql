@@ -60,134 +60,136 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+DROP TABLE IF EXISTS "Thing" CASCADE;
+
 --
 -- Name: thing; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "thing" (
+CREATE TABLE "Thing" (
     "identifier" "text" NOT NULL,
     "name" "text",
     "image" "jsonb",
     "description" "text",
     "url" "text",
-    "sameas" "text",
-    "alternatename" "text",
-    "disambiguatingdescription" "text",
-    "mainentityofpage" "jsonb"
+    "sameAs" "text",
+    "alternateName" "text",
+    "disambiguatingDescription" "text",
+    "mainEntityOfPage" "jsonb"
 );
 
 
 --
--- Name: intangible; Type: TABLE; Schema: public; Owner: -
+-- Name: Intangible; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "intangible" (
+CREATE TABLE "Intangible" (
 )
-INHERITS ("thing");
+INHERITS ("Thing");
 
 
 --
 -- Name: structuredvalue; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "structuredvalue" (
+CREATE TABLE "StructuredValue" (
 )
-INHERITS ("intangible");
+INHERITS ("Intangible");
 
 
 --
--- Name: contactpoint; Type: TABLE; Schema: public; Owner: -
+-- Name: ContactPoint; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "contactpoint" (
+CREATE TABLE "ContactPoint" (
     "contacttype" "text"
 )
-INHERITS ("structuredvalue");
+INHERITS ("StructuredValue");
 
 
 --
--- Name: creativework; Type: TABLE; Schema: public; Owner: -
+-- Name: CreativeWork; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "creativework" (
+CREATE TABLE "CreativeWork" (
     "author" "jsonb"
 )
-INHERITS ("thing");
+INHERITS ("Thing");
 
 
 --
--- Name: mediaobject; Type: TABLE; Schema: public; Owner: -
+-- Name: MediaObject; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "mediaobject" (
+CREATE TABLE "MediaObject" (
     "width" integer,
     "height" integer,
-    "uploaddate" "date"
+    "uploadDate" "date"
 )
-INHERITS ("creativework");
+INHERITS ("CreativeWork");
 
 
 --
--- Name: imageobject; Type: TABLE; Schema: public; Owner: -
+-- Name: ImageObject; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "imageobject" (
+CREATE TABLE "ImageObject" (
     "caption" "text",
     "thumbnail" "jsonb"
 )
-INHERITS ("mediaobject");
+INHERITS ("MediaObject");
 
 
 --
--- Name: organization; Type: TABLE; Schema: public; Owner: -
+-- Name: Organization; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "organization" (
+CREATE TABLE "Organization" (
     "address" "jsonb",
     "logo" "jsonb",
     "email" "text",
     "telephone" "text",
-    "faxnumber" "text"
+    "faxNumber" "text"
 )
-INHERITS ("thing");
+INHERITS ("Thing");
 
 
 --
--- Name: person; Type: TABLE; Schema: public; Owner: -
+-- Name: Person; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "person" (
-    "givenname" "text",
-    "additionalname" "text",
-    "familyname" "text",
+CREATE TABLE "Person" (
+    "givenName" "text",
+    "additionalName" "text",
+    "familyName" "text",
     "address" "jsonb",
-    "worksfor" "jsonb",
+    "worksFor" "jsonb",
     "email" "text",
-    "jobtitle" "text"
+    "jobTitle" "text"
 )
-INHERITS ("thing");
+INHERITS ("Thing");
 
 
 --
--- Name: postaladdress; Type: TABLE; Schema: public; Owner: -
+-- Name: PostalAddress; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE "postaladdress" (
-    "addresscountry" "text",
-    "addresslocality" "text",
-    "addressregion" "text",
-    "postofficeboxnumber" integer,
-    "streetaddress" "text",
-    "postalcode" integer
+CREATE TABLE "PostalAddress" (
+    "addressCountry" "text",
+    "addressLocality" "text",
+    "addressRegion" "text",
+    "postOfficeBoxNumber" integer,
+    "streetAddress" "text",
+    "postalCode" integer
 )
-INHERITS ("contactpoint");
+INHERITS ("ContactPoint");
 
 
 --
 -- Name: thing thing_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY "thing"
+ALTER TABLE ONLY "Thing"
     ADD CONSTRAINT "thing_pkey" PRIMARY KEY ("identifier");
 
 
