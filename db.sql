@@ -144,7 +144,40 @@ INHERITS ("StructuredValue");
 --
 
 CREATE TABLE "CreativeWork" (
-    "author" "jsonb"
+    "about" "jsonb",
+    "accessMode" "text",
+    "accessModeSufficient" "text",
+    "accessibilityAPI" "text",
+    "accessibilityFeature" "text",
+    "accessibilityHazard" "text",
+    "accessibilitySummary" "text",
+    "accountablePerson" "jsonb",
+    "aggregateRating" "jsonb",
+    "alternativeHeadline" "text",
+    "audience" "jsonb",
+    "audio" "jsonb",
+    "author" "jsonb",
+    "award" "text",
+    "character" "jsonb",
+    "citation" "jsonb",
+    "comment" "jsonb",
+    "commentCount" integer,
+    "contentLocation" "jsonb",
+    "contentRating" "jsonb",
+    "contributor" "jsonb",
+    "copyrightHolder" "jsonb",
+    "copyrightYear" integer,
+    "creator" "jsonb",
+    "dateCreated" "date",
+    "dateModified" "date",
+    "datePublished" "date",
+    "discussionUrl" "text",
+    "editor" "jsonb",
+    "educationalAlignment" "jsonb",
+    "educationalUse" "text",
+    "encoding" "jsonb",
+    "exampleOfWork" "jsonb",
+    "fileFormat" "text"
 )
 INHERITS ("Thing");
 
