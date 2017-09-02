@@ -4,6 +4,7 @@
 - [Requirements](#requirements)
 - [Code Structure](#code-structure)
 - [Tests](#tests)
+- [Database](#database)
 
 - - -
 
@@ -37,3 +38,13 @@ that, i.e., `Person::$worksFor` is an `Organization` and not a
 ## Tests
 None yet, but basic linting will soon be implemented, and `assert`s will be
 added later.
+
+## Database
+All database changes **MUST** include an updated database dump to `db.sql`. This
+dump **MUST NOT** contain any data, and **MUST** contain all table structure.
+
+*See following command for example dump.*
+
+```
+pg_dump schema --no-owner --schema-only --inserts --if-exists --quote-all-identifiers --create --clean --file=db.sql
+```
