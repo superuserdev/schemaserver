@@ -47,7 +47,7 @@ class CreativeWork extends Thing
 
 	final public function setAccessibilityAPI(String $resource)
 	{
-		$this->_set('accessAPI', $resource);
+		$this->_set('accessibilityAPI', $resource);
 	}
 
 	final public function setAccessibilityControl(String $control)
