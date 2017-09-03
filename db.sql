@@ -84,8 +84,7 @@ CREATE TABLE "Thing" (
 --
 
 CREATE TABLE "Intangible" (
-)
-INHERITS ("Thing");
+) INHERITS ("Thing");
 
 --
 -- Name: StructuredValue; Type: TABLE; Schema: public; Owner: -
@@ -113,6 +112,13 @@ CREATE TABLE "Property" (
 ) INHERITS ("Intangible");
 
 --
+-- Name: Quantity; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Quantity" (
+) INHERITS ("Intangible);
+
+--
 -- Name: Action; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -135,8 +141,7 @@ CREATE TABLE "Action" (
 
 CREATE TABLE "ContactPoint" (
     "contacttype" "text"
-)
-INHERITS ("StructuredValue");
+) INHERITS ("StructuredValue");
 
 
 --
@@ -178,8 +183,7 @@ CREATE TABLE "CreativeWork" (
     "encoding" "jsonb",
     "exampleOfWork" "jsonb",
     "fileFormat" "text"
-)
-INHERITS ("Thing");
+) INHERITS ("Thing");
 
 
 --
@@ -190,8 +194,7 @@ CREATE TABLE "MediaObject" (
     "width" integer,
     "height" integer,
     "uploadDate" "date"
-)
-INHERITS ("CreativeWork");
+) INHERITS ("CreativeWork");
 
 
 --
@@ -201,8 +204,7 @@ INHERITS ("CreativeWork");
 CREATE TABLE "ImageObject" (
     "caption" "text",
     "thumbnail" "jsonb"
-)
-INHERITS ("MediaObject");
+) INHERITS ("MediaObject");
 
 
 --
@@ -215,8 +217,7 @@ CREATE TABLE "Organization" (
     "email" "text",
     "telephone" "text",
     "faxNumber" "text"
-)
-INHERITS ("Thing");
+) INHERITS ("Thing");
 
 
 --
@@ -231,8 +232,7 @@ CREATE TABLE "Person" (
     "worksFor" "jsonb",
     "email" "text",
     "jobTitle" "text"
-)
-INHERITS ("Thing");
+) INHERITS ("Thing");
 
 
 --
@@ -246,9 +246,217 @@ CREATE TABLE "PostalAddress" (
     "postOfficeBoxNumber" integer,
     "streetAddress" "text",
     "postalCode" integer
-)
-INHERITS ("ContactPoint");
+) INHERITS ("ContactPoint");
 
+
+--
+-- Name: ActionStatusType; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "ActionStatusType" (
+) INHERITS ("Enumeration");
+
+--
+-- Name: AdministrativeArea; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "AdministrativeArea" (
+) INHERITS ("Place");
+
+--
+-- Name: Review; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Review" (
+    "itemReviewed" "jsonb",
+    "reviewBody" "text",
+    "reviewRating" "jsonb"
+) INHERITS ("CreativeWork");
+
+--
+-- Name: Rating; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Rating" (
+    "author" "jsonb",
+    "bestRating" integer,
+    "ratingValue" integer,
+    "worstRating" integer
+) INHERITS ("Intangible");
+
+--
+-- Name: AggregateRating; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "AggregateRating" (
+    "itemReviewed" "jsonb",
+    "ratingCount" integer,
+    "reviewCount" integer
+) INHERITS ("Rating");
+
+--
+-- Name: Comment; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Comment" (
+    "downVoteCount" integer,
+    "parentItem" "jsonb",
+    "upvoteCount" integer
+) INHERITS ("CreativeWork");
+
+--
+-- Name: Answer; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Answer" (
+) INHERITS ("Comment");
+
+--
+-- Name: Question; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Question" (
+    "acceptedAnswer" "jsonb",
+    "answerCount" integer,
+    "downVoteCount" integer,
+    "suggestedAnswer" "jsonb",
+    "upvoteCount" integer
+) INHERITS ("CreativeWork");
+
+--
+-- Name: Article; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Article" (
+    "articleBody" "text",
+    "articleSection" "text",
+    "pageEnd" integer,
+    "pageStart" integer,
+    "pagination" "text",
+    "wordCount" integer
+) INHERITS ("CreativeWork");
+
+--
+-- Name: Audience; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Audience" (
+    "audienceType" "text",
+    "geographicArea" "jsonb"
+) INHERITS ("Intangible");
+
+--
+-- Name: AudioObject; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "AudioObject" (
+    "transcript" "text"
+) INHERITS ("MediaObject");
+
+--
+-- Name: Book; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Book" (
+    "abridged" Boolean,
+    "bookEdition" "text",
+    "bookFormat" "jsonb",
+    "illustrator" "jsonb",
+    "isbn" "text",
+    "numberOfPages" integer
+) INHERITS ("CreativeWork");
+
+--
+-- Name: BookFormatType; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "BookFormatType" (
+) INHERITS ("Enumeration");
+
+--
+-- Name: Brand; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Brand" (
+    "aggregateRating" "jsonb",
+    "logo" "jsonb",
+    "review" "jsonb"
+) INHERITS ("Intangible");
+
+--
+-- Name: ItemList; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "ItemList" (
+    "itemListElement" "jsonb",
+    "itemListOrder" "jsonb",
+    "numberOfItems" integer
+) INHERITS ("Intangible");
+
+--
+-- Name: BreadCrumbList; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "BreadcrumbList" (
+) INHERITS ("ItemList");
+
+--
+-- Name: Distance; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Distance" (
+) INHERITS ("Quantity");
+
+--
+-- Name: Country; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Country" (
+) INHERITS ("AdministrativeArea");
+
+--
+-- Name: DayOfWeek; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "DayOfWeek" (
+) INHERITS ("Enumeration");
+
+--
+-- Name: Event; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Event" (
+    "about" "jsonb",
+    "endDate" "date",
+    "location" "jsonb",
+    "organizer" "jsonb",
+    "startDate" "date"
+) INHERITS ("Thing");
+
+--
+-- Name: EntryPoint; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "EntryPoint" (
+    "actionApplication" "jsonb",
+    "actionPlatform" "text",
+    "contentType" "text",
+    "encodingType" "text",
+    "httpMethod" "text",
+    "urlTemplate" "text"
+) INHERITS ("Intangible");
+
+--
+-- Name: GeoCoordinates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "GeoCoordinates" (
+    "addressCountry" "jsonb",
+    "elevation" real,
+    "latitude" double precision,
+    "longitude" double precision,
+    "postalCode" real
+) INHERITS ("StructuredValue");
 
 --
 -- Name: thing thing_pkey; Type: CONSTRAINT; Schema: public; Owner: -
@@ -268,4 +476,3 @@ GRANT ALL ON SCHEMA "public" TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-
