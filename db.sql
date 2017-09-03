@@ -623,7 +623,7 @@ CREATE TABLE "Product" (
     "purchaseDate" "date",
     "releaseDate" "date",
     "review" "jsonb",
-    "sku" "text" UNIQUE.
+    "sku" "text" UNIQUE,
     "weight" "jsonb",
     "width" "jsonb"
 ) INHERITS ("Thing");
