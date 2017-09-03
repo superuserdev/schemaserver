@@ -25,14 +25,14 @@ class WebPage extends CreativeWork
 {
 	use Traits\DateTime;
 
-	final public function setBreadCrumb(BreadcrumbList $breadcrumbs)
+	final public function setBreadcrumb(BreadcrumbList $breadcrumbs)
 	{
 		$this->_set('breadcrumb', $breadcrumbs);
 	}
 
 	final public function setLastReviewed(String $date)
 	{
-		$this->_set('lastReviewd', static::formatDate($date, true, false));
+		$this->_set('lastReviewed', static::formatDate($date, true, false));
 	}
 
 	final public function setMainContentOfPage(WebPageElement $element)
