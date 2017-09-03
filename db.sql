@@ -215,6 +215,14 @@ CREATE TABLE "MediaObject" (
     "uploadDate" "date"
 ) INHERITS ("CreativeWork");
 
+--
+-- Name: AudioObject; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "AudioObject" (
+    "transcript" "text"
+) INHERITS ("MediaObject");
+
 
 --
 -- Name: ImageObject; Type: TABLE; Schema: public; Owner: -
@@ -225,6 +233,19 @@ CREATE TABLE "ImageObject" (
     "thumbnail" "jsonb"
 ) INHERITS ("MediaObject");
 
+--
+-- Name: VideoObject; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "VideoObject" (
+    "actor" "jsonb",
+    "caption" "text",
+    "director" "jsonb",
+    "thumbnail" "jsonb",
+    "transcript" "text",
+    "videoFrameSize" "text",
+    "videoQuality" "text"
+) INHERITS ("MediaObject");
 
 --
 -- Name: Organization; Type: TABLE; Schema: public; Owner: -
@@ -357,14 +378,6 @@ CREATE TABLE "Audience" (
     "audienceType" "text",
     "geographicArea" "jsonb"
 ) INHERITS ("Intangible");
-
---
--- Name: AudioObject; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "AudioObject" (
-    "transcript" "text"
-) INHERITS ("MediaObject");
 
 --
 -- Name: Book; Type: TABLE; Schema: public; Owner: -
@@ -624,6 +637,135 @@ CREATE TABLE "ProductModel" (
     "predecessorOf" "jsonb",
     "successorOf" "jsonb"
 ) INHERITS ("Product");
+
+--
+-- Name: Service; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Service" (
+    "aggregateRating" "jsonb",
+    "areaServed" "jsonb",
+    "award" "text",
+    "brand" "jsonb",
+    "broker" "jsonb",
+    "category" "jsonb",
+    "hasOfferCatelog" "jsonb",
+    "hoursAvailable" "jsonb",
+    "isRelatedTo" "jsonb",
+    "isSimilarTo" "jsonb",
+    "logo" "jsonb",
+    "provider" "jsonb",
+    "providerMobility" "jsonb",
+    "review" "jsonb",
+    "serviceOutput" "jsonb",
+    "serviceType" "text"
+) INHERITS ("Intangible");
+
+--
+-- Name: Specialty; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Specialty" (
+) INHERITS ("Enumeration");
+
+--
+-- Name: Store; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Store" (
+) INHERITS ("LocalBusiness");
+
+--
+-- Name: SoftwareApplication; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "SoftwareApplication" (
+    "applicationCategory" "text",
+    "applicationSubCategory" "text",
+    "applcationSuite" "text",
+    "availableOnDevice" "text",
+    "countriesNotSupported" "text",
+    "countriesSupported" "text",
+    "downloadUrl" "text",
+    "featureList" "text",
+    "fileSize" "text",
+    "installUrl" "text",
+    "memoryRequirements" "text",
+    "operatingSystem" "text",
+    "permissions" "text",
+    "processorRequirements" "text",
+    "releaseNotes" "text",
+    "screenshot" "jsonb",
+    "softwareAddOn" "jsonb",
+    "softwareRequirements" "text",
+    "softwareVersion" "text",
+    "storageRequirements" "text"
+) INHERITS ("CreativeWork");
+
+--
+-- Name: WebPage; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "WebPage" (
+    "breadcrumb" "jsonb",
+    "lastReviewed" "date",
+    "mainContentOfPage" "jsonb",
+    "primaryImageOfPage" "jsonb",
+    "relatedLink" "text",
+    "reviewedBy" "jsonb",
+    "significantLink" "text",
+    "specialty" "jsonb"
+) INHERITS ("CreativeWork");
+
+--
+-- Name: WebPageElement; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "WebPageElement" (
+) INHERITS ("CreativeWork");
+
+--
+-- Name: SiteNavigationElement; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "SiteNavigationElement" (
+) INHERITS ("WebPageElement");
+
+--
+-- Name: Table; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Table" (
+) INHERITS ("WebPageElement");
+
+--
+-- Name: WPAdBlock; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "WPAdBlock" (
+) INHERITS ("WebPageElement");
+
+--
+-- Name: WPFooter; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "WPFooter" (
+) INHERITS ("WebPageElement");
+
+--
+-- Name: WPHeader; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "WPHeader" (
+) INHERITS ("WebPageElement");
+
+--
+-- Name: WPSidebar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "WPSidebar" (
+) INHERITS ("WebPageElement");
+
 --
 -- Name: thing thing_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
