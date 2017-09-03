@@ -116,7 +116,26 @@ CREATE TABLE "Property" (
 --
 
 CREATE TABLE "Quantity" (
-) INHERITS ("Intangible);
+) INHERITS ("Intangible");
+
+--
+-- Name: Place; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Place" (
+    "address" "jsonb",
+    "email" "text",
+    "faxNumber" "text",
+    "geo" "jsonb",
+    "telephone" "text"
+) INHERITS ("Thing");
+
+--
+-- Name: AdministrativeArea; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "AdministrativeArea" (
+) INHERITS ("Place");
 
 --
 -- Name: Action; Type: TABLE; Schema: public; Owner: -
@@ -256,12 +275,6 @@ CREATE TABLE "PostalAddress" (
 CREATE TABLE "ActionStatusType" (
 ) INHERITS ("Enumeration");
 
---
--- Name: AdministrativeArea; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "AdministrativeArea" (
-) INHERITS ("Place");
 
 --
 -- Name: Review; Type: TABLE; Schema: public; Owner: -
@@ -456,6 +469,96 @@ CREATE TABLE "GeoCoordinates" (
     "latitude" double precision,
     "longitude" double precision,
     "postalCode" real
+) INHERITS ("StructuredValue");
+
+--
+-- Name: GeoShape; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "GeoShape" (
+    "address" "jsonb",
+    "addressCountry" "jsonb",
+    "box" "text",
+    "circle" "text",
+    "elevation" integer,
+    "line" "text",
+    "polygon" "text",
+    "postalCode" integer
+) INHERITS ("StructuredValue");
+
+--
+-- Name: ItemListOrderType; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "ItemListOrderType" (
+) INHERITS ("Enumeration");
+
+--
+-- Name: Language; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Language" (
+) INHERITS ("Thing");
+
+--
+-- Name: LocalBusiness; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "LocalBusiness" (
+    "currenciesAccepted" "text",
+    "openingHours" "text",
+    "paymentAccepted" "text",
+    "priceRange" "text"
+) INHERITS ("Organization");
+
+--
+-- Name: Message; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Message" (
+    "bccRecipient" "jsonb",
+    "ccRecipient" "jsonb",
+    "dateRead" "date",
+    "dateReceived" "date",
+    "dateSent" "date",
+    "messageAtachment" "jsonb",
+    "sender" "jsonb",
+    "toRecipient" "jsonb"
+) INHERITS ("CreativeWork");
+
+--
+-- Name: MonetaryAmount; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "MonetaryAmount" (
+    "currency" "text",
+    "maxValue" real,
+    "minValue" real,
+    "validFrom" "date",
+    "validThrough" "date",
+    "value" "text"
+) INHERITS ("StructuredValue");
+
+--
+-- Name: OfferCatelog; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "OfferCatelog" (
+) INHERITS ("ItemList");
+
+--
+-- Name: OfferItemCondition; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "OfferItemCondition" (
+) INHERITS ("Enumeration");
+
+--
+-- Name: OpeningHoursSpecification; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "OpeningHoursSpecification" (
+    "closes" time
 ) INHERITS ("StructuredValue");
 
 --
