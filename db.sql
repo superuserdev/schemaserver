@@ -562,6 +562,69 @@ CREATE TABLE "OpeningHoursSpecification" (
 ) INHERITS ("StructuredValue");
 
 --
+-- Name: PriceSpecification; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "PriceSpecification" (
+    "eligibleQuantity" "jsonb",
+    "eligibleTransactionVolume" "jsonb",
+    "maxPrice" real,
+    "minPrice" real,
+    "price" real,
+    "priceCurrency" "text",
+    "validFrom" "date",
+    "validThrough" "date",
+    "valueAddedTaxIncluded" Boolean
+) INHERITS ("StructuredValue");
+
+--
+-- Name: Product; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Product" (
+    "additionalProperty" "jsonb",
+    "aggregateRating" "jsonb",
+    "audience" "jsonb",
+    "award" "text",
+    "brand" "jsonb",
+    "category" "jsonb",
+    "color" "text",
+    "depth" "jsonb",
+    "gtin12" "text",
+    "gtin13" "text",
+    "gtin14" "text",
+    "gtin8" "text",
+    "height" "jsonb",
+    "isAccessoryOrSparePartFor" "jsonb",
+    "isConsumableFor" "jsonb",
+    "isRelatedTo" "jsonb",
+    "isSimilarTo" "jsonb",
+    "itemCondition" "jsonb",
+    "logo" "jsonb",
+    "manufacturer" "jsonb",
+    "material" "jsonb",
+    "model" "jsonb",
+    "mpn" "text",
+    "productID" "text",
+    "productionDate" "date",
+    "purchaseDate" "date",
+    "releaseDate" "date",
+    "review" "jsonb",
+    "sku" "text" UNIQUE.
+    "weight" "jsonb",
+    "width" "jsonb"
+) INHERITS ("Thing");
+
+--
+-- Name: ProductModel; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "ProductModel" (
+    "isVariantOf" "jsonb",
+    "predecessorOf" "jsonb",
+    "successorOf" "jsonb"
+) INHERITS ("Product");
+--
 -- Name: thing thing_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
