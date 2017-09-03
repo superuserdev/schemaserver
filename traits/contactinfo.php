@@ -41,6 +41,6 @@ trait ContactInfo
 
 	final public function setFaxNumber(String $fax)
 	{
-		$this->_set('faxNumbert', $fax);
+		$this->_set('faxNumber', $fax);
 	}
 }
