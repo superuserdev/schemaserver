@@ -23,18 +23,4 @@ namespace SuperUserDev\SchemaServer;
  */
 class BreadcumbList extends ItemList
 {
-	final public function setItemListElement(Thing $item)
-	{
-		$this->_set('itemListElement', $item);
-	}
-
-	final public function setItemListOrder(ItemListOrderType $order_type)
-	{
-		$this->_set('itemListOrder', $order_type);
-	}
-
-	final public function setNumberOfItems(Int $count)
-	{
-		$this->_set('numberOfItems', $count);
-	}
 }
