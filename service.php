@@ -81,7 +81,7 @@ class Service extends Intangible
 
 	final public function setHasOfferCatelog(OfferCatelog $catelog)
 	{
-		$this->_set('offerCatelog', $catelog);
+		$this->_set('hasOfferCatelog', $catelog);
 	}
 
 	final public function setHoursAvailable(OpeningHoursSpecification $hours)
