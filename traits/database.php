@@ -89,7 +89,7 @@ trait Database
 			$this->keys(),
 			function(\stdClass $carry, String $item): \stdClass
 			{
-				array_push($carry->keys, sprintf('"%s"', strtolower($item)));
+				array_push($carry->keys, sprintf('"%s"', $item));
 				array_push($carry->bindings, ":{$item}");
 				return $carry;
 			},
