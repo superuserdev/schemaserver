@@ -27,7 +27,7 @@ class Comment extends CreativeWork
 {
 	final public function setDownvoteCount(Int $downvotes)
 	{
-		$this->_set('downvotecount', $downvotes);
+		$this->_set('downVoteCount', $downvotes);
 	}
 
 	final public function setParentItem(Question $question)

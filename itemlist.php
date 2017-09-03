@@ -18,39 +18,23 @@
  * License along with this library.
  */
 namespace SuperUserDev\SchemaServer;
-
 /**
- * @see https://schema.org/Article
+ * @see https://schema.org/ItemList
  */
-class Article extends CreativeWork
+
+class ItemList extends Intangible
 {
-	final public function setArticleBody(String $body)
+	final public function setItemListElement(Thing $item)
 	{
-		$this->_set('articleBody', $body);
+		$this->_set('itemListElement', $item);
 	}
 
-	final public function setArticleSection(String $section)
+	final public function setItemListOrder(ItemListOrderType $order_type)
 	{
-		$this->_set('articleSection', $section);
+		$this->_set('itemListOrder', $order_type);
 	}
 
-	final public function setPageEnd(Int $end)
+	final public function setNumberOfItems(Int $count)
 	{
-		$this->_set('pageEnd', $end);
-	}
-
-	final public function setPageStart(Int $start)
-	{
-		$this->_set('pageStart', $start);
-	}
-
-	final public function setPagination(String $pagination)
-	{
-		$this->_set('pagination', $pagination);
-	}
-
-	final public function setWordCount(Int $words)
-	{
-		$this->_set('wordCount', $words);
-	}
-}
+		$this->_set('numberOfItems', $count);
+	}}
