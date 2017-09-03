@@ -34,7 +34,7 @@ class LocalBusiness extends Organization
 		$this->_set('openingHours', $hours);
 	}
 
-	final public function setPatemntAccepted(String $method)
+	final public function setPaymentAccepted(String $method)
 	{
 		$this->_set('paymentAccepted', $method);
 	}
