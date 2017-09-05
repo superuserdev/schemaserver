@@ -21,7 +21,7 @@ namespace SuperUserDev\SchemaServer;
 
 const CREDS           = './creds.json';
 const MIN_PHP_VERSION = '7.1';
-const DB_TEST         = false;
+const DB_TEST         = true;
 
 if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
@@ -33,6 +33,12 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 	if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
 		throw new \Exception(sprintf('PHP version %s or greater is required', MIN_PHP_VERSION));
 	}
+
+	set_error_handler(function(int $errno, String $errstr, String $errfile, Int $errline): Bool
+	{
+		throw new \ErrorException($errstr, $errno, $errno, $errfile, $errline);
+		return false;
+	}, E_ALL);
 
 	function exception_handler(\Throwable $e): Void
 	{
