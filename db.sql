@@ -119,6 +119,13 @@ CREATE TABLE "Quantity" (
 ) INHERITS ("Intangible");
 
 --
+-- Name: Duration; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "Duration" (
+) INHERITS ("Quantity");
+
+--
 -- Name: Place; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -201,7 +208,48 @@ CREATE TABLE "CreativeWork" (
     "educationalUse" "text",
     "encoding" "jsonb",
     "exampleOfWork" "jsonb",
-    "fileFormat" "text"
+    "fileFormat" "text",
+    "funder" "jsonb",
+    "genre" "jsonb",
+    "hasPart" "jsonb",
+    "headline" "text",
+    "inLanguage" "jsonb",
+    "iterationStatistic" "jsonb",
+    "interactivityType" "text",
+    "isAccessibleForFree" boolean,
+    "isBasedOn" "jsonb",
+    "isFamilyFriendly" boolean,
+    "isPartOf" "jsonb",
+    "keywords" "text",
+    "learningResourceType" "text",
+    "license" "jsonb",
+    "locationCreated" "jsonb",
+    "mainEntity" "jsonb",
+    "material" "jsonb",
+    "mentions" "jsonb",
+    "offers" "jsonb",
+    "position" integer,
+    "producer" "jsonb",
+    "provider" "jsonb",
+    "publication" "jsonb",
+    "publisher" "jsonb",
+    "publisingPrinciples" "jsonb",
+    "recordedAt" "jsonb",
+    "releasedEvent" "jsonb",
+    "review" "jsonb",
+    "schemaVersion" "text",
+    "sourceOrganization" "jsonb",
+    "spatialCoverage" "jsonb",
+    "sponsor" "jsonb",
+    "temporalCoverage" "jsonb",
+    "text" "text",
+    "thumbnailUrl" "text",
+    "timeRequired" "jsonb",
+    "translator" "jsonb",
+    "typicalAgeRange" "text",
+    "version" "text",
+    "video" "jsonb",
+    "workExample" "jsonb"
 ) INHERITS ("Thing");
 
 
