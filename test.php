@@ -19,26 +19,12 @@
  */
 namespace SuperUserDev\SchemaServer;
 
-const CREDS           = './creds.json';
+const CREDS           = __DIR__ . DIRECTORY_SEPARATOR . 'creds.json';
 const MIN_PHP_VERSION = '7.1';
 const DB_TEST         = true;
-
-if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
-	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
-	spl_autoload_register();
-	spl_autoload_extensions('.php');
-	header('Content-Type: ' . Thing::CONTENT_TYPE);
-	date_default_timezone_set('America/Los_Angeles');
-
-	if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
-		throw new \Exception(sprintf('PHP version %s or greater is required', MIN_PHP_VERSION));
-	}
-
-	set_error_handler(function(int $errno, String $errstr, String $errfile, Int $errline): Bool
-	{
-		throw new \ErrorException($errstr, $errno, $errno, $errfile, $errline);
-		return false;
-	}, E_ALL);
+if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
+	throw new \Exception(sprintf('PHP version %s or greater is required', MIN_PHP_VERSION));
+} elseif (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 
 	function exception_handler(\Throwable $e): Void
 	{
@@ -51,6 +37,16 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		], JSON_PRETTY_PRINT);
 	}
 
+	function error_handler(
+		Int $errno,
+		String $errstr,
+		String $errfile,
+		Int $errline
+	): Void
+	{
+		throw new \ErrorException($errstr, $errno, $errno, $errfile, $errline);
+	}
+
 	function gravatar(String $email, Int $size = 80): String
 	{
 		return sprintf(
@@ -60,12 +56,22 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		);
 	}
 
+	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
+	spl_autoload_register();
+	spl_autoload_extensions('.php');
+	header('Content-Type: ' . Thing::CONTENT_TYPE);
+	date_default_timezone_set('America/Los_Angeles');
 	set_exception_handler(__NAMESPACE__ . '\exception_handler');
+	set_error_handler(__NAMESPACE__ . '\error_handler', E_ALL);
+
+	if (file_exists(CREDS)) {
+		$creds = $creds = json_decode(file_get_contents(CREDS));
+		$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+		exit(Person::get('029e7b946abd6cff214286dff43a7632', $pdo));
+	}
 
 	if (empty($_POST)) {
 		if (array_key_exists('id', $_GET) and file_exists(CREDS)) {
-			$creds = json_decode(file_get_contents(CREDS));
-			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
 			exit(Event::get($_GET['id'], $pdo, [], true));
 		}
 
@@ -116,8 +122,6 @@ if (in_array(PHP_SAPI, ['cli', 'cli-server'])) {
 		$event->calcDuration();
 
 		if (DB_TEST and file_exists(CREDS)) {
-			$creds = json_decode(file_get_contents(CREDS));
-			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
 			$event->save($pdo);
 			exit($event);
 		} else {
