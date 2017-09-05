@@ -305,4 +305,198 @@ class CreativeWork extends Thing
 	{
 		$this->_set('isFamilyFriendly', $family_friendly);
 	}
+
+	final public function setIsPartOf(CreativeWork $work)
+	{
+		$this->_set('isPartOf', $work);
+	}
+
+	final public function setKeywords(String $keywords)
+	{
+		$this->_set('keywords', $keywords);
+	}
+
+	final public function setLearningResourceType(String $type)
+	{
+		$this->_set('learningResourceType', $type);
+	}
+
+	final public function setLicense(CreativeWork $license)
+	{
+		$this->_set('license', $license);
+	}
+
+	final public function setLocationCreated(Place $location)
+	{
+		$this->_set('locationCreated', $location);
+	}
+
+	final public function setMainEntity(Thing $entity)
+	{
+		$this->_set('mainEntity', $entity);
+	}
+
+	final public function setMaterial(Product $material)
+	{
+		$this->_set('material', $material);
+	}
+
+	final public function setMentions(Thing $mentioned)
+	{
+		$this->_set('mentions', $mentioned);
+	}
+
+	final public function setOffers(Offer $offered)
+	{
+		$this->_set('offers', $offered);
+	}
+
+	final public function setPosition(Int $position)
+	{
+		$this->_set('position', $position);
+	}
+
+	final public function setProducer(Thing $producer)
+	{
+		if ($producer instanceof Person or $producer instanceof Organization) {
+			$this->_set('producer', $producer);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'Producer must be an instance of Person or Organization. Instance of %s given',
+				$producer::getType()
+			));
+		}
+	}
+
+	final public function setProvider(Thing $provider)
+	{
+		if ($provider instanceof Person or $provider instanceof Organization) {
+			$this->_set('provider', $provider);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'Provider must be an instance of Person or Organization. Instance of %s given',
+				$provider::getType()
+			));
+		}
+	}
+
+	final public function setPublication(PublicationEvent $publication)
+	{
+		$this->_set('publication', $publication)
+	}
+
+	final public function setPublisher(Thing $publisher)
+	{
+		if ($publisher instanceof Person or $publisher instanceof Organization) {
+			$this->_set('publisher', $publisher);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'Publisher must be an instance of Person or Organization. Instance of %s given',
+				$publisher::getType()
+			));
+		}
+	}
+
+	final public function setPublishingPrinciples(CreativeWork $principles)
+	{
+		$this->_set('publisingPrinciples', $principles);
+	}
+
+	final public function setRecordedAt(Event $event)
+	{
+		$this->_set('recordedAt', $event);
+	}
+
+	final public function setReleasedEvent(PublicationEvent $released)
+	{
+		$this->_seet('releasedEvent', $released);
+	}
+
+	final public function setReview(Review $review)
+	{
+		$this->_set('review', $review);
+	}
+
+	final public function setSchemaVersion(String $version)
+	{
+		$this->_set('schemaVersion', $version);
+	}
+
+	final public function setSourceOrganization(Organization $source)
+	{
+		$this->_set('sourceOrganization', $source);
+	}
+
+	final public function setSpatialCoverage(Place $covers)
+	{
+		$this->_set('spatialCoverage', $covers);
+	}
+
+	final public function setSponsor(Thing $sponsor)
+	{
+		if ($sponsor instanceof Person or $sponsor instanceof Organization) {
+			$this->_set('sponsor', $sponsor);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'Sponsor must be an instance of Person or Organization. Instance of %s given',
+				$sponsor::getType()
+			));
+		}
+	}
+
+	final public function setTemporalCoverage(String $coverage)
+	{
+		$this->_set('temporalCoverage', $coverage);
+	}
+
+	final public function setText(String $text)
+	{
+		$this->_set('text', $text);
+	}
+
+	final public function setThumbnailUrl(String $url)
+	{
+		if (static::_isURL($url)) {
+			$this->_set('thumbnailUrl', $url);
+		} else {
+			throw new \InvalidArgumentException("{$url} is not a valid URL");
+		}
+	}
+
+	final public function setTimeRequired(Duration $duration)
+	{
+		$this->_set('timeRequired', $duration);
+	}
+
+	final public function setTranslator(Thing $translator)
+	{
+		if ($translator instanceof Person or $translator instanceof Organization) {
+			$this->_set('translator', $translator);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'Translator must be an instance of Person or Organization. Instance of %s given',
+				$translator::getType()
+			));
+		}
+	}
+
+	final public function setTypicalAgeRange(String $age_range)
+	{
+		$this->_set('typicalAgeRange', $age_range);
+	}
+
+	final public function setVersion(String $version)
+	{
+		$this->_set('version', $version);
+	}
+
+	final public function setVideo(VideoObject $video)
+	{
+		$this->_set('video', $video);
+	}
+
+	final public function setWorkExample(CreativeWork $example)
+	{
+		$this->_set('workExample', $example);
+	}
 }
