@@ -241,4 +241,68 @@ class CreativeWork extends Thing
 	{
 		$this->_set('fileFormat', $format);
 	}
+
+	final public function setFunder(Thing $funder)
+	{
+		if ($funder instanceof Person or $funder instanceof Organization) {
+			$this->_set('funder', $funder);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'Funder must be an instance of Person or Organization. Instance of %s given',
+				$funder::getType()
+			));
+		}
+	}
+
+	final public function setGenre(String $genre)
+	{
+		$this->_set('genre', $genre);
+	}
+
+	final public function setHasPart(CreativeWork $part)
+	{
+		$this->_set('hasPart', $part);
+	}
+
+	final public function setHeadline(String $headline)
+	{
+		$this->_set('headline', $headline);
+	}
+
+	final public function setLanguage(Language $lang)
+	{
+		$this->_set('language', $lang);
+	}
+
+	// final public function setInteractionStatistic(InteractionCounter $service)
+	// {
+	// 	$this->_set('interactionStatistic', $service);
+	// }
+
+	final public function setInteractivityType(String $type)
+	{
+		$this->_set('interactivityType', $type);
+	}
+
+	final public function setIsAccessibleForFree(Bool $is_free)
+	{
+		$this->_set('isAccessibleForFree', $is_free);
+	}
+
+	final public function setIsBasedOn(Thing $based_on)
+	{
+		if ($based_on instanceof CreativeWork or $based_on instanceof Product) {
+			$this->_set('isBasedOn', $based_on);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'isBasedOn must be an instance of CreativeWork or Product. %s given',
+				$based_on::getType()
+			));
+		}
+	}
+
+	final public function setIsFamilyFriendly(Bool $family_friendly)
+	{
+		$this->_set('isFamilyFriendly', $family_friendly);
+	}
 }
