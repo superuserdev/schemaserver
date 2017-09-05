@@ -382,7 +382,7 @@ class CreativeWork extends Thing
 
 	final public function setPublication(PublicationEvent $publication)
 	{
-		$this->_set('publication', $publication)
+		$this->_set('publication', $publication);
 	}
 
 	final public function setPublisher(Thing $publisher)
