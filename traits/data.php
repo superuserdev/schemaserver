@@ -46,7 +46,8 @@ trait Data
 	 */
 	final public static function getType(): String
 	{
-		return @end(explode('\\', static::class));
+		$class_path = explode('\\', static::class);
+		return @end($class_path);
 	}
 
 	/**
