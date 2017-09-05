@@ -329,6 +329,7 @@ CREATE TABLE "Person" (
     "additionalName" "text",
     "familyName" "text",
     "address" "jsonb",
+    "birthDate" "date",
     "worksFor" "jsonb",
     "email" "text",
     "jobTitle" "text"
@@ -516,7 +517,8 @@ CREATE TABLE "Event" (
     "endDate" "date",
     "location" "jsonb",
     "organizer" "jsonb",
-    "startDate" "date"
+    "startDate" "date",
+    "duration" "text"
 ) INHERITS ("Thing");
 
 --
