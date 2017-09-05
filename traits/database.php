@@ -97,7 +97,7 @@ trait Database
 		);
 
 		$sql = sprintf(
-			'INSERT INTO %s (%s) VALUES (%s);',
+			'INSERT INTO "%s" (%s) VALUES (%s);',
 			static::getType(),
 			join(', ', $params->keys),
 			join(', ', $params->bindings)
@@ -154,7 +154,10 @@ trait Database
 		Bool  $populate    = false
 	): Thing
 	{
-		$sql = sprintf('SELECT * FROM %s WHERE identifier = :id LIMIT 1;', static::getType());
+		$sql = sprintf(
+			'SELECT * FROM "%s" WHERE "identifier" = :id LIMIT 1;',
+			static::getType()
+		);
 		$stm = $pdo->prepare($sql);
 		$stm->execute(['id' => $identifier]);
 		$obj = $stm->fetch();
@@ -183,7 +186,10 @@ trait Database
 	 */
 	final public static function delete(String $identifier, PDO $pdo): Bool
 	{
-		$sql = sprintf('DELETE FROM %s WHERE "identifier" = :id LIMIT 1;', static::getType());
+		$sql = sprintf(
+			'DELETE FROM "%s" WHERE "identifier" = :id LIMIT 1;',
+			static::getType()
+		);
 		$stm = $pdo->prepare($sql);
 		$stm->execute(['id' => $identifier]);
 		return $stm->rowCount() > 0;

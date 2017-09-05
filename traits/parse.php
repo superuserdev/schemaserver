@@ -31,7 +31,7 @@ trait Parse
 	final public static function parseFromArray(Array $data): Thing
 	{
 		if (array_key_exists('@type', $data)) {
-			$type = __NAMESPACE__ . '\\' . $data['@type'];
+			$type = "\\superuserdev\\SchemaServer\\{$data['@type']}";
 			return new $type($data);
 		} else {
 			throw new \RuntimeException('Missing @type attribute');
