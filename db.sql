@@ -97,6 +97,18 @@ CREATE TABLE "StructuredValue" (
 -- Name: Enumeration; Type: TABLE; Schema: public; Owner: -
 --
 
+CREATE TABLE "AlignmentObject" (
+    "alignmentType" "text",
+    "educationalFramework" "text",
+    "targetDescription" "text",
+    "targetName" "text",
+    "targetUrl" "text"
+) INHERITS ("Intangible");
+
+--
+-- Name: Enumeration; Type: TABLE; Schema: public; Owner: -
+--
+
 CREATE TABLE "Enumeration" (
     "supersededBy" "jsonb"
 ) INHERITS ("Intangible");
