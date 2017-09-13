@@ -21,6 +21,6 @@ namespace SuperUserDev\SchemaServer;
 /**
  * @see https://schema.org/BreadcrumbList
  */
-class BreadcumbList extends ItemList
+class BreadcrumbList extends ItemList
 {
 }

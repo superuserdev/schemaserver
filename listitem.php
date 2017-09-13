@@ -21,7 +21,7 @@ namespace SuperUserDev\SchemaServer;
 /**
  * @see https://schema.org/ListItem
  */
-class ListItem extends Instangible
+class ListItem extends Intangible
 {
 	final public function setItem(String $item)
 	{

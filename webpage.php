@@ -23,8 +23,6 @@ namespace SuperUserDev\SchemaServer;
  */
 class WebPage extends CreativeWork
 {
-	use Traits\DateTime;
-
 	final public function setBreadcrumb(BreadcrumbList $breadcrumbs)
 	{
 		$this->_set('breadcrumb', $breadcrumbs);
