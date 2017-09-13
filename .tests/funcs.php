@@ -162,11 +162,12 @@ function connect(String $creds_file = CREDS): PDO
 {
 	static $pdo = null;
 	if (! isset($pdo)) {
-		$creds = $creds = json_decode(file_get_contents(CREDS));
-		$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
-	} elseif (! file_exists($creds_file)) {
-		$creds = $creds = json_decode(file_get_contents(CREDS));
-		return Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+		if (file_exists($creds_file)) {
+			$creds = $creds = json_decode(file_get_contents(CREDS));
+			$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+		} else {
+			$pdo = Thing::connect('postgres', '', 'schema');
+		}
 	}
 	return $pdo;
 }
