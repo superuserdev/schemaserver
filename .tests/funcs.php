@@ -19,10 +19,16 @@ use \DirectoryIterator;
 use \Throwable;
 use \Exception;
 use \ErrorException;
+use \InvalidArgumentException;
 
 function exception_handler(Throwable $e): Void
 {
-	http_response_code($e->getCode());
+	$code = $e->getCode();
+	if (is_int($code) and $code > 299 and $code < 600) {
+		http_response_code($code);
+	} else {
+		http_response_code(500);
+	}
 	echo json_encode([
 		'message' => $e->getMessage(),
 		'line'    => $e->getLine(),
@@ -111,4 +117,56 @@ function init(): Void
 	} else {
 		throw new Exception('Request is only available through CLI', 400);
 	}
+}
+
+function get_db_tables(PDO $pdo, $schema = 'public'): Array
+{
+	$stm = $pdo->prepare('SELECT "table_name" AS "name"
+	FROM information_schema.tables
+	WHERE table_schema = :schema;');
+
+	$stm->bindValue(':schema', $schema);
+	$stm->execute();
+	return array_map(function(Array $result): String
+	{
+		return strtolower($result['name']);
+	}, $stm->fetchAll());
+}
+
+function get_missing_classes(Array $tables): Array
+{
+	$base = dirname(__DIR__);
+	return array_filter($tables, function(String $table) use ($base): Bool
+	{
+		return ! file_exists($base . DIRECTORY_SEPARATOR . $table . '.php');
+	});
+}
+
+function get_missing_tables(Array $tables, $dir = __DIR__): Array
+{
+	$paths = new DirectoryIterator($dir);
+	$missing = [];
+	foreach ($paths as $path) {
+		if (
+			$path->isFile()
+			and in_array($path->getExtension(), EXTS)
+			and ! in_array($path->getBaseName(".{$path->getExtension()}"), $tables)
+		) {
+			array_push($missing, $path->getBaseName());
+		}
+	}
+	return $missing;
+}
+
+function connect(String $creds_file = CREDS): PDO
+{
+	static $pdo = null;
+	if (! isset($pdo)) {
+		$creds = $creds = json_decode(file_get_contents(CREDS));
+		$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+	} elseif (! file_exists($creds_file)) {
+		$creds = $creds = json_decode(file_get_contents(CREDS));
+		return Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
+	}
+	return $pdo;
 }

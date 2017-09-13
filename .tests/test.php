@@ -28,7 +28,8 @@ use const \SuperUserDev\SchemaServer\Tests\Consts\{
 
 use function \SuperUserDev\SchemaServer\Tests\Funcs\{
 	init,
-	gravatar
+	gravatar,
+	connect
 };
 
 
@@ -50,14 +51,12 @@ init();
 header('Content-Type: ' . Thing::CONTENT_TYPE);
 
 if (DB_TEST and file_exists(CREDS)) {
-	$creds = $creds = json_decode(file_get_contents(CREDS));
-	$pdo = Thing::connect($creds->user, $creds->pass ?? '', $creds->dbname ?? $creds->user);
-	exit(Person::get('029e7b946abd6cff214286dff43a7632', $pdo));
+	exit(Person::get('029e7b946abd6cff214286dff43a7632', connect()));
 }
 
 if (empty($_POST)) {
 	if (array_key_exists('id', $_GET) and file_exists(CREDS)) {
-		exit(Event::get($_GET['id'], $pdo, [], true));
+		exit(Event::get($_GET['id'], connect(), [], true));
 	}
 
 	$me                 = new Person();

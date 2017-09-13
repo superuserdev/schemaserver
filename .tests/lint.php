@@ -10,7 +10,11 @@ use const \SuperUserDev\SchemaServer\Tests\Consts\{
 
 use function \SuperUserDev\SchemaServer\Tests\Funcs\{
 	lint_dir,
-	init
+	init,
+	connect,
+	get_db_tables,
+	get_missing_classes,
+	get_missing_tables
 };
 
 use \SuperUserDev\SchemaServer\{
@@ -24,4 +28,19 @@ use \ErrorException;
 
 
 init();
+
 lint_dir(dirname(__DIR__));
+
+$tables = get_db_tables(connect());
+$missing_tables = get_missing_tables($tables, dirname(__DIR__));
+
+if (! empty($missing_tables)) {
+	throw new Exception(sprintf('Missing database tables for [%s]', join(', ', $missing_tables)));
+}
+unset($missing_tables);
+$missing_files = get_missing_classes($tables);
+unset($tables);
+
+if (! empty($missing_files)) {
+	throw new Exception(sprintf('Missing PHP classes for [%s]', join(', ', $missing_files)));
+}
