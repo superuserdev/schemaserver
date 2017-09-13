@@ -5,7 +5,7 @@ namespace SuperUserDev\SchemaServer;
 use \PDO;
 use \DirectoryIterator;
 use \Exception;
-const CREDS           = __DIR__ . DIRECTORY_SEPARATOR . 'creds.json';
+const CREDS           = '../creds.json';
 const MIN_PHP_VERSION = '7.1';
 const DB_TEST         = true;
 const EXTS = ['php'];

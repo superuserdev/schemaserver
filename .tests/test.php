@@ -19,7 +19,7 @@
  */
 namespace SuperUserDev\SchemaServer;
 
-const CREDS           = __DIR__ . DIRECTORY_SEPARATOR . 'creds.json';
+const CREDS           = '../creds.json';
 const MIN_PHP_VERSION = '7.1';
 const DB_TEST         = true;
 if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
@@ -56,7 +56,7 @@ if (version_compare(PHP_VERSION, MIN_PHP_VERSION, '<')) {
 		);
 	}
 
-	set_include_path(dirname(__DIR__, 2) . PATH_SEPARATOR . get_include_path());
+	set_include_path(dirname(__DIR__, 3) . PATH_SEPARATOR . get_include_path());
 	spl_autoload_register();
 	spl_autoload_extensions('.php');
 	header('Content-Type: ' . Thing::CONTENT_TYPE);
