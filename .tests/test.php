@@ -31,7 +31,7 @@ use function \SuperUserDev\SchemaServer\Tests\Funcs\{
 	gravatar
 };
 
-use \PDO;
+
 use \SuperUserDev\SchemaServer\{
 	Thing,
 	Person,
@@ -41,6 +41,7 @@ use \SuperUserDev\SchemaServer\{
 	Event,
 	Place
 };
+use \PDO;
 use \Throwable;
 use \Exception;
 use \ErrorException;

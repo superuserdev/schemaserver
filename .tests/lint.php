@@ -13,10 +13,10 @@ use function \SuperUserDev\SchemaServer\Tests\Funcs\{
 	init
 };
 
-use \PDO;
 use \SuperUserDev\SchemaServer\{
 	Thing
 };
+use \PDO;
 use \DirectoryIterator;
 use \Throwable;
 use \Exception;
