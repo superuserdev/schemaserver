@@ -131,6 +131,18 @@ CREATE TABLE "Quantity" (
 ) INHERITS ("Intangible");
 
 --
+-- Name: QuantitativeValue; Type: TABLE; Schema: public; Owner: -
+--
+CREATE TABLE "QuantitativeValue" (
+    "additionalProperty" "jsonb",
+    "maxValue" real,
+    "minValue" real,
+    "unitCode" "text",
+    "value" "jsonb",
+    "valueReference" "jsonb"
+) INHERITS ("StructuredValue");
+
+--
 -- Name: Duration; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -478,6 +490,17 @@ CREATE TABLE "ItemList" (
     "itemListElement" "jsonb",
     "itemListOrder" "jsonb",
     "numberOfItems" integer
+) INHERITS ("Intangible");
+
+--
+-- Name: ListItem; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE "ListItem" (
+    "item" "jsonb",
+    "nextItem" "jsonb",
+    "position" integer,
+    "previousItem" "jsonb"
 ) INHERITS ("Intangible");
 
 --
