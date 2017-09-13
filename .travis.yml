@@ -17,4 +17,4 @@ before_script:
   - psql -c 'create database schema;' -U postgres
   - psql -f './db.sql' -U postgres
 
-script: php ./.lint.php
+script: php ./.tests/lint.php
