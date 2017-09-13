@@ -23,8 +23,6 @@ namespace SuperUserDev\SchemaServer;
  */
 class Message extends CreativeWork
 {
-	use Traits\DateTime;
-
 	final public function setBccRecipient(Thing $recipient)
 	{
 		if (

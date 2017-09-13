@@ -21,5 +21,5 @@ namespace SuperUserDev\SchemaServer;
 /**
  * @see https://schema.org/OfferItemCondition
  */
-class OfferItemCondition extends Enumerable
+class OfferItemCondition extends Enumeration
 {}

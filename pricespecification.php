@@ -23,7 +23,7 @@ namespace SuperUserDev\SchemaServer;
  */
 class PriceSpecification extends StructuredValue
 {
-	use Traits\DataTime;
+	use Traits\DateTime;
 
 	/**
 	 * [setEligibleQuantity description]
