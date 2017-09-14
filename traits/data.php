@@ -19,8 +19,10 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \SplObjectStorage;
 use \InvalidArgumentException;
 use \SuperUserDev\SchemaServer\{Thing};
+
 trait Data
 {
 	/**
@@ -53,8 +55,32 @@ trait Data
 		}
 		return $this;
 	}
+
+	/**
+	 * [_add description]
+	 * @param  String $prop          [description]
+	 * @param  Array  $values        [description]
+	 * @param  String $allowed_types [description]
+	 * @return self                  [description]
+	 */
+	final public function _add(String $prop, Array $values, String ...$allowed_types): self
 	{
-		$this->_data[$prop] = $value;
+		if (! array_key_exists($prop, $this->_data)) {
+			$this->_data[$prop] = new SplObjectStorage();
+		}
+		foreach ($values as $value) {
+			if (static::_isValidValue($value, ...$allowed_types)) {
+				$this->_data[$prop]->attach($value);
+			} else {
+				throw new InvalidArgumentException(sprintf(
+					'%s->%s must be an instance of %s. %s given',
+					static::getType(),
+					$prop,
+					join(', ', $allowed_types),
+					static::_getType($value)
+				));
+			}
+		}
 		return $this;
 	}
 
