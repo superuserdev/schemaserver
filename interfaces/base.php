@@ -51,41 +51,41 @@ Interface Base
 	 * [setAdditionalType description]
 	 * @param String $url [description]
 	 */
-	public function setAdditionalType(String $url);
+	public function setAdditionalType(String $url): Thing;
 
 	/**
 	 * [setAlternateName description]
 	 * @param String $name [description]
 	 */
-	public function setAlternateName(String $name);
+	public function setAlternateName(String $name): Thing;
 
 	/**
 	 * [setDescription description]
 	 * @param String $description [description]
 	 */
-	public function setDescription(String $description);
+	public function setDescription(String $description): Thing;
 
 	/**
 	 * [setImage description]
 	 * @param ImageObject $image [description]
 	 */
-	public function setImage(ImageObject $image);
+	public function setImage(ImageObject ...$image): Thing;
 
 	/**
 	 * [setName description]
 	 * @param String $name [description]
 	 */
-	public function setName(String $name);
+	public function setName(String $name): Thing;
 
 	/**
 	 * [setSameAs description]
 	 * @param String $url [description]
 	 */
-	public function setSameAs(String $url);
+	public function setSameAs(String $url): Thing;
 
 	/**
 	 * [setUrl description]
 	 * @param String $url [description]
 	 */
-	public function setUrl(String $url);
+	public function setUrl(String $url): Thing;
 }
