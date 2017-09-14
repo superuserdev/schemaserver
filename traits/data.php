@@ -64,4 +64,25 @@ trait Data
 			'@context' => static::CONTEXT,
 		];
 	}
+
+	/**
+	 * [_isValidValue description]
+	 * @param  [type] $value         [description]
+	 * @param  String $allowed_types [description]
+	 * @return Bool                  [description]
+	 */
+	final private static function _isValidValue($value, String ...$allowed_types): Bool
+	{
+		return empty($allowed_types) or in_array(static::_getType($value), $allowed_types);
+	}
+
+	/**
+	 * [_getType description]
+	 * @param  [type] $value [description]
+	 * @return String        [description]
+	 */
+	final private static function _getType($value): String
+	{
+		return is_object($value) ? get_class($value) : gettype($value);
+	}
 }
