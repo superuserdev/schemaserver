@@ -19,6 +19,7 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \InvalidArgumentException;
 use \SuperUserDev\SchemaServer\{Thing};
 trait Data
 {
