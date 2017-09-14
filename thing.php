@@ -117,11 +117,16 @@ Interfaces\Base, Interfaces\Database
 	 * [setImage description]
 	 * @param ImageObject $image [description]
 	 */
-	final public function setImage(ImageObject $image): self
+	final public function setImage(ImageObject ...$image): self
 	{
-		return $this->_set('image', $image);
+		return $this->_add('image', $image);
 	}
 
+	/**
+	 * [setMainEntityOfPage description]
+	 * @param  CreativeWork $entity [description]
+	 * @return self                 [description]
+	 */
 	final public function setMainEntityOfPage(CreativeWork $entity): self
 	{
 		return $this->_set('mainEntityOfPage', $entity);
