@@ -19,15 +19,17 @@
  */
 namespace SuperUserDev\SchemaServer\Interfaces;
 
+use \SuperUserDev\SchemaServer\{Thing};
+
 Interface ContactInfo
 {
 	/**
 	 * [setEmail description]
 	 * @param String $email [description]
 	 */
-	public function setEmail(String $email);
+	public function setEmail(String $email): Thing;
 
-	public function setTelephone(String $tel);
+	public function setTelephone(String $tel): Thing;
 
-	public function setFaxNumber(String $fax);
+	public function setFaxNumber(String $fax): Thing;
 }

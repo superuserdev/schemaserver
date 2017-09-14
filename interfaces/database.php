@@ -70,8 +70,8 @@ interface Database
 	public static function get(
 		String $identifier,
 		PDO    $pdo,
-		Array $params      = [],
-		Bool  $populate    = false
+		Array  $params      = [],
+		Bool   $populate    = false
 	): Thing;
 
 	/**
