@@ -38,7 +38,21 @@ trait Data
 	 * @param  [type] $value [description]
 	 * @return Thing         [description]
 	 */
-	final protected function _set(String $prop, $value): self
+	final protected function _set(String $prop, $value, String ...$allowed_types): self
+	{
+		if (static::_isValidValue($value, ...$allowed_types)) {
+			$this->_data[$prop] = $value;
+		} else {
+			throw new InvalidArgumentException(sprintf(
+				'%s->%s must be an instance of %s. %s given',
+				static::getType(),
+				$prop,
+				join(', ', $allowed_types),
+				static::_getType($value)
+			));
+		}
+		return $this;
+	}
 	{
 		$this->_data[$prop] = $value;
 		return $this;
