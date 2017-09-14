@@ -63,13 +63,15 @@ if (empty($_POST)) {
 	$me->givenName      ='Christopher';
 	$me->additionalName = 'Wayne';
 	$me->familyName     = 'Zuber';
-	$me->image          = new ImageObject();
-	$me->image->width   = 128;
-	$me->image->height  = 128;
 	$me->email          = 'chris@chriszuber.com';
 	$me->url            = 'https://chriszuber.com';
 	$me->sameAs         = 'https://twitter.com/shgysk8zer0';
-	$me->image->url     = gravatar($me->email, $me->image->width);
+	$me->image          = new ImageObject([
+		'@type' => 'ImageObject',
+		'width' => 128,
+		'height' => 128,
+		'url' => gravatar($me->email, 128),
+	]);
 	$me->address        = new PostalAddress([
 		'@type'           => 'PostalAddress',
 		'addressLocality' => 'Mount Vernon',
@@ -98,10 +100,12 @@ if (empty($_POST)) {
 	$event->startDate = '2018-03-26T16:00:00-07:00';
 	$event->endDate = '2018-03-26T20:00:00-07:00';
 	$event->location->address = $me->address;
-	$event->image = new ImageObject();
-	$event->image->url = 'http://i.imgur.com/doiqeSd.png';
-	$event->image->width = 1920;
-	$event->image->height = 1157;
+	$event->image = new ImageObject([
+		'@type'  => 'ImageObject',
+		'width'  => 1920,
+		'height' => 1157,
+		'url'    => 'http://i.imgur.com/doiqeSd.png',
+	]);
 	$event->organizer = $me->worksFor;
 	$event->calcDuration();
 
@@ -109,7 +113,7 @@ if (empty($_POST)) {
 		$event->save($pdo);
 		exit($event);
 	} else {
-		exit($event);
+		exit(json_encode($event, JSON_PRETTY_PRINT));
 	}
 } else {
 	$thing = Thing::parseFromPost();
