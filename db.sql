@@ -67,15 +67,15 @@ DROP TABLE IF EXISTS "Thing" CASCADE;
 --
 
 CREATE TABLE "Thing" (
-    "identifier" "text" NOT NULL,
-    "name" "text",
+    "identifier" text NOT NULL,
+    "name" text,
     "image" jsonb[],
-    "description" "text",
-    "url" "text",
-    "sameAs" "text",
-    "alternateName" "text",
-    "disambiguatingDescription" "text",
-    "mainEntityOfPage" "jsonb"
+    "description" text,
+    "url" text,
+    "sameAs" text,
+    "alternateName" text,
+    "disambiguatingDescription" text,
+    "mainEntityOfPage" jsonb
 );
 
 
@@ -98,11 +98,11 @@ CREATE TABLE "StructuredValue" (
 --
 
 CREATE TABLE "AlignmentObject" (
-    "alignmentType" "text",
-    "educationalFramework" "text",
-    "targetDescription" "text",
-    "targetName" "text",
-    "targetUrl" "text"
+    "alignmentType" text,
+    "educationalFramework" text,
+    "targetDescription" text,
+    "targetName" text,
+    "targetUrl" text
 ) INHERITS ("Intangible");
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE "AlignmentObject" (
 --
 
 CREATE TABLE "Enumeration" (
-    "supersededBy" "jsonb"
+    "supersededBy" jsonb
 ) INHERITS ("Intangible");
 
 --
@@ -118,9 +118,9 @@ CREATE TABLE "Enumeration" (
 --
 
 CREATE TABLE "Property" (
-    "category" "jsonb",
-    "inverseOf" "jsonb",
-    "supersededBy" "jsonb"
+    "category" jsonb,
+    "inverseOf" jsonb,
+    "supersededBy" jsonb
 ) INHERITS ("Intangible");
 
 --
@@ -134,12 +134,12 @@ CREATE TABLE "Quantity" (
 -- Name: QuantitativeValue; Type: TABLE; Schema: public; Owner: -
 --
 CREATE TABLE "QuantitativeValue" (
-    "additionalProperty" "jsonb",
+    "additionalProperty" jsonb,
     "maxValue" real,
     "minValue" real,
-    "unitCode" "text",
-    "value" "jsonb",
-    "valueReference" "jsonb"
+    "unitCode" text,
+    "value" jsonb,
+    "valueReference" jsonb
 ) INHERITS ("StructuredValue");
 
 --
@@ -154,11 +154,11 @@ CREATE TABLE "Duration" (
 --
 
 CREATE TABLE "Place" (
-    "address" "jsonb",
-    "email" "text",
-    "faxNumber" "text",
-    "geo" "jsonb",
-    "telephone" "text"
+    "address" jsonb,
+    "email" text,
+    "faxNumber" text,
+    "geo" jsonb,
+    "telephone" text
 ) INHERITS ("Thing");
 
 --
@@ -173,16 +173,16 @@ CREATE TABLE "AdministrativeArea" (
 --
 
 CREATE TABLE "Action" (
-    "actionStatus" "jsonb",
-    "agent"  "text",
-    "endDate" "date",
-    "error" "jsonb",
-    "location" "jsonb",
-    "object" "jsonb",
-    "participant" "jsonb",
-    "result" "jsonb",
-    "startDate" "date",
-    "target" "jsonb"
+    "actionStatus" jsonb,
+    "agent" text,
+    "endDate" date,
+    "error" jsonb,
+    "location" jsonb,
+    "object" jsonb,
+    "participant" jsonb,
+    "result" jsonb,
+    "startDate" date,
+    "target" jsonb
 ) INHERITS ("Thing");
 
 --
@@ -190,7 +190,7 @@ CREATE TABLE "Action" (
 --
 
 CREATE TABLE "ContactPoint" (
-    "contacttype" "text"
+    "contacttype" text
 ) INHERITS ("StructuredValue");
 
 
@@ -199,81 +199,81 @@ CREATE TABLE "ContactPoint" (
 --
 
 CREATE TABLE "CreativeWork" (
-    "about" "jsonb",
-    "accessMode" "text",
-    "accessModeSufficient" "text",
-    "accessibilityAPI" "text",
-    "accessibilityFeature" "text",
-    "accessibilityHazard" "text",
-    "accessibilitySummary" "text",
-    "accountablePerson" "jsonb",
-    "aggregateRating" "jsonb",
-    "alternativeHeadline" "text",
-    "audience" "jsonb",
-    "audio" "jsonb",
-    "author" "jsonb",
-    "award" "text",
-    "character" "jsonb",
-    "citation" "jsonb",
-    "comment" "jsonb",
+    "about" jsonb,
+    "accessMode" text,
+    "accessModeSufficient" text,
+    "accessibilityAPI" text,
+    "accessibilityFeature" text,
+    "accessibilityHazard" text,
+    "accessibilitySummary" text,
+    "accountablePerson" jsonb,
+    "aggregateRating" jsonb,
+    "alternativeHeadline" text,
+    "audience" jsonb,
+    "audio" jsonb,
+    "author" jsonb,
+    "award" text,
+    "character" jsonb,
+    "citation" jsonb,
+    "comment" jsonb,
     "commentCount" integer,
-    "contentLocation" "jsonb",
-    "contentRating" "jsonb",
-    "contributor" "jsonb",
-    "copyrightHolder" "jsonb",
+    "contentLocation" jsonb,
+    "contentRating" jsonb,
+    "contributor" jsonb,
+    "copyrightHolder" jsonb,
     "copyrightYear" integer,
-    "creator" "jsonb",
-    "dateCreated" "date",
-    "dateModified" "date",
-    "datePublished" "date",
-    "discussionUrl" "text",
-    "editor" "jsonb",
-    "educationalAlignment" "jsonb",
-    "educationalUse" "text",
-    "encoding" "jsonb",
-    "exampleOfWork" "jsonb",
-    "fileFormat" "text",
-    "funder" "jsonb",
-    "genre" "jsonb",
-    "hasPart" "jsonb",
-    "headline" "text",
-    "inLanguage" "jsonb",
-    "iterationStatistic" "jsonb",
-    "interactivityType" "text",
+    "creator" jsonb,
+    "dateCreated" date,
+    "dateModified" date,
+    "datePublished" date,
+    "discussionUrl" text,
+    "editor" jsonb,
+    "educationalAlignment" jsonb,
+    "educationalUse" text,
+    "encoding" jsonb,
+    "exampleOfWork" jsonb,
+    "fileFormat" text,
+    "funder" jsonb,
+    "genre" jsonb,
+    "hasPart" jsonb,
+    "headline" text,
+    "inLanguage" jsonb,
+    "iterationStatistic" jsonb,
+    "interactivityType" text,
     "isAccessibleForFree" boolean,
-    "isBasedOn" "jsonb",
+    "isBasedOn" jsonb,
     "isFamilyFriendly" boolean,
-    "isPartOf" "jsonb",
-    "keywords" "text",
-    "learningResourceType" "text",
-    "license" "jsonb",
-    "locationCreated" "jsonb",
-    "mainEntity" "jsonb",
-    "material" "jsonb",
-    "mentions" "jsonb",
-    "offers" "jsonb",
+    "isPartOf" jsonb,
+    "keywords" text,
+    "learningResourceType" text,
+    "license" jsonb,
+    "locationCreated" jsonb,
+    "mainEntity" jsonb,
+    "material" jsonb,
+    "mentions" jsonb,
+    "offers" jsonb,
     "position" integer,
-    "producer" "jsonb",
-    "provider" "jsonb",
-    "publication" "jsonb",
-    "publisher" "jsonb",
-    "publisingPrinciples" "jsonb",
-    "recordedAt" "jsonb",
-    "releasedEvent" "jsonb",
-    "review" "jsonb",
-    "schemaVersion" "text",
-    "sourceOrganization" "jsonb",
-    "spatialCoverage" "jsonb",
-    "sponsor" "jsonb",
-    "temporalCoverage" "jsonb",
-    "text" "text",
-    "thumbnailUrl" "text",
-    "timeRequired" "jsonb",
-    "translator" "jsonb",
-    "typicalAgeRange" "text",
-    "version" "text",
-    "video" "jsonb",
-    "workExample" "jsonb"
+    "producer" jsonb,
+    "provider" jsonb,
+    "publication" jsonb,
+    "publisher" jsonb,
+    "publisingPrinciples" jsonb,
+    "recordedAt" jsonb,
+    "releasedEvent" jsonb,
+    "review" jsonb,
+    "schemaVersion" text,
+    "sourceOrganization" jsonb,
+    "spatialCoverage" jsonb,
+    "sponsor" jsonb,
+    "temporalCoverage" jsonb,
+    "text" text,
+    "thumbnailUrl" text,
+    "timeRequired" jsonb,
+    "translator" jsonb,
+    "typicalAgeRange" text,
+    "version" text,
+    "video" jsonb,
+    "workExample" jsonb
 ) INHERITS ("Thing");
 
 
@@ -284,7 +284,7 @@ CREATE TABLE "CreativeWork" (
 CREATE TABLE "MediaObject" (
     "width" integer,
     "height" integer,
-    "uploadDate" "date"
+    "uploadDate" date
 ) INHERITS ("CreativeWork");
 
 --
@@ -292,7 +292,7 @@ CREATE TABLE "MediaObject" (
 --
 
 CREATE TABLE "AudioObject" (
-    "transcript" "text"
+    "transcript" text
 ) INHERITS ("MediaObject");
 
 
@@ -301,8 +301,8 @@ CREATE TABLE "AudioObject" (
 --
 
 CREATE TABLE "ImageObject" (
-    "caption" "text",
-    "thumbnail" "jsonb"
+    "caption" text,
+    "thumbnail" jsonb
 ) INHERITS ("MediaObject");
 
 --
@@ -310,13 +310,13 @@ CREATE TABLE "ImageObject" (
 --
 
 CREATE TABLE "VideoObject" (
-    "actor" "jsonb",
-    "caption" "text",
-    "director" "jsonb",
-    "thumbnail" "jsonb",
-    "transcript" "text",
-    "videoFrameSize" "text",
-    "videoQuality" "text"
+    "actor" jsonb,
+    "caption" text,
+    "director" jsonb,
+    "thumbnail" jsonb,
+    "transcript" text,
+    "videoFrameSize" text,
+    "videoQuality" text
 ) INHERITS ("MediaObject");
 
 --
@@ -324,11 +324,11 @@ CREATE TABLE "VideoObject" (
 --
 
 CREATE TABLE "Organization" (
-    "address" "jsonb",
-    "logo" "jsonb",
-    "email" "text",
-    "telephone" "text",
-    "faxNumber" "text"
+    "address" jsonb,
+    "logo" jsonb,
+    "email" text,
+    "telephone" text,
+    "faxNumber" text
 ) INHERITS ("Thing");
 
 
@@ -337,14 +337,14 @@ CREATE TABLE "Organization" (
 --
 
 CREATE TABLE "Person" (
-    "givenName" "text",
-    "additionalName" "text",
-    "familyName" "text",
-    "address" "jsonb",
-    "birthDate" "date",
-    "worksFor" "jsonb",
-    "email" "text",
-    "jobTitle" "text"
+    "givenName" text,
+    "additionalName" text,
+    "familyName" text,
+    "address" jsonb,
+    "birthDate" date,
+    "worksFor" jsonb,
+    "email" text,
+    "jobTitle" text
 ) INHERITS ("Thing");
 
 
@@ -353,11 +353,11 @@ CREATE TABLE "Person" (
 --
 
 CREATE TABLE "PostalAddress" (
-    "addressCountry" "text",
-    "addressLocality" "text",
-    "addressRegion" "text",
+    "addressCountry" text,
+    "addressLocality" text,
+    "addressRegion" text,
     "postOfficeBoxNumber" integer,
-    "streetAddress" "text",
+    "streetAddress" text,
     "postalCode" integer
 ) INHERITS ("ContactPoint");
 
@@ -375,9 +375,9 @@ CREATE TABLE "ActionStatusType" (
 --
 
 CREATE TABLE "Review" (
-    "itemReviewed" "jsonb",
-    "reviewBody" "text",
-    "reviewRating" "jsonb"
+    "itemReviewed" jsonb,
+    "reviewBody" text,
+    "reviewRating" jsonb
 ) INHERITS ("CreativeWork");
 
 --
@@ -385,7 +385,7 @@ CREATE TABLE "Review" (
 --
 
 CREATE TABLE "Rating" (
-    "author" "jsonb",
+    "author" jsonb,
     "bestRating" integer,
     "ratingValue" integer,
     "worstRating" integer
@@ -396,7 +396,7 @@ CREATE TABLE "Rating" (
 --
 
 CREATE TABLE "AggregateRating" (
-    "itemReviewed" "jsonb",
+    "itemReviewed" jsonb,
     "ratingCount" integer,
     "reviewCount" integer
 ) INHERITS ("Rating");
@@ -407,7 +407,7 @@ CREATE TABLE "AggregateRating" (
 
 CREATE TABLE "Comment" (
     "downVoteCount" integer,
-    "parentItem" "jsonb",
+    "parentItem" jsonb,
     "upvoteCount" integer
 ) INHERITS ("CreativeWork");
 
@@ -423,10 +423,10 @@ CREATE TABLE "Answer" (
 --
 
 CREATE TABLE "Question" (
-    "acceptedAnswer" "jsonb",
+    "acceptedAnswer" jsonb,
     "answerCount" integer,
     "downVoteCount" integer,
-    "suggestedAnswer" "jsonb",
+    "suggestedAnswer" jsonb,
     "upvoteCount" integer
 ) INHERITS ("CreativeWork");
 
@@ -435,11 +435,11 @@ CREATE TABLE "Question" (
 --
 
 CREATE TABLE "Article" (
-    "articleBody" "text",
-    "articleSection" "text",
+    "articleBody" text,
+    "articleSection" text,
     "pageEnd" integer,
     "pageStart" integer,
-    "pagination" "text",
+    "pagination" text,
     "wordCount" integer
 ) INHERITS ("CreativeWork");
 
@@ -448,8 +448,8 @@ CREATE TABLE "Article" (
 --
 
 CREATE TABLE "Audience" (
-    "audienceType" "text",
-    "geographicArea" "jsonb"
+    "audienceType" text,
+    "geographicArea" jsonb
 ) INHERITS ("Intangible");
 
 --
@@ -458,10 +458,10 @@ CREATE TABLE "Audience" (
 
 CREATE TABLE "Book" (
     "abridged" Boolean,
-    "bookEdition" "text",
-    "bookFormat" "jsonb",
-    "illustrator" "jsonb",
-    "isbn" "text",
+    "bookEdition" text,
+    "bookFormat" jsonb,
+    "illustrator" jsonb,
+    "isbn" text,
     "numberOfPages" integer
 ) INHERITS ("CreativeWork");
 
@@ -477,9 +477,9 @@ CREATE TABLE "BookFormatType" (
 --
 
 CREATE TABLE "Brand" (
-    "aggregateRating" "jsonb",
-    "logo" "jsonb",
-    "review" "jsonb"
+    "aggregateRating" jsonb,
+    "logo" jsonb,
+    "review" jsonb
 ) INHERITS ("Intangible");
 
 --
@@ -487,8 +487,8 @@ CREATE TABLE "Brand" (
 --
 
 CREATE TABLE "ItemList" (
-    "itemListElement" "jsonb",
-    "itemListOrder" "jsonb",
+    "itemListElement" jsonb,
+    "itemListOrder" jsonb,
     "numberOfItems" integer
 ) INHERITS ("Intangible");
 
@@ -497,10 +497,10 @@ CREATE TABLE "ItemList" (
 --
 
 CREATE TABLE "ListItem" (
-    "item" "jsonb",
-    "nextItem" "jsonb",
+    "item" jsonb,
+    "nextItem" jsonb,
     "position" integer,
-    "previousItem" "jsonb"
+    "previousItem" jsonb
 ) INHERITS ("Intangible");
 
 --
@@ -536,12 +536,12 @@ CREATE TABLE "DayOfWeek" (
 --
 
 CREATE TABLE "Event" (
-    "about" "jsonb",
-    "endDate" "date",
-    "location" "jsonb",
-    "organizer" "jsonb",
-    "startDate" "date",
-    "duration" "text"
+    "about" jsonb,
+    "endDate" date,
+    "location" jsonb,
+    "organizer" jsonb,
+    "startDate" date,
+    "duration" text
 ) INHERITS ("Thing");
 
 --
@@ -549,12 +549,12 @@ CREATE TABLE "Event" (
 --
 
 CREATE TABLE "EntryPoint" (
-    "actionApplication" "jsonb",
-    "actionPlatform" "text",
-    "contentType" "text",
-    "encodingType" "text",
-    "httpMethod" "text",
-    "urlTemplate" "text"
+    "actionApplication" jsonb,
+    "actionPlatform" text,
+    "contentType" text,
+    "encodingType" text,
+    "httpMethod" text,
+    "urlTemplate" text
 ) INHERITS ("Intangible");
 
 --
@@ -562,7 +562,7 @@ CREATE TABLE "EntryPoint" (
 --
 
 CREATE TABLE "GeoCoordinates" (
-    "addressCountry" "jsonb",
+    "addressCountry" jsonb,
     "elevation" real,
     "latitude" double precision,
     "longitude" double precision,
@@ -574,13 +574,13 @@ CREATE TABLE "GeoCoordinates" (
 --
 
 CREATE TABLE "GeoShape" (
-    "address" "jsonb",
-    "addressCountry" "jsonb",
-    "box" "text",
-    "circle" "text",
+    "address" jsonb,
+    "addressCountry" jsonb,
+    "box" text,
+    "circle" text,
     "elevation" integer,
-    "line" "text",
-    "polygon" "text",
+    "line" text,
+    "polygon" text,
     "postalCode" integer
 ) INHERITS ("StructuredValue");
 
@@ -603,10 +603,10 @@ CREATE TABLE "Language" (
 --
 
 CREATE TABLE "LocalBusiness" (
-    "currenciesAccepted" "text",
-    "openingHours" "text",
-    "paymentAccepted" "text",
-    "priceRange" "text"
+    "currenciesAccepted" text,
+    "openingHours" text,
+    "paymentAccepted" text,
+    "priceRange" text
 ) INHERITS ("Organization");
 
 --
@@ -614,14 +614,14 @@ CREATE TABLE "LocalBusiness" (
 --
 
 CREATE TABLE "Message" (
-    "bccRecipient" "jsonb",
-    "ccRecipient" "jsonb",
-    "dateRead" "date",
-    "dateReceived" "date",
-    "dateSent" "date",
-    "messageAtachment" "jsonb",
-    "sender" "jsonb",
-    "toRecipient" "jsonb"
+    "bccRecipient" jsonb,
+    "ccRecipient" jsonb,
+    "dateRead" date,
+    "dateReceived" date,
+    "dateSent" date,
+    "messageAtachment" jsonb,
+    "sender" jsonb,
+    "toRecipient" jsonb
 ) INHERITS ("CreativeWork");
 
 --
@@ -629,12 +629,12 @@ CREATE TABLE "Message" (
 --
 
 CREATE TABLE "MonetaryAmount" (
-    "currency" "text",
+    "currency" text,
     "maxValue" real,
     "minValue" real,
-    "validFrom" "date",
-    "validThrough" "date",
-    "value" "text"
+    "validFrom" date,
+    "validThrough" date,
+    "value" text
 ) INHERITS ("StructuredValue");
 
 --
@@ -664,14 +664,14 @@ CREATE TABLE "OpeningHoursSpecification" (
 --
 
 CREATE TABLE "PriceSpecification" (
-    "eligibleQuantity" "jsonb",
-    "eligibleTransactionVolume" "jsonb",
+    "eligibleQuantity" jsonb,
+    "eligibleTransactionVolume" jsonb,
     "maxPrice" real,
     "minPrice" real,
     "price" real,
-    "priceCurrency" "text",
-    "validFrom" "date",
-    "validThrough" "date",
+    "priceCurrency" text,
+    "validFrom" date,
+    "validThrough" date,
     "valueAddedTaxIncluded" Boolean
 ) INHERITS ("StructuredValue");
 
@@ -680,37 +680,37 @@ CREATE TABLE "PriceSpecification" (
 --
 
 CREATE TABLE "Product" (
-    "additionalProperty" "jsonb",
-    "aggregateRating" "jsonb",
-    "audience" "jsonb",
-    "award" "text",
-    "brand" "jsonb",
-    "category" "jsonb",
-    "color" "text",
-    "depth" "jsonb",
-    "gtin12" "text",
-    "gtin13" "text",
-    "gtin14" "text",
-    "gtin8" "text",
-    "height" "jsonb",
-    "isAccessoryOrSparePartFor" "jsonb",
-    "isConsumableFor" "jsonb",
-    "isRelatedTo" "jsonb",
-    "isSimilarTo" "jsonb",
-    "itemCondition" "jsonb",
-    "logo" "jsonb",
-    "manufacturer" "jsonb",
-    "material" "jsonb",
-    "model" "jsonb",
-    "mpn" "text",
-    "productID" "text",
-    "productionDate" "date",
-    "purchaseDate" "date",
-    "releaseDate" "date",
-    "review" "jsonb",
-    "sku" "text" UNIQUE,
-    "weight" "jsonb",
-    "width" "jsonb"
+    "additionalProperty" jsonb,
+    "aggregateRating" jsonb,
+    "audience" jsonb,
+    "award" text,
+    "brand" jsonb,
+    "category" jsonb,
+    "color" text,
+    "depth" jsonb,
+    "gtin12" text,
+    "gtin13" text,
+    "gtin14" text,
+    "gtin8" text,
+    "height" jsonb,
+    "isAccessoryOrSparePartFor" jsonb,
+    "isConsumableFor" jsonb,
+    "isRelatedTo" jsonb,
+    "isSimilarTo" jsonb,
+    "itemCondition" jsonb,
+    "logo" jsonb,
+    "manufacturer" jsonb,
+    "material" jsonb,
+    "model" jsonb,
+    "mpn" text,
+    "productID" text,
+    "productionDate" date,
+    "purchaseDate" date,
+    "releaseDate" date,
+    "review" jsonb,
+    "sku" text UNIQUE,
+    "weight" jsonb,
+    "width" jsonb
 ) INHERITS ("Thing");
 
 --
@@ -718,9 +718,9 @@ CREATE TABLE "Product" (
 --
 
 CREATE TABLE "ProductModel" (
-    "isVariantOf" "jsonb",
-    "predecessorOf" "jsonb",
-    "successorOf" "jsonb"
+    "isVariantOf" jsonb,
+    "predecessorOf" jsonb,
+    "successorOf" jsonb
 ) INHERITS ("Product");
 
 --
@@ -728,22 +728,22 @@ CREATE TABLE "ProductModel" (
 --
 
 CREATE TABLE "Service" (
-    "aggregateRating" "jsonb",
-    "areaServed" "jsonb",
-    "award" "text",
-    "brand" "jsonb",
-    "broker" "jsonb",
-    "category" "jsonb",
-    "hasOfferCatelog" "jsonb",
-    "hoursAvailable" "jsonb",
-    "isRelatedTo" "jsonb",
-    "isSimilarTo" "jsonb",
-    "logo" "jsonb",
-    "provider" "jsonb",
-    "providerMobility" "jsonb",
-    "review" "jsonb",
-    "serviceOutput" "jsonb",
-    "serviceType" "text"
+    "aggregateRating" jsonb,
+    "areaServed" jsonb,
+    "award" text,
+    "brand" jsonb,
+    "broker" jsonb,
+    "category" jsonb,
+    "hasOfferCatelog" jsonb,
+    "hoursAvailable" jsonb,
+    "isRelatedTo" jsonb,
+    "isSimilarTo" jsonb,
+    "logo" jsonb,
+    "provider" jsonb,
+    "providerMobility" jsonb,
+    "review" jsonb,
+    "serviceOutput" jsonb,
+    "serviceType" text
 ) INHERITS ("Intangible");
 
 --
@@ -765,26 +765,26 @@ CREATE TABLE "Store" (
 --
 
 CREATE TABLE "SoftwareApplication" (
-    "applicationCategory" "text",
-    "applicationSubCategory" "text",
-    "applcationSuite" "text",
-    "availableOnDevice" "text",
-    "countriesNotSupported" "text",
-    "countriesSupported" "text",
-    "downloadUrl" "text",
-    "featureList" "text",
-    "fileSize" "text",
-    "installUrl" "text",
-    "memoryRequirements" "text",
-    "operatingSystem" "text",
-    "permissions" "text",
-    "processorRequirements" "text",
-    "releaseNotes" "text",
-    "screenshot" "jsonb",
-    "softwareAddOn" "jsonb",
-    "softwareRequirements" "text",
-    "softwareVersion" "text",
-    "storageRequirements" "text"
+    "applicationCategory" text,
+    "applicationSubCategory" text,
+    "applcationSuite" text,
+    "availableOnDevice" text,
+    "countriesNotSupported" text,
+    "countriesSupported" text,
+    "downloadUrl" text,
+    "featureList" text,
+    "fileSize" text,
+    "installUrl" text,
+    "memoryRequirements" text,
+    "operatingSystem" text,
+    "permissions" text,
+    "processorRequirements" text,
+    "releaseNotes" text,
+    "screenshot" jsonb,
+    "softwareAddOn" jsonb,
+    "softwareRequirements" text,
+    "softwareVersion" text,
+    "storageRequirements" text
 ) INHERITS ("CreativeWork");
 
 --
@@ -792,14 +792,14 @@ CREATE TABLE "SoftwareApplication" (
 --
 
 CREATE TABLE "WebPage" (
-    "breadcrumb" "jsonb",
-    "lastReviewed" "date",
-    "mainContentOfPage" "jsonb",
-    "primaryImageOfPage" "jsonb",
-    "relatedLink" "text",
-    "reviewedBy" "jsonb",
-    "significantLink" "text",
-    "specialty" "jsonb"
+    "breadcrumb" jsonb,
+    "lastReviewed" date,
+    "mainContentOfPage" jsonb,
+    "primaryImageOfPage" jsonb,
+    "relatedLink" text,
+    "reviewedBy" jsonb,
+    "significantLink" text,
+    "specialty" jsonb
 ) INHERITS ("CreativeWork");
 
 --
