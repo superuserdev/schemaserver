@@ -19,6 +19,9 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \SuperUserDev\SchemaServer\{Thing};
+use \Iterator;
+
 /**
  * @see http://php.net/manual/en/class.serializable.php
  * @see http://php.net/manual/en/class.jsonserializable.php
@@ -59,9 +62,24 @@ trait Serial
 		if (isset($this->identifier)) {
 			$data['@id'] = "/{$data['@type']}/{$this->identifier}";
 		}
-		return array_merge($data, $this->_data);
+
+		foreach($this as $key => $value) {
+			if (! $value instanceof Thing and $value instanceof Iterator) {
+				$data[$key] = [];
+				foreach ($value as $val) {
+					$data[$key][] = $val;
+				}
+			} else {
+				$data[$key] = $value;
+			}
+		}
+		return $data;
 	}
 
+	/**
+	 * [getMinified description]
+	 * @return Array [description]
+	 */
 	final public function getMinified(): Array
 	{
 		$data = static::getInfo();
