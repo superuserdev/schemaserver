@@ -23,23 +23,23 @@ namespace SuperUserDev\SchemaServer;
  */
 class ListItem extends Intangible
 {
-	final public function setItem(String $item)
+	final public function setItem(String $item): self
 	{
-		$this->_set('item', $item);
+		return $this->_set('item', $item);
 	}
 
-	final public function setNextItem(ListItem $item)
+	final public function setNextItem(ListItem $item): self
 	{
-		$this->_set('nextItem', $item);
+		return $this->_set('nextItem', $item);
 	}
 
-	final public function setPosition(Int $position)
+	final public function setPosition(Int $position): self
 	{
-		$this->_set('position', $position);
+		return $this->_set('position', $position);
 	}
 
-	final public function setPreviousItem(ListItem $item)
+	final public function setPreviousItem(ListItem $item): self
 	{
-		$this->_set('previousItem', $item);
+		return $this->_set('previousItem', $item);
 	}
 }

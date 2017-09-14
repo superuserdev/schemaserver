@@ -24,33 +24,33 @@ namespace SuperUserDev\SchemaServer;
  */
 class Article extends CreativeWork
 {
-	final public function setArticleBody(String $body)
+	final public function setArticleBody(String $body): self
 	{
-		$this->_set('articleBody', $body);
+		return $this->_set('articleBody', $body);
 	}
 
-	final public function setArticleSection(String $section)
+	final public function setArticleSection(String $section): self
 	{
-		$this->_set('articleSection', $section);
+		return $this->_set('articleSection', $section);
 	}
 
-	final public function setPageEnd(Int $end)
+	final public function setPageEnd(Int $end): self
 	{
-		$this->_set('pageEnd', $end);
+		return $this->_set('pageEnd', $end);
 	}
 
-	final public function setPageStart(Int $start)
+	final public function setPageStart(Int $start): self
 	{
-		$this->_set('pageStart', $start);
+		return $this->_set('pageStart', $start);
 	}
 
-	final public function setPagination(String $pagination)
+	final public function setPagination(String $pagination): self
 	{
-		$this->_set('pagination', $pagination);
+		return $this->_set('pagination', $pagination);
 	}
 
-	final public function setWordCount(Int $words)
+	final public function setWordCount(Int $words): self
 	{
-		$this->_set('wordCount', $words);
+		return $this->_set('wordCount', $words);
 	}
 }

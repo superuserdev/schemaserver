@@ -23,33 +23,33 @@ namespace SuperUserDev\SchemaServer;
  */
 class PostalAddress extends ContactPoint
 {
-	final public function setAddressCountry(Country $country)
+	final public function setAddressCountry(Country $country): self
 	{
-		$this->_set('addressCountry', $country);
+		return $this->_set('addressCountry', $country);
 	}
 
-	final public function setAddressLocality(String $locality)
+	final public function setAddressLocality(String $locality): self
 	{
-		$this->_set('addressLocality', $locality);
+		return $this->_set('addressLocality', $locality);
 	}
 
-	final public function setAddressRegion(String $region)
+	final public function setAddressRegion(String $region): self
 	{
-		$this->_set('addressRegion', $region);
+		return $this->_set('addressRegion', $region);
 	}
 
-	final public function setPostOfficeBoxNumber(String $po_box)
+	final public function setPostOfficeBoxNumber(String $po_box): self
 	{
-		$this->_set('postaOfficeBoxNumber', $po_box);
+		return $this->_set('postaOfficeBoxNumber', $po_box);
 	}
 
-	final public function setPostalCode(Int $postal_code)
+	final public function setPostalCode(Int $postal_code): self
 	{
-		$this->_set('postalCode', $postal_code);
+		return $this->_set('postalCode', $postal_code);
 	}
 
-	final public function setStreetAddress(String $address)
+	final public function setStreetAddress(String $address): self
 	{
-		$this->_set('streetAddress', $address);
+		return $this->_set('streetAddress', $address);
 	}
 }

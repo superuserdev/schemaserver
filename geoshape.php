@@ -28,71 +28,71 @@ class GeoShape extends StructuredValue //implements Interfaces\GeoShapeHelper
 	 * [setAddress description]
 	 * @param PostalAddress $address [description]
 	 */
-	final public function setAddress(PostalAddress $address)
+	final public function setAddress(PostalAddress $address): self
 	{
-		$this->_set('address', $address);
+		return $this->_set('address', $address);
 	}
 
 	/**
 	 * [setAddressCountry description]
 	 * @param Country $country [description]
 	 */
-	final public function setAddressCountry(Country $country)
+	final public function setAddressCountry(Country $country): self
 	{
-		$this->_set('addressCountry', $country);
+		return $this->_set('addressCountry', $country);
 	}
 
 	/**
 	 * [setBox description]
 	 * @param String $geo_points [description]
 	 */
-	final public function setBox(String $geo_points)
+	final public function setBox(String $geo_points): self
 	{
-		$this->_set('box', $geo_points);
+		return $this->_set('box', $geo_points);
 	}
 
 	/**
 	 * [setCircle description]
 	 * @param String $geo_points [description]
 	 */
-	final public function setCircle(String $geo_points)
+	final public function setCircle(String $geo_points): self
 	{
-		$this->_set('circle', $geo_points);
+		return $this->_set('circle', $geo_points);
 	}
 
 	/**
 	 * [setElevation description]
 	 * @param Float $elevation [description]
 	 */
-	final public function setElevation(Float $elevation)
+	final public function setElevation(Float $elevation): self
 	{
-		$this->_set('elevation', $elevation);
+		return $this->_set('elevation', $elevation);
 	}
 
 	/**
 	 * [setLine description]
 	 * @param String $geo_points [description]
 	 */
-	final public function setLine(String $geo_points)
+	final public function setLine(String $geo_points): self
 	{
-		$this->_set('line', $geo_points);
+		return $this->_set('line', $geo_points);
 	}
 
 	/**
 	 * [setPolygon description]
 	 * @param String $geo_points [description]
 	 */
-	final public function setPolygon(String $geo_points)
+	final public function setPolygon(String $geo_points): self
 	{
-		$this->_set('polygon', $geo_points);
+		return $this->_set('polygon', $geo_points);
 	}
 
 	/**
 	 * [setPostalCode description]
 	 * @param Int $postal_code [description]
 	 */
-	final public function setPostalCode(Int $postal_code)
+	final public function setPostalCode(Int $postal_code): self
 	{
-		$this->_set('postalCode', $postal_code);
+		return $this->_set('postalCode', $postal_code);
 	}
 }

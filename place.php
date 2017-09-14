@@ -31,10 +31,10 @@ class Place extends Thing
 	 * @param Thing $geo [description]
 	 * @todo Add support for GeoShape
 	 */
-	final public function setGeo(Thing $geo)
+	final public function setGeo(Thing $geo): self
 	{
 		if ($geo instanceof GeoCoordinates) {
-			$this->_set('geo', $geo);
+			return $this->_set('geo', $geo);
 		} else {
 			throw new \InvalidArgumentException(sprintf('Geo must be an instance of GeoCoordinates or GeoShape. Instance of %s given', $geo::getType()));
 		}

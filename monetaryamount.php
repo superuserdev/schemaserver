@@ -27,45 +27,45 @@ class MonetaryAmount extends StructuredValue
 	 * [setCurrency description]
 	 * @param String $currency [description]
 	 */
-	final public function setCurrency(String $currency)
+	final public function setCurrency(String $currency): self
 	{
-		$this->_set('currency', $currency);
+		return $this->_set('currency', $currency);
 	}
 
 	/**
 	 * [setMaxValue description]
 	 * @param Floar $value [description]
 	 */
-	final public function setMaxValue(Floar $value)
+	final public function setMaxValue(Floar $value): self
 	{
-		$this->_set('maxValue', $value);
+		return $this->_set('maxValue', $value);
 	}
 
 	/**
 	 * [setMinValue description]
 	 * @param Float $value [description]
 	 */
-	final public function setMinValue(Float $value)
+	final public function setMinValue(Float $value): self
 	{
-		$this->_set('minValue', $value);
+		return $this->_set('minValue', $value);
 	}
 
 	/**
 	 * [setValidFrom description]
 	 * @param String $date [description]
 	 */
-	final public function setValidFrom(String $date)
+	final public function setValidFrom(String $date): self
 	{
-		$this->_set('validFrom', static::formatDateTime($date, true, false));
+		return $this->_set('validFrom', static::formatDateTime($date, true, false));
 	}
 
 	/**
 	 * [setValidThrough description]
 	 * @param String $date [description]
 	 */
-	final public function setValidThrough(String $date)
+	final public function setValidThrough(String $date): self
 	{
-		$this->_set('validThrough', static::formatDateTime($date, true, false));
+		return $this->_set('validThrough', static::formatDateTime($date, true, false));
 	}
 
 	/**
@@ -73,8 +73,8 @@ class MonetaryAmount extends StructuredValue
 	 * @param mixed $value Number, Text, Boolean, or StructuredValue
 	 * @todo Handle setting properties that can be of simple or complex objects
 	 */
-	final public function setValue($value)
+	final public function setValue($value): self
 	{
-		$this->_set('value', $value);
+		return $this->_set('value', $value);
 	}
 }

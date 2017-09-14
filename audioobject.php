@@ -24,8 +24,8 @@ namespace SuperUserDev\SchemaServer;
  */
 class AudioObject extends MediaObject
 {
-	final public function setTranscript(String $transcript)
+	final public function setTranscript(String $transcript): self
 	{
-		$this->_set('transcript', $transcript);
+		return $this->_set('transcript', $transcript);
 	}
 }

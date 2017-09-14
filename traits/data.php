@@ -19,6 +19,7 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \SuperUserDev\SchemaServer\{Thing};
 trait Data
 {
 	/**
@@ -32,12 +33,14 @@ trait Data
 
 	/**
 	 * [_set description]
-	 * @param String $prop  [description]
-	 * @param [type] $value [description]
+	 * @param  String $prop  [description]
+	 * @param  [type] $value [description]
+	 * @return Thing         [description]
 	 */
-	final protected function _set(String $prop, $value)
+	final protected function _set(String $prop, $value): self
 	{
 		$this->_data[$prop] = $value;
+		return $this;
 	}
 
 	/**

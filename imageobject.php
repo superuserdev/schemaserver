@@ -28,17 +28,17 @@ class ImageObject extends MediaObject
 	 * [setCaption description]
 	 * @param String $caption [description]
 	 */
-	final public function setCaption(String $caption)
+	final public function setCaption(String $caption): self
 	{
-		$this->_set('caption', $caption);
+		return $this->_set('caption', $caption);
 	}
 
 	/**
 	 * [setThumbnail description]
 	 * @param ImageObject $thumbnail [description]
 	 */
-	final public function setThumbnail(ImageObject $thumbnail)
+	final public function setThumbnail(ImageObject $thumbnail): self
 	{
-		$this->_set('thumbnail', $thumbnail);
+		return $this->_set('thumbnail', $thumbnail);
 	}
 }

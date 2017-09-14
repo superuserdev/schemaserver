@@ -25,33 +25,33 @@ namespace SuperUserDev\SchemaServer;
 
 class EntryPoint extends Intangible
 {
-	final public function setActionApplication(SoftwareApplication $application)
+	final public function setActionApplication(SoftwareApplication $application): self
 	{
-		$this->_set('actionApplication', $application);
+		return $this->_set('actionApplication', $application);
 	}
 
-	final public function setActionPlatform(String $platform)
+	final public function setActionPlatform(String $platform): self
 	{
-		$this->_set('actionPlatform', $platform);
+		return $this->_set('actionPlatform', $platform);
 	}
 
-	final public function setContentType(String $content_type)
+	final public function setContentType(String $content_type): self
 	{
-		$this->_set('contentType', $content_type);
+		return $this->_set('contentType', $content_type);
 	}
 
-	final public function setEncodingType(String $enoding_type)
+	final public function setEncodingType(String $enoding_type): self
 	{
 		$htis->_set('encodingType', $encoding_type);
 	}
 
-	final public function setHttpMethod(String $method)
+	final public function setHttpMethod(String $method): self
 	{
-		$this->_set('httpMethod', strtoupper($method));
+		return $this->_set('httpMethod', strtoupper($method));
 	}
 
-	final public function setUrlTemplate(String $template)
+	final public function setUrlTemplate(String $template): self
 	{
-		$this->_set('urlTemplate', $template);
+		return $this->_set('urlTemplate', $template);
 	}
 }

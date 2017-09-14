@@ -24,121 +24,121 @@ namespace SuperUserDev\SchemaServer;
  */
 class SoftwareApplication extends CreativeWork
 {
-	final public function setApplicationCategory(String $category)
+	final public function setApplicationCategory(String $category): self
 	{
-		$this->_set('applicationCategory', $category);
+		return $this->_set('applicationCategory', $category);
 	}
 
-	final public function setApplicationSubCategory(String $sub_category)
+	final public function setApplicationSubCategory(String $sub_category): self
 	{
-		$this->_set('applicationSubCategory', $sub_category);
+		return $this->_set('applicationSubCategory', $sub_category);
 	}
 
-	final public function setApplicationSuite(String $suite)
+	final public function setApplicationSuite(String $suite): self
 	{
-		$this->_set('applcationSuite', $suite);
+		return $this->_set('applcationSuite', $suite);
 	}
 
-	final public function setAvailableOnDevide(String $device)
+	final public function setAvailableOnDevide(String $device): self
 	{
-		$this->_set('availableOnDevice', $device);
+		return $this->_set('availableOnDevice', $device);
 	}
 
-	final public function setCountriesNotSupported(String $countries)
+	final public function setCountriesNotSupported(String $countries): self
 	{
-		$this->_set('countriesNotSupported', $countries);
+		return $this->_set('countriesNotSupported', $countries);
 	}
 
-	final public function setCountriesSupported(String $countries)
+	final public function setCountriesSupported(String $countries): self
 	{
-		$this->_set('countriesSupported', $countries);
+		return $this->_set('countriesSupported', $countries);
 	}
 
-	final public function setDownloadUrl(String $url)
+	final public function setDownloadUrl(String $url): self
 	{
 		if (static::isUrl($url)) {
-			$this->_set('downloadUrl', $url);
+			return $this->_set('downloadUrl', $url);
 		} else {
 			throw new \InvalidArgumentException("{$url} is not a valid URL");
 		}
 	}
 
-	final public function setFeatureList(String $feature)
+	final public function setFeatureList(String $feature): self
 	{
-		$this->_set('featureList', $features);
+		return $this->_set('featureList', $features);
 	}
 
-	final public function setFileSize(String $size)
+	final public function setFileSize(String $size): self
 	{
-		$this->_set('fileSize', $size);
+		return $this->_set('fileSize', $size);
 	}
 
-	final public function setInstallUrl($url)
+	final public function setInstallUrl($url): self
 	{
 		if (static::isUrl($url)) {
-			$this->_set('installUrl', $url);
+			return $this->_set('installUrl', $url);
 		} else {
 			throw new \InvalidArgumentException("{$url} is not a valid URL");
 		}
 	}
 
-	final public function setMemoryRequirements(String $requirements)
+	final public function setMemoryRequirements(String $requirements): self
 	{
-		$this->_set('memoryRequirements', $requirements);
+		return $this->_set('memoryRequirements', $requirements);
 	}
 
-	final public function setOperatingSystem(String $os)
+	final public function setOperatingSystem(String $os): self
 	{
-		$this->_set('operatingSystem', $os);
+		return $this->_set('operatingSystem', $os);
 	}
 
-	final public function setPermissions(String $permissions)
+	final public function setPermissions(String $permissions): self
 	{
-		$this->_set('permissions', $permissions);
+		return $this->_set('permissions', $permissions);
 	}
 
-	final public function setProcessorRequirements(String $requirements)
+	final public function setProcessorRequirements(String $requirements): self
 	{
-		$this->_set('processorRequirements', $requirements);
+		return $this->_set('processorRequirements', $requirements);
 	}
 
-	final public function setReleaseNotes(String $release_notes)
+	final public function setReleaseNotes(String $release_notes): self
 	{
-		$this->_set('releaseNotes', $release_notes);
+		return $this->_set('releaseNotes', $release_notes);
 	}
 
-	final public function setScreenshot(ImageObject $screenshot)
+	final public function setScreenshot(ImageObject $screenshot): self
 	{
-		$this->_set('screenshot', $screenshot);
+		return $this->_set('screenshot', $screenshot);
 	}
 
-	final public function setSoftwareAddOn(SoftwareApplication $add_on)
+	final public function setSoftwareAddOn(SoftwareApplication $add_on): self
 	{
-		$this->_set('softwareAddOn', $add_on);
+		return $this->_set('softwareAddOn', $add_on);
 	}
 
-	final public function setSoftwareHelp(CreativeWork $help)
+	final public function setSoftwareHelp(CreativeWork $help): self
 	{
-		$this->_set('softwareHelp', $help);
+		return $this->_set('softwareHelp', $help);
 	}
 
-	final public function setSoftwareRequirements(String $requirements)
+	final public function setSoftwareRequirements(String $requirements): self
 	{
-		$this->_set('softwareRequirements', $requirements);
+		return $this->_set('softwareRequirements', $requirements);
 	}
 
-	final public function setSoftwareVersion(String $version)
+	final public function setSoftwareVersion(String $version): self
 	{
-		$this->_set('softwareVersion', $version);
+		return $this->_set('softwareVersion', $version);
 	}
 
-	final public function setStorageRequirements(String $requirements)
+	final public function setStorageRequirements(String $requirements): self
 	{
-		$this->_set('storageRequirements', $requirements);
+		return $this->_set('storageRequirements', $requirements);
 	}
 
-	// final public function setSupportingData(DataFeed $data)
+	// final public function setSupportingData(DataFeed $data): self
 	// {
-	// 	$this->_set('supportingData', $data);
+	// 	return $this->_set('supportingData', $data);
 	// }
 }

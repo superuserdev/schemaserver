@@ -28,36 +28,36 @@ class Book extends CreativeWork
 	 * [setAbridged description]
 	 * @param Bool $is_abridged [description]
 	 */
-	final public function setAbridged(Bool $is_abridged)
+	final public function setAbridged(Bool $is_abridged): self
 	{
-		$this->_set('abridged', $is_abridged);
+		return $this->_set('abridged', $is_abridged);
 	}
 
 	/**
 	 * [setBookEdition description]
 	 * @param String $edition [description]
 	 */
-	final public function setBookEdition(String $edition)
+	final public function setBookEdition(String $edition): self
 	{
-		$this->_set('bookEdition', $edition);
+		return $this->_set('bookEdition', $edition);
 	}
 
 	/**
 	 * [setBookFormat description]
 	 * @param BookFormatType $format [description]
 	 */
-	final public function setBookFormat(BookFormatType $format)
+	final public function setBookFormat(BookFormatType $format): self
 	{
-		$this->_set('bookFormat', $format);
+		return $this->_set('bookFormat', $format);
 	}
 
 	/**
 	 * [setIllustrator description]
 	 * @param Person $illustrator [description]
 	 */
-	final public function setIllustrator(Person $illustrator)
+	final public function setIllustrator(Person $illustrator): self
 	{
-		$this->_set('illustrator', $illustrator);
+		return $this->_set('illustrator', $illustrator);
 	}
 
 	/**
@@ -65,17 +65,17 @@ class Book extends CreativeWork
 	 * @param String $isbn [description]
 	 * @todo Validate ISBN
 	 */
-	final public function setIsbn(String $isbn)
+	final public function setIsbn(String $isbn): self
 	{
-		$this->_set('isbn', $isbn);
+		return $this->_set('isbn', $isbn);
 	}
 
 	/**
 	 * [setNumberOfPages description]
 	 * @param Int $pages [description]
 	 */
-	final public function setNumberOfPages(Int $pages)
+	final public function setNumberOfPages(Int $pages): self
 	{
-		$this->_set('numberOfPages', $pages);
+		return $this->_set('numberOfPages', $pages);
 	}
 }

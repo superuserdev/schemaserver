@@ -55,7 +55,7 @@ Interfaces\Base, Interfaces\Database
 			}
 			unset($data['@type'], $data['@context']);
 			if (array_key_exists('@id', $data)) {
-				$this->_set('identifier', $data['@id']);
+				return $this->_set('identifier', $data['@id']);
 			}
 
 			foreach ($data as $key => $value) {
@@ -83,10 +83,10 @@ Interfaces\Base, Interfaces\Database
 	 * [setAdditionalType description]
 	 * @param String $url [description]
 	 */
-	final public function setAdditionalType(String $url)
+	final public function setAdditionalType(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('additionalType', $url);
+			return $this->_set('additionalType', $url);
 		}
 	}
 
@@ -94,61 +94,61 @@ Interfaces\Base, Interfaces\Database
 	 * [setAlternateName description]
 	 * @param String $name [description]
 	 */
-	final public function setAlternateName(String $name)
+	final public function setAlternateName(String $name): self
 	{
-		$this->_set('alternamteName', $name);
+		return $this->_set('alternamteName', $name);
 	}
 
 	/**
 	 * [setDescription description]
 	 * @param String $description [description]
 	 */
-	final public function setDescription(String $description)
+	final public function setDescription(String $description): self
 	{
-		$this->_set('description', $description);
+		return $this->_set('description', $description);
 	}
 
-	final public function setDisambiguatingDescription(String $description)
+	final public function setDisambiguatingDescription(String $description): self
 	{
-		$this->_set('disambiguatingDescription', $description);
+		return $this->_set('disambiguatingDescription', $description);
 	}
 
 	/**
 	 * [setImage description]
 	 * @param ImageObject $image [description]
 	 */
-	final public function setImage(ImageObject $image)
+	final public function setImage(ImageObject $image): self
 	{
-		$this->_set('image', $image);
+		return $this->_set('image', $image);
 	}
 
-	final public function setMainEntityOfPage(CreativeWork $entity)
+	final public function setMainEntityOfPage(CreativeWork $entity): self
 	{
-		$this->_set('mainEntityOfPage', $entity);
+		return $this->_set('mainEntityOfPage', $entity);
 	}
 
 	/**
 	 * [setName description]
 	 * @param String $name [description]
 	 */
-	final public function setName(String $name)
+	final public function setName(String $name): self
 	{
-		$this->_set('name', $name);
+		return $this->_set('name', $name);
 	}
 
-	final public function setPOtentialAction(Action $action)
+	final public function setPOtentialAction(Action $action): self
 	{
-		$this->_set('potentialAction', $action);
+		return $this->_set('potentialAction', $action);
 	}
 
 	/**
 	 * [setSameAs description]
 	 * @param String $url [description]
 	 */
-	final public function setSameAs(String $url)
+	final public function setSameAs(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('sameAs', $url);
+			return $this->_set('sameAs', $url);
 		} else {
 			throw new \InvalidArgumentException("'{$url}' is not a valid url");
 		}
@@ -158,20 +158,20 @@ Interfaces\Base, Interfaces\Database
 	 * [setUrl description]
 	 * @param String $url [description]
 	 */
-	final public function setUrl(String $url)
+	final public function setUrl(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('url', $url);
+			return $this->_set('url', $url);
 		} else {
 			throw new \InvalidArgumentException("'{$url}' is not a valid url");
 		}
 	}
 
-	final public function setIdentifier(String $id)
+	final public function setIdentifier(String $id): self
 	{
-		$this->_set('identifier', $id);
+		return $this->_set('identifier', $id);
 		$scheme = array_key_exists('HTTPS', $_SERVER) and $_SERVER['HTTPS'] ? 'http' : 'https';
 		$domain = $_SERVER['HTTP_HOST'] ?? 'localhost';
-		$this->_set('@id', "{$scheme}://{$domain}/{$this::getType()}/{$id}");
+		return $this->_set('@id', "{$scheme}://{$domain}/{$this::getType()}/{$id}");
 	}
 }

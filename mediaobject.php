@@ -28,26 +28,26 @@ class MediaObject extends CreativeWork
 	 * [setWidth description]
 	 * @param Int $width [description]
 	 */
-	final public function setWidth(Int $width)
+	final public function setWidth(Int $width): self
 	{
-		$this->_set('width', $width);
+		return $this->_set('width', $width);
 	}
 
 	/**
 	 * [setHeight description]
 	 * @param Int $height [description]
 	 */
-	final public function setHeight(Int $height)
+	final public function setHeight(Int $height): self
 	{
-		$this->_set('height', $height);
+		return $this->_set('height', $height);
 	}
 
 	/**
 	 * [setUploadDate description]
 	 * @param DateTime $date [description]
 	 */
-	final public function setUploadDate(\DateTime $date)
+	final public function setUploadDate(\DateTime $date): self
 	{
-		$this->_set('uploadDate', $date);
+		return $this->_set('uploadDate', $date);
 	}
 }
