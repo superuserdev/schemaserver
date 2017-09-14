@@ -44,26 +44,12 @@ class Event extends Thing implements Interfaces\DateTime
 
 	final public function setLocation(Thing $location): self
 	{
-		if ($location instanceof PostalAddress or $location instanceof Place) {
-			return $this->_set('location', $location);
-		} else {
-			throw new InvalidArgumentException(sprintf(
-				'Location must be an instance of PostalAddress or Place. Instance of %s given.',
-				$location::getType()
-			));
-		}
+		return $this->_set('location', $location, PostalAddress::class, Place::class);
 	}
 
 	final public function setOrganizer(Thing $organizer): self
 	{
-		if ($organizer instanceof Person or $organizer instanceof Organization) {
-			return $this->_set('organizer', $organizer);
-		} else {
-			throw new InvalidArgumentException(sprintf(
-				'Organizer must be an instance of Person or Organization. Instance of %s given.',
-				$organizer::getType()
-			));
-		}
+		return $this->_set('organizer', $organizer, Person::class, Organization::class);
 	}
 
 	final public function setStartDate(
