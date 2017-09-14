@@ -69,7 +69,7 @@ DROP TABLE IF EXISTS "Thing" CASCADE;
 CREATE TABLE "Thing" (
     "identifier" "text" NOT NULL,
     "name" "text",
-    "image" "jsonb",
+    "image" jsonb[],
     "description" "text",
     "url" "text",
     "sameAs" "text",
