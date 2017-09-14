@@ -24,20 +24,20 @@ namespace SuperUserDev\SchemaServer;
  */
 class Property extends Intangible
 {
-	final public function setCategory(Thing $category)
+	final public function setCategory(Thing $category): self
 	{
-		$this->_set('category', $category);
+		return $this->_set('category', $category);
 	}
 
-	final public function setInverseOf(Property $prop)
+	final public function setInverseOf(Property $prop): self
 	{
-		$this->_set('inverseOf', $prop);
+		return $this->_set('inverseOf', $prop);
 	}
 
-	final public function setSupersededBy(Thing $thing)
+	final public function setSupersededBy(Thing $thing): self
 	{
 		if ($thing instanceof Enumeration or $thing instanceof Property) {
-			$this->_set('supersededBy', $thing);
+			return $this->_set('supersededBy', $thing);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Expected an instance of Enumeration or Property. Instance of %s given',

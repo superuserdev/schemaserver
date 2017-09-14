@@ -19,28 +19,30 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \SuperUserDev\SchemaServer\{Thing};
+
 trait ContactInfo
 {
 	/**
 	 * [setEmail description]
 	 * @param String $email [description]
 	 */
-	final public function setEmail(String $email)
+	final public function setEmail(String $email): Thing
 	{
 		if (static::_isEmail($email)) {
-			$this->_set('email', $email);
+			return $this->_set('email', $email);
 		} else {
 			throw new \InvalidArgumentException("'{$email}' is not a valid email");
 		}
 	}
 
-	final public function setTelephone(String $tel)
+	final public function setTelephone(String $tel): Thing
 	{
-		$this->_set('telephone', $tel);
+		return $this->_set('telephone', $tel);
 	}
 
-	final public function setFaxNumber(String $fax)
+	final public function setFaxNumber(String $fax): Thing
 	{
-		$this->_set('faxNumber', $fax);
+		return $this->_set('faxNumber', $fax);
 	}
 }

@@ -23,15 +23,15 @@ namespace SuperUserDev\SchemaServer;
  */
 class Service extends Intangible
 {
-	final public function setAggregateRating(AggregateRating $rating)
+	final public function setAggregateRating(AggregateRating $rating): self
 	{
-		$this->_set('aggregateRating', $rating);
+		return $this->_set('aggregateRating', $rating);
 	}
 
-	final public function setAreaServed(Thing $area)
+	final public function setAreaServed(Thing $area): self
 	{
 		if ($area instanceof Place or $area instanceof GeoShape) {
-			$this->_set('areaServed', $area);
+			return $this->_set('areaServed', $area);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'AreaServed must be an instance of Place or GeoShape. Instance of %s given',
@@ -42,18 +42,18 @@ class Service extends Intangible
 
 	// final public function setAvailableChannel(ServiceChannel $channel)
 	// {
-	// 	$this->_set('availableChannel', $channel);
+	// 	return $this->_set('availableChannel', $channel);
 	// }
 
-	final public function setAward(String $award)
+	final public function setAward(String $award): self
 	{
-		$this->_set('award', $award);
+		return $this->_set('award', $award);
 	}
 
-	final public function setBrand(Thing $brand)
+	final public function setBrand(Thing $brand): self
 	{
 		if ($brand instanceof Brand or $brand instanceof Organization) {
-			$this->_set('brand', $brand);
+			return $this->_set('brand', $brand);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Brand must be an instance of Brand or Organization. Instance of %s given',
@@ -62,10 +62,10 @@ class Service extends Intangible
 		}
 	}
 
-	final public function setBroker(Thing $broker)
+	final public function setBroker(Thing $broker): self
 	{
 		if ($broker instanceof Person or $broker instanceof Organization) {
-			$this->_set('broker', $broker);
+			return $this->_set('broker', $broker);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Broker must be an instance of Person or Organization. Instance of %s given',
@@ -74,28 +74,26 @@ class Service extends Intangible
 		}
 	}
 
-	final public function setCategory(Thing $category)
+	final public function setCategory(Thing $category): self
 	{
-		$this->_set('category', $category);
+		return $this->_set('category', $category);
 	}
 
-	final public function setHasOfferCatelog(OfferCatelog $catelog)
+	final public function setHasOfferCatelog(OfferCatelog $catelog): self
 	{
-		$this->_set('hasOfferCatelog', $catelog);
+		return $this->_set('hasOfferCatelog', $catelog);
 	}
 
-	final public function setHoursAvailable(OpeningHoursSpecification $hours)
+	final public function setHoursAvailable(OpeningHoursSpecification $hours): self
 	{
-		$this->_set('hoursAvailable', $hours);
+		return $this->_set('hoursAvailable', $hours);
 	}
 
-
-
-	final public function setIsRelatedTo(Thing $related_to)
+	final public function setIsRelatedTo(Thing $related_to): self
 	{
 		if ($related_to instanceof Product or $related_to instanceof Service)
 		{
-			$this->_set('isRelatedTo', $related_to);
+			return $this->_set('isRelatedTo', $related_to);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Related to must be an instance of Product or Service. Instance of %s given',
@@ -104,11 +102,11 @@ class Service extends Intangible
 		}
 	}
 
-	final public function setIsSimilarTo(Thing $similar_to)
+	final public function setIsSimilarTo(Thing $similar_to): self
 	{
 		if ($similar_to instanceof Product or $similar_to instanceof Service)
 		{
-			$this->_set('isSimilarTo', $similar_to);
+			return $this->_set('isSimilarTo', $similar_to);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Similar to must be an instance of Product or Service. Instance of %s given',
@@ -117,20 +115,20 @@ class Service extends Intangible
 		}
 	}
 
-	final public function setLogo(ImageObject $logo)
+	final public function setLogo(ImageObject $logo): self
 	{
-		$this->_set('logo', $logo);
+		return $this->_set('logo', $logo);
 	}
 
 	// final public function setOffers(Offer $offer)
 	// {
-	// 	$this->_set('offer', $offer);
+	// 	return $this->_set('offer', $offer);
 	// }
 
-	final public function setProvider(Thing $provider)
+	final public function setProvider(Thing $provider): self
 	{
 		if ($provider instanceof Person or $provider instanceof Organization) {
-			$this->_set('provider', $provider);
+			return $this->_set('provider', $provider);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Provider must be an instance of Person or Organization. Instance of %s given',
@@ -139,23 +137,23 @@ class Service extends Intangible
 		}
 	}
 
-	final public function setProviderMobility(String $mobility)
+	final public function setProviderMobility(String $mobility): self
 	{
-		$this->_set('providerMobility', $mobility);
+		return $this->_set('providerMobility', $mobility);
 	}
 
-	final public function setReview(Review $review)
+	final public function setReview(Review $review): self
 	{
-		$this->_set('review', $review);
+		return $this->_set('review', $review);
 	}
 
-	final public function setServiceOutput(Thing $output)
+	final public function setServiceOutput(Thing $output): self
 	{
-		$this->_set('serviceOutput', $output);
+		return $this->_set('serviceOutput', $output);
 	}
 
-	final public function setServiceType(String $type)
+	final public function setServiceType(String $type): self
 	{
-		$this->_set('serviceType', $type);
+		return $this->_set('serviceType', $type);
 	}
 }

@@ -25,16 +25,16 @@ class ProductModel extends Product
 {
 	final public function setIsVariantOf(ProductModel $model)
 	{
-		$this->_set('isVariantOf', $model);
+		return $this->_set('isVariantOf', $model);
 	}
 
 	final public function setPredecessorOf(ProductModel $model)
 	{
-		$this->_set('predecessorOf', $model);
+		return $this->_set('predecessorOf', $model);
 	}
 
 	final public function setSuccessorOf(ProductModel $model)
 	{
-		$this->_set('successorOf', $model);
+		return $this->_set('successorOf', $model);
 	}
 }

@@ -24,10 +24,10 @@ namespace SuperUserDev\SchemaServer;
  */
 class VideoObject extends MediaObject
 {
-	final public function setActor(Thing $actor)
+	final public function setActor(Thing $actor): self
 	{
 		if ($actor instanceof Person or $actor instanceof Organization) {
-			$this->_set('actor', $actor);
+			return $this->_set('actor', $actor);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Author must be an instance of Person or Organization. Instance of %s given',
@@ -36,33 +36,33 @@ class VideoObject extends MediaObject
 		}
 	}
 
-	final public function setCaption(String $caption)
+	final public function setCaption(String $caption): self
 	{
-		$this->_set('caption', $caption);
+		return $this->_set('caption', $caption);
 	}
 
-	final public function setDirector(Person $director)
+	final public function setDirector(Person $director): self
 	{
-		$this->_set('director', $director);
+		return $this->_set('director', $director);
 	}
 
-	final public function setThumbnail(ImageObject $thumbnail)
+	final public function setThumbnail(ImageObject $thumbnail): self
 	{
-		$this->_set('thumbnail', $thumbnail);
+		return $this->_set('thumbnail', $thumbnail);
 	}
 
-	final public function setTranscript(String $transcript)
+	final public function setTranscript(String $transcript): self
 	{
-		$this->_set('transcript', $transcript);
+		return $this->_set('transcript', $transcript);
 	}
 
-	final public function setVideoFrameSize(String $size)
+	final public function setVideoFrameSize(String $size): self
 	{
-		$this->_set('videoFrameSize', $size);
+		return $this->_set('videoFrameSize', $size);
 	}
 
-	final public function setVideoQuality(String $quality)
+	final public function setVideoQuality(String $quality): self
 	{
-		$this->_set('videoQuality', $quality);
+		return $this->_set('videoQuality', $quality);
 	}
 }

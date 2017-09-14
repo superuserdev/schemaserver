@@ -26,28 +26,28 @@ class OpeningHoursSpecification extends StructuredValue
 {
 	use Traits\DateTime;
 
-	final public function setCloses(String $time)
+	final public function setCloses(String $time): self
 	{
-		$this->_set('closes', static::formatDate($time, false, true));
+		return $this->_set('closes', static::formatDate($time, false, true));
 	}
 
-	final public function setDayOfWeek(DayOfWeek $day)
+	final public function setDayOfWeek(DayOfWeek $day): self
 	{
-		$this->_set('dayOfWeek', $day);
+		return $this->_set('dayOfWeek', $day);
 	}
 
-	final public function setOpens(String $time)
+	final public function setOpens(String $time): self
 	{
-		$this->_set('opens', static::formatDate($time, false, true));
+		return $this->_set('opens', static::formatDate($time, false, true));
 	}
 
-	final public function setValidFrom(String $date)
+	final public function setValidFrom(String $date): self
 	{
-		$this->_set('validFrom', static::formatDate($date, true, false));
+		return $this->_set('validFrom', static::formatDate($date, true, false));
 	}
 
-	final public function setValidThrough(String $date)
+	final public function setValidThrough(String $date): self
 	{
-		$this->_set('validThrough', static::formatDate($date, true, false));
+		return $this->_set('validThrough', static::formatDate($date, true, false));
 	}
 }

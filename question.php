@@ -25,28 +25,28 @@ namespace SuperUserDev\SchemaServer;
 
 class Question extends CreativeWork
 {
-	final public function setAcceptedAnswer(Answer $answer)
+	final public function setAcceptedAnswer(Answer $answer): self
 	{
-		$this->_set('acceptedAnswer', $answer);
+		return $this->_set('acceptedAnswer', $answer);
 	}
 
-	final public function setAnswerCount(Int $count)
+	final public function setAnswerCount(Int $count): self
 	{
-		$this->_set('answerCount', $count);
+		return $this->_set('answerCount', $count);
 	}
 
-	final public function setDownvoteCount(Int $downvotes)
+	final public function setDownvoteCount(Int $downvotes): self
 	{
-		$this->_set('downvotecount', $downvotes);
+		return $this->_set('downvotecount', $downvotes);
 	}
 
-	final public function setSuggestedAnswer(Answer $answer)
+	final public function setSuggestedAnswer(Answer $answer): self
 	{
-		$this->_set('suggestedAnswer', $answer);
+		return $this->_set('suggestedAnswer', $answer);
 	}
 
-	final public function setUpvoteCount(Int $upvotes)
+	final public function setUpvoteCount(Int $upvotes): self
 	{
-		$this->_set('upvoteCount', $upvotes);
+		return $this->_set('upvoteCount', $upvotes);
 	}
 }

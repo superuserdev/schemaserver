@@ -29,45 +29,45 @@ class GeoCoordinates extends StructuredValue
 	 * [setAddressCountry description]
 	 * @param [type] $country [description]
 	 */
-	final public function setAddressCountry(Country $country)
+	final public function setAddressCountry(Country $country): self
 	{
-		$this->_set('addressCountry', $country);
+		return $this->_set('addressCountry', $country);
 	}
 
 	/**
 	 * [setElevation description]
 	 * @param Float $elevation [description]
 	 */
-	final public function setElevation(Float $elevation)
+	final public function setElevation(Float $elevation): self
 	{
-		$this->_set('elevation', $elevation);
+		return $this->_set('elevation', $elevation);
 	}
 
 	/**
 	 * [setLatitude description]
 	 * @param Float $latitude [description]
 	 */
-	final public function setLatitude(Float $latitude)
+	final public function setLatitude(Float $latitude): self
 	{
-		$this->_set('latitude', $latitude);
+		return $this->_set('latitude', $latitude);
 	}
 
 	/**
 	 * [setLongitude description]
 	 * @param Float $longitude [description]
 	 */
-	final public function setLongitude(Float $longitude)
+	final public function setLongitude(Float $longitude): self
 	{
-		$this->_set('longitude', $longitude);
+		return $this->_set('longitude', $longitude);
 	}
 
 	/**
 	 * [setPostalCode description]
 	 * @param Int $postal_code [description]
 	 */
-	final public function setPostalCode(Int $postal_code)
+	final public function setPostalCode(Int $postal_code): self
 	{
-		$this->_set('postalCode', $postal_code);
+		return $this->_set('postalCode', $postal_code);
 	}
 
 	/**
@@ -84,7 +84,7 @@ class GeoCoordinates extends StructuredValue
 				$uri .= ",{$this->elevation}";
 			}
 
-			$this->_set('url', $uri);
+			return $this->_set('url', $uri);
 		}
 	}
 }

@@ -30,75 +30,75 @@ class CreativeWork extends Thing
 	 * [setAbout description]
 	 * @param Thing $about [description]
 	 */
-	final public function setAbout(Thing $about)
+	final public function setAbout(Thing $about): self
 	{
-		$this->_set('about', $about);
+		return $this->_set('about', $about);
 	}
 
-	final public function setAccessMode(String $access_mode)
+	final public function setAccessMode(String $access_mode): self
 	{
-		$this->_set('accessMode', $access_mode);
+		return $this->_set('accessMode', $access_mode);
 	}
 
-	final public function setAccessModeSufficient(String $modes)
+	final public function setAccessModeSufficient(String $modes): self
 	{
-		$this->_set('accessModeSufficient', $modes);
+		return $this->_set('accessModeSufficient', $modes);
 	}
 
-	final public function setAccessibilityAPI(String $resource)
+	final public function setAccessibilityAPI(String $resource): self
 	{
-		$this->_set('accessibilityAPI', $resource);
+		return $this->_set('accessibilityAPI', $resource);
 	}
 
-	final public function setAccessibilityControl(String $control)
+	final public function setAccessibilityControl(String $control): self
 	{
-		$this->_set('accessibilitiyControl', $control);
+		return $this->_set('accessibilitiyControl', $control);
 	}
 
-	final public function setAccessibilityFeature(String $feature)
+	final public function setAccessibilityFeature(String $feature): self
 	{
-		$this->_set('accessibilityFeature', $feature);
+		return $this->_set('accessibilityFeature', $feature);
 	}
 
-	final public function setAccessibilityHazard(String $hazard)
+	final public function setAccessibilityHazard(String $hazard): self
 	{
-		$this->_set('accessibilityHazard', $hazard);
+		return $this->_set('accessibilityHazard', $hazard);
 	}
 
-	final public function setAccessibilitySummary(String $summary)
+	final public function setAccessibilitySummary(String $summary): self
 	{
-		$this->_set('accessibilitySummary', $summary);
+		return $this->_set('accessibilitySummary', $summary);
 	}
 
-	final public function setAccountablePerson(Peron $person)
+	final public function setAccountablePerson(Peron $person): self
 	{
-		$this->_set('accountablePerson', $person);
+		return $this->_set('accountablePerson', $person);
 	}
 
-	final public function setAggregateRating(AggregateRating $rating)
+	final public function setAggregateRating(AggregateRating $rating): self
 	{
-		$this->_set('aggregateRating', $rating);
+		return $this->_set('aggregateRating', $rating);
 	}
 
-	final public function setAlternativeHeadline(String $alt_headline)
+	final public function setAlternativeHeadline(String $alt_headline): self
 	{
-		$this->_set('alternativeHeadline', $alt_headline);
+		return $this->_set('alternativeHeadline', $alt_headline);
 	}
 
-	final public function setAudience(Audience $audience)
+	final public function setAudience(Audience $audience): self
 	{
-		$this->_set('audience', $audience);
+		return $this->_set('audience', $audience);
 	}
 
-	final public function setAudio(AudioObject $audio)
+	final public function setAudio(AudioObject $audio): self
 	{
-		$this->_set('audio', $audio);
+		return $this->_set('audio', $audio);
 	}
 
-	final public function setAuthor(Thing $author)
+	final public function setAuthor(Thing $author): self
 	{
 		if ($author instanceof Person or $author instanceof Organization) {
-			$this->_set('author', $author);
+			return $this->_set('author', $author);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Author must be an instance of Person or Organization. Instance of %s given',
@@ -107,45 +107,45 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setAward(String $award)
+	final public function setAward(String $award): self
 	{
-		$this->_set('award', $award);
+		return $this->_set('award', $award);
 	}
 
-	final public function setCharacter(Person $character)
+	final public function setCharacter(Person $character): self
 	{
-		$this->_set('character', $character);
+		return $this->_set('character', $character);
 	}
 
-	final public function setCitation(CreativeWork $citation)
+	final public function setCitation(CreativeWork $citation): self
 	{
-		$this->_set('citation', $citation);
+		return $this->_set('citation', $citation);
 	}
 
-	final public function setComment(Comment $comment)
+	final public function setComment(Comment $comment): self
 	{
-		$this->_set('comment', $comment);
+		return $this->_set('comment', $comment);
 	}
 
-	final public function setCommentCount(Int $comment_count)
+	final public function setCommentCount(Int $comment_count): self
 	{
-		$this->_set('commentCount', $comment_count);
+		return $this->_set('commentCount', $comment_count);
 	}
 
-	final public function setContentLocation(Place $location)
+	final public function setContentLocation(Place $location): self
 	{
-		$this->_set('contentLocation', $location);
+		return $this->_set('contentLocation', $location);
 	}
 
-	final public function setContentRating(String $rating)
+	final public function setContentRating(String $rating): self
 	{
-		$this->_set('contentRating', $rating);
+		return $this->_set('contentRating', $rating);
 	}
 
-	final public function setContributor(Thing $contributor)
+	final public function setContributor(Thing $contributor): self
 	{
 		if ($contributor instanceof Person or $contributor instanceof Organization) {
-			$this->_set('contributor', $contributor);
+			return $this->_set('contributor', $contributor);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Contributor must be an instance of Person or Organization. Instance of %s given',
@@ -154,10 +154,10 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setCopyRightHolder(Thing $copyright_holder)
+	final public function setCopyRightHolder(Thing $copyright_holder): self
 	{
 		if ($copyright_holder instanceof Person or $copyright_holder instanceof Organization) {
-			$this->_set('copyrightHolder', $copyright_holder);
+			return $this->_set('copyrightHolder', $copyright_holder);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Copyright Holder must be an instance of Person or Organization. Instance of %s given',
@@ -166,15 +166,15 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setCopyrightYear(Int $year)
+	final public function setCopyrightYear(Int $year): self
 	{
-		$this->_set('copyrightYear', $year);
+		return $this->_set('copyrightYear', $year);
 	}
 
-	final public function setCreator(Thing $creator)
+	final public function setCreator(Thing $creator): self
 	{
 		if ($creator instanceof Person or $creator instanceof Organization) {
-			$this->_set('creator', $creator);
+			return $this->_set('creator', $creator);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Creator Holder must be an instance of Person or Organization. Instance of %s given',
@@ -183,22 +183,22 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setDateCreated(String $created, Bool $use_time = true)
+	final public function setDateCreated(String $created, Bool $use_time = true): self
 	{
-		$this->_set('dateCreated', static::formatDate($created, true, $use_time));
+		return $this->_set('dateCreated', static::formatDate($created, true, $use_time));
 	}
 
-	final public function setDatModified(String $created)
+	final public function setDatModified(String $created): self
 	{
-		$this->_set('dateModified', static::formatDate($created, true, false));
+		return $this->_set('dateModified', static::formatDate($created, true, false));
 	}
 
-	final public function setDatePublished(String $created, Bool $use_time = true)
+	final public function setDatePublished(String $created, Bool $use_time = true): self
 	{
-		$this->_set('datePublished', static::formatDate($created, true, $use_time));
+		return $this->_set('datePublished', static::formatDate($created, true, $use_time));
 	}
 
-	final public function setDiscussionUrl(String $discussion_url)
+	final public function setDiscussionUrl(String $discussion_url): self
 	{
 		if (static::_isURL($discussion_url)) {
 			$this->_se('discussionUrl', $discussionUrl);
@@ -207,45 +207,45 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setEditor(Person $editor)
+	final public function setEditor(Person $editor): self
 	{
-		$this->_set('editor', $editor);
+		return $this->_set('editor', $editor);
 	}
 
-	final public function setEducationalAlignment(AlignmentObject $alignment)
+	final public function setEducationalAlignment(AlignmentObject $alignment): self
 	{
-		$this->_set('educationalAlignment', $alignment);
+		return $this->_set('educationalAlignment', $alignment);
 	}
 
-	final public function setEducationalUse(String $use)
+	final public function setEducationalUse(String $use): self
 	{
-		$this->_set('educationalUse', $use);
+		return $this->_set('educationalUse', $use);
 	}
 
-	final public function setEncoding(MediaObject $media)
+	final public function setEncoding(MediaObject $media): self
 	{
-		$this->_set('encoding', $media);
+		return $this->_set('encoding', $media);
 	}
 
-	final public function setExampleOfWork(CreativeWork $example)
+	final public function setExampleOfWork(CreativeWork $example): self
 	{
-		$this->_set('exampleOfWork', $example);
+		return $this->_set('exampleOfWork', $example);
 	}
 
-	final public function setExpires(String $expires)
+	final public function setExpires(String $expires): self
 	{
-		$this->_set('expires', static::formatDate($expires, true, false));
+		return $this->_set('expires', static::formatDate($expires, true, false));
 	}
 
-	final public function setFileFormat(String $format)
+	final public function setFileFormat(String $format): self
 	{
-		$this->_set('fileFormat', $format);
+		return $this->_set('fileFormat', $format);
 	}
 
-	final public function setFunder(Thing $funder)
+	final public function setFunder(Thing $funder): self
 	{
 		if ($funder instanceof Person or $funder instanceof Organization) {
-			$this->_set('funder', $funder);
+			return $this->_set('funder', $funder);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Funder must be an instance of Person or Organization. Instance of %s given',
@@ -254,45 +254,45 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setGenre(String $genre)
+	final public function setGenre(String $genre): self
 	{
-		$this->_set('genre', $genre);
+		return $this->_set('genre', $genre);
 	}
 
-	final public function setHasPart(CreativeWork $part)
+	final public function setHasPart(CreativeWork $part): self
 	{
-		$this->_set('hasPart', $part);
+		return $this->_set('hasPart', $part);
 	}
 
-	final public function setHeadline(String $headline)
+	final public function setHeadline(String $headline): self
 	{
-		$this->_set('headline', $headline);
+		return $this->_set('headline', $headline);
 	}
 
-	final public function setLanguage(Language $lang)
+	final public function setLanguage(Language $lang): self
 	{
-		$this->_set('language', $lang);
+		return $this->_set('language', $lang);
 	}
 
-	// final public function setInteractionStatistic(InteractionCounter $service)
+	// final public function setInteractionStatistic(InteractionCounter $service): self
 	// {
-	// 	$this->_set('interactionStatistic', $service);
+	// 	return $this->_set('interactionStatistic', $service);
 	// }
 
-	final public function setInteractivityType(String $type)
+	final public function setInteractivityType(String $type): self
 	{
-		$this->_set('interactivityType', $type);
+		return $this->_set('interactivityType', $type);
 	}
 
-	final public function setIsAccessibleForFree(Bool $is_free)
+	final public function setIsAccessibleForFree(Bool $is_free): self
 	{
-		$this->_set('isAccessibleForFree', $is_free);
+		return $this->_set('isAccessibleForFree', $is_free);
 	}
 
-	final public function setIsBasedOn(Thing $based_on)
+	final public function setIsBasedOn(Thing $based_on): self
 	{
 		if ($based_on instanceof CreativeWork or $based_on instanceof Product) {
-			$this->_set('isBasedOn', $based_on);
+			return $this->_set('isBasedOn', $based_on);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'isBasedOn must be an instance of CreativeWork or Product. %s given',
@@ -301,65 +301,65 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setIsFamilyFriendly(Bool $family_friendly)
+	final public function setIsFamilyFriendly(Bool $family_friendly): self
 	{
-		$this->_set('isFamilyFriendly', $family_friendly);
+		return $this->_set('isFamilyFriendly', $family_friendly);
 	}
 
-	final public function setIsPartOf(CreativeWork $work)
+	final public function setIsPartOf(CreativeWork $work): self
 	{
-		$this->_set('isPartOf', $work);
+		return $this->_set('isPartOf', $work);
 	}
 
-	final public function setKeywords(String $keywords)
+	final public function setKeywords(String $keywords): self
 	{
-		$this->_set('keywords', $keywords);
+		return $this->_set('keywords', $keywords);
 	}
 
-	final public function setLearningResourceType(String $type)
+	final public function setLearningResourceType(String $type): self
 	{
-		$this->_set('learningResourceType', $type);
+		return $this->_set('learningResourceType', $type);
 	}
 
-	final public function setLicense(CreativeWork $license)
+	final public function setLicense(CreativeWork $license): self
 	{
-		$this->_set('license', $license);
+		return $this->_set('license', $license);
 	}
 
-	final public function setLocationCreated(Place $location)
+	final public function setLocationCreated(Place $location): self
 	{
-		$this->_set('locationCreated', $location);
+		return $this->_set('locationCreated', $location);
 	}
 
-	final public function setMainEntity(Thing $entity)
+	final public function setMainEntity(Thing $entity): self
 	{
-		$this->_set('mainEntity', $entity);
+		return $this->_set('mainEntity', $entity);
 	}
 
-	final public function setMaterial(Product $material)
+	final public function setMaterial(Product $material): self
 	{
-		$this->_set('material', $material);
+		return $this->_set('material', $material);
 	}
 
-	final public function setMentions(Thing $mentioned)
+	final public function setMentions(Thing $mentioned): self
 	{
-		$this->_set('mentions', $mentioned);
+		return $this->_set('mentions', $mentioned);
 	}
 
-	final public function setOffers(Offer $offered)
+	final public function setOffers(Offer $offered): self
 	{
-		$this->_set('offers', $offered);
+		return $this->_set('offers', $offered);
 	}
 
-	final public function setPosition(Int $position)
+	final public function setPosition(Int $position): self
 	{
-		$this->_set('position', $position);
+		return $this->_set('position', $position);
 	}
 
-	final public function setProducer(Thing $producer)
+	final public function setProducer(Thing $producer): self
 	{
 		if ($producer instanceof Person or $producer instanceof Organization) {
-			$this->_set('producer', $producer);
+			return $this->_set('producer', $producer);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Producer must be an instance of Person or Organization. Instance of %s given',
@@ -368,10 +368,10 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setProvider(Thing $provider)
+	final public function setProvider(Thing $provider): self
 	{
 		if ($provider instanceof Person or $provider instanceof Organization) {
-			$this->_set('provider', $provider);
+			return $this->_set('provider', $provider);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Provider must be an instance of Person or Organization. Instance of %s given',
@@ -380,15 +380,15 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setPublication(PublicationEvent $publication)
+	final public function setPublication(PublicationEvent $publication): self
 	{
-		$this->_set('publication', $publication);
+		return $this->_set('publication', $publication);
 	}
 
-	final public function setPublisher(Thing $publisher)
+	final public function setPublisher(Thing $publisher): self
 	{
 		if ($publisher instanceof Person or $publisher instanceof Organization) {
-			$this->_set('publisher', $publisher);
+			return $this->_set('publisher', $publisher);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Publisher must be an instance of Person or Organization. Instance of %s given',
@@ -397,45 +397,45 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setPublishingPrinciples(CreativeWork $principles)
+	final public function setPublishingPrinciples(CreativeWork $principles): self
 	{
-		$this->_set('publisingPrinciples', $principles);
+		return $this->_set('publisingPrinciples', $principles);
 	}
 
-	final public function setRecordedAt(Event $event)
+	final public function setRecordedAt(Event $event): self
 	{
-		$this->_set('recordedAt', $event);
+		return $this->_set('recordedAt', $event);
 	}
 
-	final public function setReleasedEvent(PublicationEvent $released)
+	final public function setReleasedEvent(PublicationEvent $released): self
 	{
 		$this->_seet('releasedEvent', $released);
 	}
 
-	final public function setReview(Review $review)
+	final public function setReview(Review $review): self
 	{
-		$this->_set('review', $review);
+		return $this->_set('review', $review);
 	}
 
-	final public function setSchemaVersion(String $version)
+	final public function setSchemaVersion(String $version): self
 	{
-		$this->_set('schemaVersion', $version);
+		return $this->_set('schemaVersion', $version);
 	}
 
-	final public function setSourceOrganization(Organization $source)
+	final public function setSourceOrganization(Organization $source): self
 	{
-		$this->_set('sourceOrganization', $source);
+		return $this->_set('sourceOrganization', $source);
 	}
 
-	final public function setSpatialCoverage(Place $covers)
+	final public function setSpatialCoverage(Place $covers): self
 	{
-		$this->_set('spatialCoverage', $covers);
+		return $this->_set('spatialCoverage', $covers);
 	}
 
-	final public function setSponsor(Thing $sponsor)
+	final public function setSponsor(Thing $sponsor): self
 	{
 		if ($sponsor instanceof Person or $sponsor instanceof Organization) {
-			$this->_set('sponsor', $sponsor);
+			return $this->_set('sponsor', $sponsor);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Sponsor must be an instance of Person or Organization. Instance of %s given',
@@ -444,34 +444,34 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setTemporalCoverage(String $coverage)
+	final public function setTemporalCoverage(String $coverage): self
 	{
-		$this->_set('temporalCoverage', $coverage);
+		return $this->_set('temporalCoverage', $coverage);
 	}
 
-	final public function setText(String $text)
+	final public function setText(String $text): self
 	{
-		$this->_set('text', $text);
+		return $this->_set('text', $text);
 	}
 
-	final public function setThumbnailUrl(String $url)
+	final public function setThumbnailUrl(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('thumbnailUrl', $url);
+			return $this->_set('thumbnailUrl', $url);
 		} else {
 			throw new \InvalidArgumentException("{$url} is not a valid URL");
 		}
 	}
 
-	final public function setTimeRequired(Duration $duration)
+	final public function setTimeRequired(Duration $duration): self
 	{
-		$this->_set('timeRequired', $duration);
+		return $this->_set('timeRequired', $duration);
 	}
 
-	final public function setTranslator(Thing $translator)
+	final public function setTranslator(Thing $translator): self
 	{
 		if ($translator instanceof Person or $translator instanceof Organization) {
-			$this->_set('translator', $translator);
+			return $this->_set('translator', $translator);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Translator must be an instance of Person or Organization. Instance of %s given',
@@ -480,23 +480,23 @@ class CreativeWork extends Thing
 		}
 	}
 
-	final public function setTypicalAgeRange(String $age_range)
+	final public function setTypicalAgeRange(String $age_range): self
 	{
-		$this->_set('typicalAgeRange', $age_range);
+		return $this->_set('typicalAgeRange', $age_range);
 	}
 
-	final public function setVersion(String $version)
+	final public function setVersion(String $version): self
 	{
-		$this->_set('version', $version);
+		return $this->_set('version', $version);
 	}
 
-	final public function setVideo(VideoObject $video)
+	final public function setVideo(VideoObject $video): self
 	{
-		$this->_set('video', $video);
+		return $this->_set('video', $video);
 	}
 
-	final public function setWorkExample(CreativeWork $example)
+	final public function setWorkExample(CreativeWork $example): self
 	{
-		$this->_set('workExample', $example);
+		return $this->_set('workExample', $example);
 	}
 }

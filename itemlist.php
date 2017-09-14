@@ -24,17 +24,17 @@ namespace SuperUserDev\SchemaServer;
 
 class ItemList extends Intangible
 {
-	final public function setItemListElement(Thing $item)
+	final public function setItemListElement(Thing $item): self
 	{
-		$this->_set('itemListElement', $item);
+		return $this->_set('itemListElement', $item);
 	}
 
-	final public function setItemListOrder(ItemListOrderType $order_type)
+	final public function setItemListOrder(ItemListOrderType $order_type): self
 	{
-		$this->_set('itemListOrder', $order_type);
+		return $this->_set('itemListOrder', $order_type);
 	}
 
-	final public function setNumberOfItems(Int $count)
+	final public function setNumberOfItems(Int $count): self
 	{
-		$this->_set('numberOfItems', $count);
+		return $this->_set('numberOfItems', $count);
 	}}

@@ -25,31 +25,31 @@ class Product extends Thing
 {
 	use Traits\DateTime;
 
-	final public function setAdditionalProperty(PropertyValue $prop)
+	final public function setAdditionalProperty(PropertyValue $prop): self
 	{
-		$this->_set('additionalProperty', $prop);
+		return $this->_set('additionalProperty', $prop);
 	}
 
-	final public function setAggregateRating(ArrgregateRating $rating)
+	final public function setAggregateRating(ArrgregateRating $rating): self
 	{
-		$this->_set('addregateRating', $rating);
+		return $this->_set('addregateRating', $rating);
 	}
 
-	final public function setAudience(Audience $audience)
+	final public function setAudience(Audience $audience): self
 	{
-		$this->_set('audience', $audience);
+		return $this->_set('audience', $audience);
 	}
 
-	final public function setAward(String $award)
+	final public function setAward(String $award): self
 	{
-		$this->_set('award', $award);
+		return $this->_set('award', $award);
 	}
 
-	final public function setBrand(Thing $brand)
+	final public function setBrand(Thing $brand): self
 	{
 		if ($brand instanceof Organization or $brand instanceof Brand)
 		{
-			$this->_set('brand', $brand);
+			return $this->_set('brand', $brand);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Brand must be an instance of Brand or Organization. Instance of %s given',
@@ -58,20 +58,20 @@ class Product extends Thing
 		}
 	}
 
-	final public function setCategory(Thing $category)
+	final public function setCategory(Thing $category): self
 	{
-		$this->_set('category', $category);
+		return $this->_set('category', $category);
 	}
 
-	final public function setColor(String $color)
+	final public function setColor(String $color): self
 	{
-		$this->_set('color', $color);
+		return $this->_set('color', $color);
 	}
 
-	final public function setDepth(Thing $depth)
+	final public function setDepth(Thing $depth): self
 	{
 		if ($depth instanceof Distance or $depth instanceof QuantitativeValue) {
-			$this->_set('depth', $depth);
+			return $this->_set('depth', $depth);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Depth must be an instance of Distance or QuantitativeValue. Instance of %s given',
@@ -80,30 +80,30 @@ class Product extends Thing
 		}
 	}
 
-	final public function setGtin12(String $code)
+	final public function setGtin12(String $code): self
 	{
-		$this->_set('gtin12', $code);
+		return $this->_set('gtin12', $code);
 	}
 
-	final public function setGtin13(String $code)
+	final public function setGtin13(String $code): self
 	{
-		$this->_set('gtin13', $code);
+		return $this->_set('gtin13', $code);
 	}
 
-	final public function setGtin14(String $code)
+	final public function setGtin14(String $code): self
 	{
-		$this->_set('gtin14', $code);
+		return $this->_set('gtin14', $code);
 	}
 
-	final public function setGtin8(String $code)
+	final public function setGtin8(String $code): self
 	{
-		$this->_set('gtin8', $code);
+		return $this->_set('gtin8', $code);
 	}
 
-	final public function setHeight(Thing $height)
+	final public function setHeight(Thing $height): self
 	{
 		if ($height instanceof Distance or $height instanceof QuantitativeValue) {
-			$this->_set('height', $height);
+			return $this->_set('height', $height);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Height must be an instance of Distance or QuantitativeValue. Instance of %s given',
@@ -112,21 +112,21 @@ class Product extends Thing
 		}
 	}
 
-	final public function setIsAccessoryOrSparePartFor(Product $product)
+	final public function setIsAccessoryOrSparePartFor(Product $product): self
 	{
-		$this->_set('isAccessoryOrSparePartFor', $product);
+		return $this->_set('isAccessoryOrSparePartFor', $product);
 	}
 
-	final public function setIsConsumableFor(Product $product)
+	final public function setIsConsumableFor(Product $product): self
 	{
-		$this->_set('isConsumableFor', $product);
+		return $this->_set('isConsumableFor', $product);
 	}
 
-	final public function setIsRelatedTo(Thing $related_to)
+	final public function setIsRelatedTo(Thing $related_to): self
 	{
 		if ($related_to instanceof Product or $related_to instanceof Service)
 		{
-			$this->_set('isRelatedTo', $related_to);
+			return $this->_set('isRelatedTo', $related_to);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Related to must be an instance of Product or Service. Instance of %s given',
@@ -135,11 +135,11 @@ class Product extends Thing
 		}
 	}
 
-	final public function setIsSimilarTo(Thing $similar_to)
+	final public function setIsSimilarTo(Thing $similar_to): self
 	{
 		if ($similar_to instanceof Product or $similar_to instanceof Service)
 		{
-			$this->_set('isSimilarTo', $similar_to);
+			return $this->_set('isSimilarTo', $similar_to);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Similar to must be an instance of Product or Service. Instance of %s given',
@@ -148,80 +148,80 @@ class Product extends Thing
 		}
 	}
 
-	final public function setItemCondition(OfferItemCondition $condition)
+	final public function setItemCondition(OfferItemCondition $condition): self
 	{
-		$this->_set('itemCondition', $condition);
+		return $this->_set('itemCondition', $condition);
 	}
 
-	final public function setLogo(ImageObject $logo)
+	final public function setLogo(ImageObject $logo): self
 	{
-		$this->_set('logo', $logo);
+		return $this->_set('logo', $logo);
 	}
 
-	final public function setManufacturer(Organization $manufacturer)
+	final public function setManufacturer(Organization $manufacturer): self
 	{
-		$this->_set('manufacturer', $manufacturer);
+		return $this->_set('manufacturer', $manufacturer);
 	}
 
-	final public function setMaterial(Product $material)
+	final public function setMaterial(Product $material): self
 	{
-		$this->_set('material', $material);
+		return $this->_set('material', $material);
 	}
 
-	final public function setModel(ProductModel $model)
+	final public function setModel(ProductModel $model): self
 	{
-		$this->_set('pruductModel', $model);
+		return $this->_set('pruductModel', $model);
 	}
 
-	final public function setMpn(String $mpn)
+	final public function setMpn(String $mpn): self
 	{
-		$this->_set('mpn', $mpn);
+		return $this->_set('mpn', $mpn);
 	}
 
 	// final public function setOffers(Offer $offer)
 	// {
-	// 	$this->_set('offer', $offer);
+	// 	return $this->_set('offer', $offer);
 	// }
 
-	final public function setProductID(String $id)
+	final public function setProductID(String $id): self
 	{
-		$this->_set('productID', $id);
+		return $this->_set('productID', $id);
 	}
 
-	final public function setProductionDate(String $date)
+	final public function setProductionDate(String $date): self
 	{
-		$this->_set('productionDate', static::formatDate($date, true, false));
+		return $this->_set('productionDate', static::formatDate($date, true, false));
 	}
 
-	final public function setPurchaseDate(String $date)
+	final public function setPurchaseDate(String $date): self
 	{
-		$this->_set('purchaseDate', static::formatDate($date, true, false));
+		return $this->_set('purchaseDate', static::formatDate($date, true, false));
 	}
 
-	final public function setReleaseDate(String $date)
+	final public function setReleaseDate(String $date): self
 	{
-		$this->_set('releaseDate', static::formatDate($date, true, false));
+		return $this->_set('releaseDate', static::formatDate($date, true, false));
 	}
 
-	final public function setReview(Review $review)
+	final public function setReview(Review $review): self
 	{
-		$this->_set('review', $review);
+		return $this->_set('review', $review);
 	}
 
-	final public function setSku(String $sku)
+	final public function setSku(String $sku): self
 	{
-		$this->_set('sku', $sku);
+		return $this->_set('sku', $sku);
 	}
 
-	final public function setWeight(QuantitativeValue $weight)
+	final public function setWeight(QuantitativeValue $weight): self
 	{
-		$this->_set('weight', $weight);
+		return $this->_set('weight', $weight);
 	}
 
-	final public function setWidth(Thing $width)
+	final public function setWidth(Thing $width): self
 	{
 		if ($width instanceof Distance or $width instanceof QuantitativeValue) {
-			$this->_set('width', $width);
+			return $this->_set('width', $width);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Width must be an instance of Distance or QuantitativeValue. Instance of %s given',

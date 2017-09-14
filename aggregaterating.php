@@ -24,18 +24,18 @@ namespace SuperUserDev\SchemaServer;
  */
 class AggregateRating extends Rating
 {
-	final public function setItemReviewed(Thing $item)
+	final public function setItemReviewed(Thing $item): self
 	{
-		$this->_set('itemReviewed', $item);
+		return $this->_set('itemReviewed', $item);
 	}
 
-	final public function setRatingCount(Int $count)
+	final public function setRatingCount(Int $count): self
 	{
-		$this->_set('ratingCount', $count);
+		return $this->_set('ratingCount', $count);
 	}
 
-	final public function setReviewCount(Int $count)
+	final public function setReviewCount(Int $count): self
 	{
-		$this->_set('reviewCount', $count);
+		return $this->_set('reviewCount', $count);
 	}
 }

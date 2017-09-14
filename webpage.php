@@ -23,39 +23,39 @@ namespace SuperUserDev\SchemaServer;
  */
 class WebPage extends CreativeWork
 {
-	final public function setBreadcrumb(BreadcrumbList $breadcrumbs)
+	final public function setBreadcrumb(BreadcrumbList $breadcrumbs): self
 	{
-		$this->_set('breadcrumb', $breadcrumbs);
+		return $this->_set('breadcrumb', $breadcrumbs);
 	}
 
-	final public function setLastReviewed(String $date)
+	final public function setLastReviewed(String $date): self
 	{
-		$this->_set('lastReviewed', static::formatDate($date, true, false));
+		return $this->_set('lastReviewed', static::formatDate($date, true, false));
 	}
 
-	final public function setMainContentOfPage(WebPageElement $element)
+	final public function setMainContentOfPage(WebPageElement $element): self
 	{
-		$this->_set('mainContentOfPage', $element);
+		return $this->_set('mainContentOfPage', $element);
 	}
 
-	final public function setPrimaryImageOfPage(ImageObject $image)
+	final public function setPrimaryImageOfPage(ImageObject $image): self
 	{
-		$this->_set('primaryImageOfPage', $image);
+		return $this->_set('primaryImageOfPage', $image);
 	}
 
-	final public function setRelatedLink(String $url)
+	final public function setRelatedLink(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('relatedLink', $url);
+			return $this->_set('relatedLink', $url);
 		} else {
 			throw new \InvalidArgumentException("{$url} is not a valid URL");
 		}
 	}
 
-	final public function setReviewedBy(Thing $reviewer)
+	final public function setReviewedBy(Thing $reviewer): self
 	{
 		if ($reviewer instanceof Person or $reviewer instanceof Organization) {
-			$this->_set('reviewedBy', $reviewer);
+			return $this->_set('reviewedBy', $reviewer);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Reviewer must be an instance of Person or Organization. Instance of %s given',
@@ -64,17 +64,17 @@ class WebPage extends CreativeWork
 		}
 	}
 
-	final public function setSignificantLink(String $url)
+	final public function setSignificantLink(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('significantLink', $url);
+			return $this->_set('significantLink', $url);
 		} else {
 			throw new \InvalidArgumentException("{$url} is not a valid URL");
 		}
 	}
 
-	final public function setSpecialty(Specialty $specialty)
+	final public function setSpecialty(Specialty $specialty): self
 	{
-		$this->_set('specialty', $specialty);
+		return $this->_set('specialty', $specialty);
 	}
 }

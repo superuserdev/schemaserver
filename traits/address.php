@@ -19,14 +19,16 @@
  */
 namespace SuperUserDev\SchemaServer\Traits;
 
+use \SuperUserDev\SchemaServer\{Thing, PostalAddress};
+
 trait Address
 {
 	/**
 	 * [setAddress description]
 	 * @param PostalAddress $address [description]
 	 */
-	final public function setAddress(\SuperUserDev\SchemaServer\PostalAddress $address)
+	final public function setAddress(PostalAddress $address): Thing
 	{
-		$this->_set('address', $address);
+		return $this->_set('address', $address);
 	}
 }

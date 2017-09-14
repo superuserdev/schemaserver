@@ -23,13 +23,13 @@ namespace SuperUserDev\SchemaServer;
  */
 class Audience extends Intangible
 {
-	final public function setAudienceType(String $type)
+	final public function setAudienceType(String $type): self
 	{
-		$this->_set('audienceType', $type);
+		return $this->_set('audienceType', $type);
 	}
 
-	final public function setGeographicArea(AdministrativeArea $area)
+	final public function setGeographicArea(AdministrativeArea $area): self
 	{
-		$this->_set('geographicArea', $area);
+		return $this->_set('geographicArea', $area);
 	}
 }

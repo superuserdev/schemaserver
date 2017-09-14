@@ -25,8 +25,8 @@ class ContactPoint extends StructuredValue
 {
 	use Traits\ContactInfo;
 
-	final public function setContactType(String $type)
+	final public function setContactType(String $type): self
 	{
-		$this->_set('contactType', $type);
+		return $this->_set('contactType', $type);
 	}
 }

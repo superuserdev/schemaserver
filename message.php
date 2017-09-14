@@ -23,14 +23,14 @@ namespace SuperUserDev\SchemaServer;
  */
 class Message extends CreativeWork
 {
-	final public function setBccRecipient(Thing $recipient)
+	final public function setBccRecipient(Thing $recipient): self
 	{
 		if (
 			$recipient instanceof ContactPoint
 			or $recipient instanceof Organization
 			or $recipient instanceof Person
 		) {
-			$this->_set('bccRecipient', $recipient);
+			return $this->_set('bccRecipient', $recipient);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Recipient must be an instance of ContactPoint, Organization, or Person. Instance of %s given',
@@ -39,14 +39,14 @@ class Message extends CreativeWork
 		}
 	}
 
-	final public function setCcRecipient(Thing $recipient)
+	final public function setCcRecipient(Thing $recipient): self
 	{
 		if (
 			$recipient instanceof ContactPoint
 			or $recipient instanceof Organization
 			or $recipient instanceof Person
 		) {
-			$this->_set('ccRecipient', $recipient);
+			return $this->_set('ccRecipient', $recipient);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Recipient must be an instance of ContactPoint, Organization, or Person. Instance of %s given',
@@ -55,27 +55,27 @@ class Message extends CreativeWork
 		}
 	}
 
-	final public function setDateRead(String $datetime)
+	final public function setDateRead(String $datetime): self
 	{
-		$this->_set('dateRead', static::formatDate($date, true, true));
+		return $this->_set('dateRead', static::formatDate($date, true, true));
 	}
 
-	final public function setDateReceived(String $datetime)
+	final public function setDateReceived(String $datetime): self
 	{
-		$this->_set('dateReceived', static::formatDate($date, true, true));
+		return $this->_set('dateReceived', static::formatDate($date, true, true));
 	}
 
-	final public function setDateSent(String $datetime)
+	final public function setDateSent(String $datetime): self
 	{
-		$this->_set('dateSent', static::formatDate($date, true, true));
+		return $this->_set('dateSent', static::formatDate($date, true, true));
 	}
 
-	final public function setMessageAttachment(CreativeWork $attachement)
+	final public function setMessageAttachment(CreativeWork $attachement): self
 	{
-		$this->_set('messageAtachment', $attachment);
+		return $this->_set('messageAtachment', $attachment);
 	}
 
-	final public function setRecipient(Thing $recipient)
+	final public function setRecipient(Thing $recipient): self
 	{
 		if (
 			$recipient instanceof Audience
@@ -83,7 +83,7 @@ class Message extends CreativeWork
 			or $recipient instanceof Organization
 			or $recipient instanceof Person
 		) {
-			$this->_set('recipient', $recipient);
+			return $this->_set('recipient', $recipient);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Recipient must be an instance of Audience, ContactPoint, Organization, or Person. Instance of %s given',
@@ -92,14 +92,14 @@ class Message extends CreativeWork
 		}
 	}
 
-	final public function setSender(Thing $sender)
+	final public function setSender(Thing $sender): self
 	{
 		if (
 			$sender instanceof Audience
 			or $sender instanceof Organization
 			or $sender instanceof Person
 		) {
-			$this->_set('sender', $sender);
+			return $this->_set('sender', $sender);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Recipient must be an instance of ContactPoint, Organization, or Person. Instance of %s given',
@@ -108,7 +108,7 @@ class Message extends CreativeWork
 		}
 	}
 
-	final public function setToRecipient(Thing $recipient)
+	final public function setToRecipient(Thing $recipient): self
 	{
 		if (
 			$recipient instanceof Audience
@@ -116,7 +116,7 @@ class Message extends CreativeWork
 			or $recipient instanceof Organization
 			or $recipient instanceof Person
 		) {
-			$this->_set('toRecipient', $recipient);
+			return $this->_set('toRecipient', $recipient);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Recipient must be an instance of Audience, ContactPoint, Organization, or Person. Instance of %s given',

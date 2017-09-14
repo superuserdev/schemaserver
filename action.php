@@ -22,45 +22,68 @@ namespace SuperUserDev\SchemaServer;
 /**
  * @see https://schema.org/Action
  */
+use \InvalidArgumentException;
 class Action extends Thing
 {
 	use Traits\DateTime;
 
-	final public function setActionStatus(ActionStatusType $status)
+	/**
+	 * [setActionStatus description]
+	 * @param ActionStatusType $status [description]
+	 */
+	final public function setActionStatus(ActionStatusType $status): self
 	{
-		$this->_set('actionStatus', $status);
+		return $this->_set('actionStatus', $status);
 	}
 
-	final public function setAgent(Thing $agent)
+	/**
+	 * [setAgent description]
+	 * @param Thing $agent [description]
+	 */
+	final public function setAgent(Thing $agent): self
 	{
 		if ($agent instanceof Person or $agent instanceof Organization) {
-			$this->_set('agent', $agent);
+			return $this->_set('agent', $agent);
 		} else {
-			throw new \InvalidArgumentException(sprintf(
+			throw new InvalidArgumentException(sprintf(
 				'Author must be an instance of Person or Organization. Instance of %s given',
 				$agent::getType()
 			));
 		}
 	}
 
+	/**
+	 * [setEndDate description]
+	 * @param String  $date     [description]
+	 * @param boolean $use_date [description]
+	 * @param boolean $use_time [description]
+	 */
 	final public function setEndDate(
 		String $date,
 		Bool   $use_date = true,
 		Bool   $use_time = true
-	)
+	): self
 	{
-		$this->_set('endDate', static::formatDateTime($date, $use_date, $use_time));
+		return $this->_set('endDate', static::formatDateTime($date, $use_date, $use_time));
 	}
 
-	final public function setError(Thing $error)
+	/**
+	 * [setError description]
+	 * @param Thing $error [description]
+	 */
+	final public function setError(Thing $error): self
 	{
-		$this->_set('error', $error);
+		return $this->_set('error', $error);
 	}
 
-	final public function setLocation(Thing $location)
+	/**
+	 * [setLocation description]
+	 * @param Thing $location [description]
+	 */
+	final public function setLocation(Thing $location): self
 	{
 		if ($location instanceof PostalAddress or $location instanceof Place) {
-			$this->_set('location', $location);
+			return $this->_set('location', $location);
 		} else {
 			throw new InvalidArgumentException(sprintf(
 				'Location must be an instance of PostalAddress or Place. Instance of %s given.',
@@ -69,15 +92,23 @@ class Action extends Thing
 		}
 	}
 
-	final public function setObject(Thing $object)
+	/**
+	 * [setObject description]
+	 * @param Thing $object [description]
+	 */
+	final public function setObject(Thing $object): self
 	{
-		$this->_set('object', $object);
+		return $this->_set('object', $object);
 	}
 
+	/**
+	 * [setParticipant description]
+	 * @param Thing $participant [description]
+	 */
 	final public function setParticipant(Thing $participant)
 	{
 		if ($participant instanceof Person or $participant instanceof Organization) {
-			$this->_set('participant', $participant);
+			return $this->_set('participant', $participant);
 		} else {
 			throw new InvalidArgumentException(sprintf(
 				'Participant must be an instance of Person or Organization. Instance of %s given.',
@@ -86,22 +117,36 @@ class Action extends Thing
 		}
 	}
 
+	/**
+	 * [setResult description]
+	 * @param Thing $result [description]
+	 */
 	final public function setResult(Thing $result)
 	{
-		$this->_set('result', $result);
+		return $this->_set('result', $result);
 	}
 
+	/**
+	 * [setStartDate description]
+	 * @param String  $date     [description]
+	 * @param boolean $use_date [description]
+	 * @param boolean $use_time [description]
+	 */
 	final public function setStartDate(
 		String $date,
 		Bool   $use_date = true,
 		Bool   $use_time = true
 	)
 	{
-		$this->_set('startDate', static::formatDateTime($date, $use_date, $use_time));
+		return $this->_set('startDate', static::formatDateTime($date, $use_date, $use_time));
 	}
 
+	/**
+	 * [setTarget description]
+	 * @param EntryPoint $target [description]
+	 */
 	final public function setTarget(EntryPoint $target)
 	{
-		$this->_set('target', $target);
+		return $this->_set('target', $target);
 	}
 }

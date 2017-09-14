@@ -28,24 +28,24 @@ class Event extends Thing implements Interfaces\DateTime
 {
 	use Traits\DateTime;
 
-	final public function setAbout(Thing $thing)
+	final public function setAbout(Thing $thing): self
 	{
-		$this->_set('about', $thing);
+		return $this->_set('about', $thing);
 	}
 
 	final public function setEndDate(
 		String $date,
 		Bool   $use_date = true,
 		Bool   $use_time = true
-	)
+	): self
 	{
-		$this->_set('endDate', static::formatDateTime($date, $use_date, $use_time));
+		return $this->_set('endDate', static::formatDateTime($date, $use_date, $use_time));
 	}
 
-	final public function setLocation(Thing $location)
+	final public function setLocation(Thing $location): self
 	{
 		if ($location instanceof PostalAddress or $location instanceof Place) {
-			$this->_set('location', $location);
+			return $this->_set('location', $location);
 		} else {
 			throw new InvalidArgumentException(sprintf(
 				'Location must be an instance of PostalAddress or Place. Instance of %s given.',
@@ -54,10 +54,10 @@ class Event extends Thing implements Interfaces\DateTime
 		}
 	}
 
-	final public function setOrganizer(Thing $organizer)
+	final public function setOrganizer(Thing $organizer): self
 	{
 		if ($organizer instanceof Person or $organizer instanceof Organization) {
-			$this->_set('organizer', $organizer);
+			return $this->_set('organizer', $organizer);
 		} else {
 			throw new InvalidArgumentException(sprintf(
 				'Organizer must be an instance of Person or Organization. Instance of %s given.',
@@ -70,8 +70,8 @@ class Event extends Thing implements Interfaces\DateTime
 		String $date,
 		Bool   $use_date = true,
 		Bool   $use_time = true
-	)
+	): self
 	{
-		$this->_set('startDate', static::formatDateTime($date, $use_date, $use_time));
+		return $this->_set('startDate', static::formatDateTime($date, $use_date, $use_time));
 	}
 }

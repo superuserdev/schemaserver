@@ -24,10 +24,10 @@ namespace SuperUserDev\SchemaServer;
  */
 class Enumeration extends Intangible
 {
-	final public function setSupersededBy(Thing $thing)
+	final public function setSupersededBy(Thing $thing): self
 	{
 		if ($thing instanceof Enumeration or $thing instanceof Property) {
-			$this->_set('supersededBy', $thing);
+			return $this->_set('supersededBy', $thing);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Expected an instance of Enumeration or Property. Instance of %s given',

@@ -32,46 +32,46 @@ class Person extends Thing
 	 * [setAdditionalName description]
 	 * @param String $name [description]
 	 */
-	final public function setAdditionalName(String $name)
+	final public function setAdditionalName(String $name): self
 	{
-		$this->_set('additionalName', $name);
+		return $this->_set('additionalName', $name);
 	}
 
 	/**
 	 * [setBirthDate description]
 	 * @param String $bday [description]
 	 */
-	final public function setBirthDate(String $bday)
+	final public function setBirthDate(String $bday): self
 	{
-		$this->_set('birthDate', static::formatDateTime($bday, true, false));
+		return $this->_set('birthDate', static::formatDateTime($bday, true, false));
 	}
 
 	/**
 	 * [setFamilyName description]
 	 * @param String $name [description]
 	 */
-	final public function setFamilyName(String $name)
+	final public function setFamilyName(String $name): self
 	{
-		$this->_set('familyName', $name);
+		return $this->_set('familyName', $name);
 	}
 
 	/**
 	 * [setGivenName description]
 	 * @param String $name [description]
 	 */
-	final public function setGivenName(String $name)
+	final public function setGivenName(String $name): self
 	{
-		$this->_set('givenName', $name);
+		return $this->_set('givenName', $name);
 	}
 
 	/**
 	 * [setHomeLocation description]
 	 * @param Thing $loc [description]
 	 */
-	final public function setHomeLocation(Thing $loc)
+	final public function setHomeLocation(Thing $loc): self
 	{
 		if ($loc instanceof ContactPoint or $loc instanceof Place) {
-			$this->_set('homeLocation', $loc);
+			return $this->_set('homeLocation', $loc);
 		} else {
 			throw new \InvalidArgumentException(sprintf('Location must be an instance of ContactPoint or Place. Instance of %s given', $loc::getType()));
 		}
@@ -81,37 +81,37 @@ class Person extends Thing
 	 * [setHonorificPrefix description]
 	 * @param String $prefix [description]
 	 */
-	final public function setHonorificPrefix(String $prefix)
+	final public function setHonorificPrefix(String $prefix): self
 	{
-		$this->_set('honorificPrefix', $prefix);
+		return $this->_set('honorificPrefix', $prefix);
 	}
 
 	/**
 	 * [setHonorificSuffix description]
 	 * @param String $suffix [description]
 	 */
-	final public function setHonorificSuffix(String $suffix)
+	final public function setHonorificSuffix(String $suffix): self
 	{
-		$this->_set('honorificPrefix', $suffix);
+		return $this->_set('honorificPrefix', $suffix);
 	}
 
 	/**
 	 * [setJobTitle description]
 	 * @param String $job_title [description]
 	 */
-	final public function setJobTitle(String $job_title)
+	final public function setJobTitle(String $job_title): self
 	{
-		$this->_set('jobTitle', $job_title);
+		return $this->_set('jobTitle', $job_title);
 	}
 
 	/**
 	 * [setHomeLocation description]
 	 * @param Thing $loc [description]
 	 */
-	final public function setWorkLocation(Thing $loc)
+	final public function setWorkLocation(Thing $loc): self
 	{
 		if ($loc instanceof ContactPoint or $loc instanceof Place) {
-			$this->_set('workLocation', $loc);
+			return $this->_set('workLocation', $loc);
 		} else {
 			throw new \InvalidArgumentException(sprintf('Location must be an instance of ContactPoint or Place. Instance of %s given', $loc::getType()));
 		}
@@ -121,8 +121,8 @@ class Person extends Thing
 	 * [setWorksFor description]
 	 * @param Organization $org [description]
 	 */
-	final public function setWorksFor(Organization $org)
+	final public function setWorksFor(Organization $org): self
 	{
-		$this->_set('worksFor', $org);
+		return $this->_set('worksFor', $org);
 	}
 }

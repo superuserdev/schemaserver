@@ -23,18 +23,18 @@ namespace SuperUserDev\SchemaServer;
  */
 class Brand extends Intangible
 {
-	final public function setAggregateRating(AggregateRating $rating)
+	final public function setAggregateRating(AggregateRating $rating): self
 	{
-		$this->_set('addregateRating', $rating);
+		return $this->_set('addregateRating', $rating);
 	}
 
-	final public function setLogo(ImageObject $logo)
+	final public function setLogo(ImageObject $logo): self
 	{
-		$this->_set('logo', $logo);
+		return $this->_set('logo', $logo);
 	}
 
-	final public function setReview(Review $review)
+	final public function setReview(Review $review): self
 	{
-		$this->_set('review', $review);
+		return $this->_set('review', $review);
 	}
 }

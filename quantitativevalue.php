@@ -27,45 +27,45 @@ class QuantitativeValue extends StructuredValue
 	 * [setAdditionalProperty description]
 	 * @param PropertyValue $prop [description]
 	 */
-	final public function setAdditionalProperty(PropertyValue $prop)
+	final public function setAdditionalProperty(PropertyValue $prop): self
 	{
-		$this->_set('additionalProperty', $prop);
+		return $this->_set('additionalProperty', $prop);
 	}
 
 	/**
 	 * [setMaxValue description]
 	 * @param Float $value [description]
 	 */
-	final public function setMaxValue(Float $value)
+	final public function setMaxValue(Float $value): self
 	{
-		$this->_set('maxValue', $value);
+		return $this->_set('maxValue', $value);
 	}
 
 	/**
 	 * [setMinValue description]
 	 * @param Float $value [description]
 	 */
-	final public function setMinValue(Float $value)
+	final public function setMinValue(Float $value): self
 	{
-		$this->_set('minValue', $value);
+		return $this->_set('minValue', $value);
 	}
 
 	/**
 	 * [setUnitCode description]
 	 * @param String $code [description]
 	 */
-	final public function setUnitCode(String $code)
+	final public function setUnitCode(String $code): self
 	{
-		$this->_set('unitCode', $code);
+		return $this->_set('unitCode', $code);
 	}
 
 	/**
 	 * [setUnitText description]
 	 * @param String $text [description]
 	 */
-	final public function setUnitText(String $text)
+	final public function setUnitText(String $text): self
 	{
-		$this->_set('unitText', $text);
+		return $this->_set('unitText', $text);
 	}
 
 	/**
@@ -73,22 +73,22 @@ class QuantitativeValue extends StructuredValue
 	 * @param mixed $value Number, Text, Boolean, or StructuredValue
 	 * @todo Handle setting properties that can be of simple or complex objects
 	 */
-	final public function setValue($value)
+	final public function setValue($value): self
 	{
-		$this->_set('value', $value);
+		return $this->_set('value', $value);
 	}
 
 	/**
 	 * [setValueReference description]
 	 * @param Thing $reference [description]
 	 */
-	final public function setValueReference(Thing $reference)
+	final public function setValueReference(Thing $reference): self
 	{
 		if (
 			$reference instanceof Enumeration
 			or $reference instanceof StructuredValue
 		) {
-			$this->_set('valueReference', $reference);
+			return $this->_set('valueReference', $reference);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Reference must me an instance of Enumeration or StructuredValue. Instance of %s given',

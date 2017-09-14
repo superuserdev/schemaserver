@@ -25,30 +25,30 @@ namespace SuperUserDev\SchemaServer;
 
 class AlignmentObject extends Intangible
 {
-	final public function setAlignmantType(String $type)
+	final public function setAlignmantType(String $type): self
 	{
-		$this->_set('alignmentType', $type);
+		return $this->_set('alignmentType', $type);
 	}
 
-	final public function setEducationalFramework(String $framework)
+	final public function setEducationalFramework(String $framework): self
 	{
-		$this->_set('educatonalFramework', $framework);
+		return $this->_set('educatonalFramework', $framework);
 	}
 
-	final public function setTargetDescription(String $description)
+	final public function setTargetDescription(String $description): self
 	{
-		$this->_set('targetDescription', $description);
+		return $this->_set('targetDescription', $description);
 	}
 
-	final public function setTargetName(String $name)
+	final public function setTargetName(String $name): self
 	{
-		$this->_set('targetName', $name);
+		return $this->_set('targetName', $name);
 	}
 
-	final public function setTargetUrl(String $url)
+	final public function setTargetUrl(String $url): self
 	{
 		if (static::_isURL($url)) {
-			$this->_set('targetUrl', $url);
+			return $this->_set('targetUrl', $url);
 		} else {
 			throw new \InvalidArgumentException("{$url} is not a valid URL");
 		}

@@ -29,80 +29,80 @@ class PriceSpecification extends StructuredValue
 	 * [setEligibleQuantity description]
 	 * @param QuantitativeValue $quantity [description]
 	 */
-	final public function setEligibleQuantity(QuantitativeValue $quantity)
+	final public function setEligibleQuantity(QuantitativeValue $quantity): self
 	{
-		$this->_set('eligibleQuantity', $quantity);
+		return $this->_set('eligibleQuantity', $quantity);
 	}
 
 	/**
 	 * [setEligibleTransactionVolume description]
 	 * @param PriceSpecification $volume [description]
 	 */
-	final public function setEligibleTransactionVolume(PriceSpecification $volume)
+	final public function setEligibleTransactionVolume(PriceSpecification $volume): self
 	{
-		$this->_set('eligibleTransactionVolume', $volume);
+		return $this->_set('eligibleTransactionVolume', $volume);
 	}
 
 	/**
 	 * [setMaxPrice description]
 	 * @param Float $price [description]
 	 */
-	final public function setMaxPrice(Float $price)
+	final public function setMaxPrice(Float $price): self
 	{
-		$this->_set('maxPrice', $price);
+		return $this->_set('maxPrice', $price);
 	}
 
 	/**
 	 * [setMinPrice description]
 	 * @param Float $price [description]
 	 */
-	final public function setMinPrice(Float $price)
+	final public function setMinPrice(Float $price): self
 	{
-		$this->_set('minPrice', $price);
+		return $this->_set('minPrice', $price);
 	}
 
 	/**
 	 * [setPrice description]
 	 * @param Float $price [description]
 	 */
-	final public function setPrice(Float $price)
+	final public function setPrice(Float $price): self
 	{
-		$this->_set('price', $price);
+		return $this->_set('price', $price);
 	}
 
 	/**
 	 * [setPRiceCurrency description]
 	 * @param String $currency [description]
 	 */
-	final public function setPriceCurrency(String $currency)
+	final public function setPriceCurrency(String $currency): self
 	{
-		$this->_set('priceCurrency', $currency);
+		return $this->_set('priceCurrency', $currency);
 	}
 
 	/**
 	 * [setValidFrom description]
 	 * @param String $date [description]
 	 */
-	final public function setValidFrom(String $date)
+	final public function setValidFrom(String $date): self
 	{
-		$this->_set('validFrom', static::formatDateTime($date, true, false));
+		return $this->_set('validFrom', static::formatDateTime($date, true, false));
 	}
 
 	/**
 	 * [setValidThrough description]
 	 * @param String $date [description]
 	 */
-	final public function setValidThrough(String $date)
+	final public function setValidThrough(String $date): self
 	{
-		$this->_set('validThrough', static::formatDateTime($date, true, false));
+		return $this->_set('validThrough', static::formatDateTime($date, true, false));
 	}
 
 	/**
 	 * [setValueAddedTaxIncluded description]
 	 * @param Bool $included [description]
 	 */
-	final public function setValueAddedTaxIncluded(Bool $included)
+	final public function setValueAddedTaxIncluded(Bool $included): self
 	{
-		$this->_set('valueAddedTaxIncluded', $included);
+		return $this->_set('valueAddedTaxIncluded', $included);
 	}
 }

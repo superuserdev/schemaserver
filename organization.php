@@ -30,8 +30,8 @@ class Organization extends Thing
 	 * [setLogo description]
 	 * @param ImageObject $logo [description]
 	 */
-	final public function setLogo(ImageObject $logo)
+	final public function setLogo(ImageObject $logo): self
 	{
-		$this->_set('logo', $logo);
+		return $this->_set('logo', $logo);
 	}
 }

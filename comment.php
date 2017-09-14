@@ -25,18 +25,18 @@ namespace SuperUserDev\SchemaServer;
 
 class Comment extends CreativeWork
 {
-	final public function setDownvoteCount(Int $downvotes)
+	final public function setDownvoteCount(Int $downvotes): self
 	{
-		$this->_set('downVoteCount', $downvotes);
+		return $this->_set('downVoteCount', $downvotes);
 	}
 
-	final public function setParentItem(Question $question)
+	final public function setParentItem(Question $question): self
 	{
-		$this->_set('parentItem', $question);
+		return $this->_set('parentItem', $question);
 	}
 
-	final public function setUpvoteCount(Int $upvotes)
+	final public function setUpvoteCount(Int $upvotes): self
 	{
-		$this->_set('upvoteCount', $upvotes);
+		return $this->_set('upvoteCount', $upvotes);
 	}
 }

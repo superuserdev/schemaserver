@@ -24,22 +24,22 @@ namespace SuperUserDev\SchemaServer;
  */
 class LocalBusiness extends Organization
 {
-	final public function setCurrenciesAccepted(String $currencies)
+	final public function setCurrenciesAccepted(String $currencies): self
 	{
-		$this->_set('currenciesAccepted', $currencies);
+		return $this->_set('currenciesAccepted', $currencies);
 	}
 
-	final public function setOpeningHours(String $hours)
+	final public function setOpeningHours(String $hours): self
 	{
-		$this->_set('openingHours', $hours);
+		return $this->_set('openingHours', $hours);
 	}
 
-	final public function setPaymentAccepted(String $method)
+	final public function setPaymentAccepted(String $method): self
 	{
-		$this->_set('paymentAccepted', $method);
+		return $this->_set('paymentAccepted', $method);
 	}
 
-	final public function setPriceRange(String $range)
+	final public function setPriceRange(String $range): self
 	{
 		$htis->_set('priceRange', $range);
 	}
