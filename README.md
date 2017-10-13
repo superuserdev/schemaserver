@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/superuserdev/schemaserver.png?columns=all)](https://waffle.io/superuserdev/schemaserver?utm_source=badge)
 # schemaserver
 
 [![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/superuserdev/schemaserver/master/LICENSE)
